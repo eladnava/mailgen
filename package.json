@@ -1,7 +1,7 @@
 {
   "name": "mailgen",
   "version": "1.0.0",
-  "description": "Generates clean, responsive HTML e-mails for sending transactional e-mail.",
+  "description": "Generates clean, responsive HTML e-mails for sending transactional mail.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
