@@ -57,7 +57,7 @@ var emailBody = mailGenerator.generate({
 
 ### Reset Password
 
-![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/password_reset.png) 
+![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_password.png) 
 
 ```js
 // Generate "reset password" e-mail body using mailgen
@@ -79,7 +79,7 @@ var emailBody = mailGenerator.generate({
 
 ### Reset Password (Confirmation)
 
-![Reset Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/password_reset.png) 
+![Reset Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_confirmation.png) 
 
 ```js
 // Generate "reset confirmation" e-mail body using mailgen
