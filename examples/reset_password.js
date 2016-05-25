@@ -7,6 +7,8 @@ var mailGenerator = new Mailgen({
         // Appears in header & footer of e-mails
         name: 'Mailgen',
         link: 'https://mailgen.js/'
+        // Optional logo
+        // logo: 'https://mailgen.js/img/logo.png'
     }
 });
 

@@ -49,11 +49,14 @@
     .email-masthead_name {
       font-size: 16px;
       font-weight: bold;
-      color: #bbbfc3;
+      color: #2F3133;
       text-decoration: none;
       text-shadow: 0 1px 0 white;
     }
-
+    .email-logo {
+      max-height: 50px;
+    }
+    
     /* Body ------------------------------ */
     .email-body {
       width: 100%;
@@ -145,6 +148,7 @@
       -webkit-text-size-adjust: none;
       mso-hide: all;
     }
+    
     .button--green {
       background-color: #22BC66;
     }
@@ -177,7 +181,13 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name" href="<%= product.link %>" target="_blank"><%= product.name %></a>
+              <a class="email-masthead_name" href="<%= product.link %>" target="_blank">
+                <% if (locals.product.logo) { %>
+                  <img src="<%= product.logo %>" class="email-logo" />
+                <% } else { %>
+                  <%= product.name %>
+                <% } %>
+                </a>
             </td>
           </tr>
           <!-- Email Body -->
