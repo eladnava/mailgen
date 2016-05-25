@@ -32,7 +32,7 @@ var mailGenerator = new Mailgen({
 
 Check out the following examples to start generating e-mail templates:
 
-### Welcome
+## Welcome E-mail
 
 ![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png) 
 
@@ -55,7 +55,7 @@ var emailBody = mailGenerator.generate({
 // https://nodemailer.com/
 ```
 
-### Reset Password
+## Reset Password E-mail
 
 ![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_password.png) 
 
@@ -77,7 +77,7 @@ var emailBody = mailGenerator.generate({
 // https://nodemailer.com/
 ```
 
-### Reset Password (Confirmation)
+## Reset Confirmation E-mail
 
 ![Reset Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_confirmation.png) 
 
@@ -98,6 +98,7 @@ var emailBody = mailGenerator.generate({
 // Check out nodemailer to accomplish this: 
 // https://nodemailer.com/
 ```
+
 ## Supported Types
 
 The following e-mail types are currently supported:
