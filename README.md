@@ -60,6 +60,8 @@ var emailBody = mailGenerator.generate({
 // https://nodemailer.com/
 ```
 
+This code would output the following HTML template:
+
 ![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png) 
 
 ## More Examples
@@ -85,6 +87,8 @@ var emailBody = mailGenerator.generate({
 });
 ```
 
+##### Output
+
 ![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/2.png) 
 
 #### Reset Password Confirmation E-mail
@@ -108,6 +112,8 @@ var emailBody = mailGenerator.generate({
 });
 ```
 
+##### Output
+
 ![Reset Password Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/3.png) 
 
 #### Subscription Renewal E-mail
@@ -130,6 +136,8 @@ var emailBody = mailGenerator.generate({
     }
 });
 ```
+
+##### Output
 
 ![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png) 
 
