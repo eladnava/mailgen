@@ -1,0 +1,22 @@
+{
+  "name": "mailgen",
+  "version": "1.0.0",
+  "description": "Generates clean, responsive HTML e-mails for sending transactional e-mail.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eladnava/mailgen.git"
+  },
+  "author": "Elad Nava",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eladnava/mailgen/issues"
+  },
+  "homepage": "https://github.com/eladnava/mailgen#readme",
+  "dependencies": {
+    "ejs": "^2.4.2"
+  }
+}
