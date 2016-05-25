@@ -5,7 +5,8 @@ var mailGenerator = new Mailgen({
     theme: 'default',
     product: {
         // Appears in header & footer of e-mails
-        name: 'Mailgen'
+        name: 'Mailgen',
+        link: 'https://mailgen.js/'
     }
 });
 

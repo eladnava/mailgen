@@ -22,7 +22,7 @@ function Mailgen(options) {
 
     // Build path to theme directory
     this.themePath = __dirname + '/templates/' + this.theme;
-    
+
     // Bad theme?
     if (!fs.existsSync(this.themePath)) {
         throw new Error('You have specified an invalid theme.');
@@ -32,10 +32,10 @@ function Mailgen(options) {
     if (!this.product || typeof this.product !== 'object') {
         throw new Error('Please provide the `product` object.');
     }
-    
-    // No product name?
-    if (!this.product.name) {
-        throw new Error('Please provide the product name.');
+
+    // No product name or link?
+    if (!this.product.name || !this.product.link) {
+        throw new Error('Please provide the product name and link.');
     }
 }
 
@@ -45,7 +45,7 @@ Mailgen.prototype.generate = function (params) {
     if (!params || typeof params !== 'object') {
         throw new Error('Please provide parameters for generating transactional e-mails.');
     }
-    
+
     // Get transaction e-mail type & body params
     var type = params.type;
     var body = params.body;
@@ -83,10 +83,10 @@ Mailgen.prototype.generate = function (params) {
 
     // Render the template with ejs
     output = ejs.render(output, templateData);
-    
+
     // Inline CSS
     output = juice(output);
-    
+
     // All done!
     return output;
 };
