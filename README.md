@@ -34,8 +34,6 @@ Check out the following examples to start generating e-mail templates:
 
 ## Welcome E-mail
 
-![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png) 
-
 ```js
 // Generate "welcome" e-mail body using mailgen
 var emailBody = mailGenerator.generate({
@@ -55,9 +53,9 @@ var emailBody = mailGenerator.generate({
 // https://nodemailer.com/
 ```
 
-## Reset Password E-mail
+![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png) 
 
-![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_password.png) 
+## Reset Password E-mail
 
 ```js
 // Generate "reset password" e-mail body using mailgen
@@ -77,9 +75,9 @@ var emailBody = mailGenerator.generate({
 // https://nodemailer.com/
 ```
 
-## Reset Confirmation E-mail
+![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_password.png) 
 
-![Reset Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_confirmation.png) 
+## Reset Confirmation E-mail
 
 ```js
 // Generate "reset confirmation" e-mail body using mailgen
@@ -98,6 +96,8 @@ var emailBody = mailGenerator.generate({
 // Check out nodemailer to accomplish this: 
 // https://nodemailer.com/
 ```
+
+![Reset Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_confirmation.png) 
 
 ## Supported Types
 
