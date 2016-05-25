@@ -1,5 +1,6 @@
 var fs = require('fs');
 var ejs = require('ejs');
+var juice = require('juice');
 
 // Supported e-mail types
 var supportedTypes = [
@@ -68,7 +69,7 @@ Mailgen.prototype.generate = function (params) {
     }
 
     // Load it (sync)
-    var template = fs.readFileSync(templatePath, 'utf8');
+    var output = fs.readFileSync(templatePath, 'utf8');
 
     // Prepare data to be passed to ejs engine
     var templateData = {
@@ -81,10 +82,13 @@ Mailgen.prototype.generate = function (params) {
     }
 
     // Render the template with ejs
-    template = ejs.render(template, templateData);
-
+    output = ejs.render(output, templateData);
+    
+    // Inline CSS
+    output = juice(output);
+    
     // All done!
-    return template;
+    return output;
 };
 
 // Expose the Mailgen class
