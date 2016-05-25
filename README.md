@@ -69,7 +69,6 @@ This code would output the following HTML template:
 #### Reset Password E-mail
 
 ```js
-// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
     body: {
         name: 'John Appleseed',
@@ -94,7 +93,6 @@ var emailBody = mailGenerator.generate({
 #### Reset Password Confirmation E-mail
 
 ```js
-// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
     body: {
         name: 'John Appleseed',
@@ -119,7 +117,6 @@ var emailBody = mailGenerator.generate({
 #### Subscription Renewal E-mail
 
 ```js
-// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
     body: {
         name: 'John Appleseed',
