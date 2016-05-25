@@ -12,14 +12,20 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate "reset confirmation" e-mail body using mailgen
+// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
-    type: 'reset_confirmation',
     body: {
         name: 'John Appleseed',
+        intro: 'You have received this email because a password reset request for your account was received.',
         action: {
-            link: 'https://mailgen.js/login'
-        }
+            instructions: 'Click the button below to reset your password:',
+            button: {
+                color: 'red',
+                text: 'Reset Your Password',
+                link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
+            }
+        },
+        outro: 'If you did not request a password reset, no further action is required on your part.'
     }
 });
 

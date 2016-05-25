@@ -12,14 +12,20 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate "reset password" e-mail body using mailgen
+// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
-    type: 'reset_password',
     body: {
         name: 'John Appleseed',
+        intro: 'Your Mailgen account password has been reset successfully.',
         action: {
-            link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
-        }
+            instructions: 'Click the button below to sign in to your account:',
+            button: {
+                color: 'blue',
+                text: 'Sign in to Mailgen',
+                link: 'https://mailgen.js/login'
+            }
+        },
+        outro: 'If you did not request a password reset, please reply to this e-mail and let us know immediately.'
     }
 });
 

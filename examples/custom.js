@@ -12,20 +12,20 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate welcome e-mail body using mailgen
+// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
     body: {
         name: 'John Appleseed',
-        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
+        intro: 'Your subscription has been renewed successfully.',
         action: {
-            instructions: 'To get started with Mailgen, please click here:',
+            instructions: 'You can review your purchase and check your account balance in your dashboard:',
             button: {
-                color: 'green',
-                text: 'Confirm Your Account',
+                color: 'blue',
+                text: 'Go to Dashboard',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }
         },
-        outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
+        outro: 'We hope you enjoy what we have to offer.'
     }
 });
 

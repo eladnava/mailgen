@@ -3,7 +3,6 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Welcome to <%= product.name %>!</title>
   <style type="text/css" rel="stylesheet" media="all">
     /* Base ------------------------------ */
     *:not(br):not(tr):not(html) {
@@ -198,37 +197,34 @@
                 <tr>
                   <td class="content-cell">
                     <h1>Hi <%= name %>,</h1>
-                    <p>Thanks for signing up for <a href="<%= product.link %>" target="_blank"><%= product.name %></a>. We’re very excited to have you on board.</p>
+                    <p><%= intro %></p>
                     
                     <!-- Action -->
                     <% if (locals.action) { %>
-                    <p>To get started with <%= product.name %>, please click here:</p>
+                    <p><%= action.instructions %></p>
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
                       <tr>
                         <td align="center">
                           <div>
-                            <a href="<%= action.link %>" class="button button--green" target="_blank"><%= action.text %></a>
+                            <a href="<%= action.button.link %>" class="button button--<%= action.button.color %>" target="_blank"><%= action.button.text %></a>
                           </div>
                         </td>
                       </tr>
                     </table>
                     <% } %>
                     
-                    <% if (locals.username) { %>
-                    <p>For your reference, your username is <strong>{{username}}</strong> for logging in.</p>
-                    <% } %>
-                    <p>Need help, or have questions? Just reply to this email, we'd love to help.</p>
+                    <p><%= outro %></p>
                     
-                    <p>Cheers,<br><%= product.name %></p>
+                    <p>Yours truly,<br><%= product.name %></p>
                     
                     <% if (locals.action) { %>
                     <!-- Sub copy -->
                     <table class="body-sub">
                       <tr>
                         <td>
-                          <p class="sub">If you’re having trouble clicking the "<%= action.text %>" button, copy and paste the URL below into your web browser:
+                          <p class="sub">If you’re having trouble clicking the "<%= action.button.text %>" button, copy and paste the URL below into your web browser:
                           </p>
-                          <p class="sub"><a href="<%= action.link %>" target="_blank"><%= action.link %></a></p>
+                          <p class="sub"><a href="<%= action.button.link %>" target="_blank"><%= action.button.link %></a></p>
                         </td>
                       </tr>
                     </table>

@@ -5,7 +5,10 @@ A Node.js package that generates clean, responsive HTML e-mails for sending tran
 
 ## Demo
 
-![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png) 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png" height="400" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/2.png" height="300" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/3.png" height="300" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png" height="300" /> 
 
 ## Usage
 
@@ -27,26 +30,29 @@ var mailGenerator = new Mailgen({
         // Appears in header & footer of e-mails
         name: 'Mailgen',
         link: 'https://mailgen.js/'
-        // Optional logo
+        // Optional product logo
         // logo: 'https://mailgen.js/img/logo.png'
     }
 });
 ```
 
-Check out the following examples to start generating e-mail templates:
-
-## Welcome E-mail
+Next, generate an e-mail using the following code:
 
 ```js
-// Generate "welcome" e-mail body using mailgen
+// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
-    type: 'welcome',
     body: {
         name: 'John Appleseed',
+        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
         action: {
-            text: 'Confirm your account',
-            link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
-        }
+            instructions: 'To get started with Mailgen, please click here:',
+            button: {
+                color: 'green',
+                text: 'Confirm Your Account',
+                link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
+            }
+        },
+        outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
     }
 });
 
@@ -56,59 +62,78 @@ var emailBody = mailGenerator.generate({
 // https://nodemailer.com/
 ```
 
-![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png) 
+![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png) 
 
-## Reset Password E-mail
+## More Examples
 
-```js
-// Generate "reset password" e-mail body using mailgen
-var emailBody = mailGenerator.generate({
-    type: 'reset_password',
-    body: {
-        name: 'John Appleseed',
-        action: {
-            link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
-        }
-    }
-});
-
-// `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
-// https://nodemailer.com/
-```
-
-![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_password.png) 
-
-## Reset Confirmation E-mail
+#### Reset Password E-mail
 
 ```js
-// Generate "reset confirmation" e-mail body using mailgen
+// Generate e-mail body using mailgen
 var emailBody = mailGenerator.generate({
-    type: 'reset_confirmation',
     body: {
         name: 'John Appleseed',
+        intro: 'You have received this email because a password reset request for your account was received.',
         action: {
-            link: 'https://mailgen.js/login'
-        }
+            instructions: 'Click the button below to reset your password:',
+            button: {
+                color: 'red',
+                text: 'Reset Your Password',
+                link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
+            }
+        },
+        outro: 'If you did not request a password reset, no further action is required on your part.'
     }
 });
-
-// `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
-// https://nodemailer.com/
 ```
 
-![Reset Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset_confirmation.png) 
+![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/2.png) 
 
-## Supported Types
+#### Reset Password Confirmation E-mail
 
-The following e-mail types are currently supported:
+```js
+// Generate e-mail body using mailgen
+var emailBody = mailGenerator.generate({
+    body: {
+        name: 'John Appleseed',
+        intro: 'Your Mailgen account password has been reset successfully.',
+        action: {
+            instructions: 'Click the button below to sign in to your account:',
+            button: {
+                color: 'blue',
+                text: 'Sign in to Mailgen',
+                link: 'https://mailgen.js/login'
+            }
+        },
+        outro: 'If you did not request a password reset, please reply to this e-mail and let us know immediately.'
+    }
+});
+```
 
-* `welcome`
-* `reset_password`
-* `reset_confirmation`
+![Reset Password Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/3.png) 
+
+#### Subscription Renewal E-mail
+
+```js
+// Generate e-mail body using mailgen
+var emailBody = mailGenerator.generate({
+    body: {
+        name: 'John Appleseed',
+        intro: 'Your subscription has been renewed successfully.',
+        action: {
+            instructions: 'You can review your purchase and check your account balance in your dashboard:',
+            button: {
+                color: 'blue',
+                text: 'Go to Dashboard',
+                link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
+            }
+        },
+        outro: 'We hope you enjoy what we have to offer.'
+    }
+});
+```
+
+![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png) 
 
 ## Supported Themes
 

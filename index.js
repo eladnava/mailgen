@@ -2,29 +2,22 @@ var fs = require('fs');
 var ejs = require('ejs');
 var juice = require('juice');
 
-// Supported e-mail types
-var supportedTypes = [
-    'welcome',
-    'reset_password',
-    'reset_confirmation'
-];
-
 // Package constructor
 function Mailgen(options) {
     // Set options as instance members
     this.theme = options.theme;
     this.product = options.product;
 
-    // No theme - use default
+    // No theme provided - use default
     if (!this.theme) {
         this.theme = 'default';
     }
 
-    // Build path to theme directory
-    this.themePath = __dirname + '/templates/' + this.theme;
+    // Build path to theme template
+    this.templatePath = __dirname + '/themes/' + this.theme + '.html';
 
     // Bad theme?
-    if (!fs.existsSync(this.themePath)) {
+    if (!fs.existsSync(this.templatePath)) {
         throw new Error('You have specified an invalid theme.');
     }
 
@@ -46,30 +39,16 @@ Mailgen.prototype.generate = function (params) {
         throw new Error('Please provide parameters for generating transactional e-mails.');
     }
 
-    // Get transaction e-mail type & body params
-    var type = params.type;
+    // Get body params to inject into template
     var body = params.body;
-
-    // Validate type
-    if (supportedTypes.indexOf(type) === -1) {
-        throw new Error('You have specified an invalid e-mail type.');
-    }
 
     // Basic body validation
     if (!body || typeof body !== 'object') {
         throw new Error('Please provide the `body` parameter as an object.');
     }
 
-    // Build path to template
-    var templatePath = this.themePath + '/' + type + '.html';
-
-    // Verify file exists
-    if (!fs.existsSync(templatePath)) {
-        throw new Error('The specified e-mail template file could not be loaded.');
-    }
-
     // Load it (sync)
-    var output = fs.readFileSync(templatePath, 'utf8');
+    var output = fs.readFileSync(this.templatePath, 'utf8');
 
     // Prepare data to be passed to ejs engine
     var templateData = {
