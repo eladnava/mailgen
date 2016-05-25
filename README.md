@@ -118,6 +118,12 @@ The following open-source themes are bundled with this package:
 
 We thank the contributing authors for creating these themes.
 
+## Troubleshooting
+
+1. After sending multiple e-mails to the same Gmail / Inbox address, they become grouped and truncated since they contain similar text, breaking the responsive template layout.
+
+> Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation. 
+
 ## Contributing
 
 * Want to add another theme?
