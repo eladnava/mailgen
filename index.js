@@ -1,6 +1,5 @@
 var fs = require('fs');
 var ejs = require('ejs');
-var path = require('path');
 
 // Supported e-mail types
 var supportedTypes = [
@@ -21,8 +20,8 @@ function Mailgen(options) {
     }
 
     // Build path to theme directory
-    this.themePath = path.resolve('templates/' + this.theme);
-
+    this.themePath = __dirname + '/templates/' + this.theme;
+    
     // Bad theme?
     if (!fs.existsSync(this.themePath)) {
         throw new Error('You have specified an invalid theme.');
