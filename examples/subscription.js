@@ -30,7 +30,7 @@ var email = {
 };
 
 // Generate an HTML email using mailgen
-var emailBody = mailGenerator.generatePlaintext(email);
+var emailBody = mailGenerator.generate(email);
 
 // Optionally, preview the generated e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');
