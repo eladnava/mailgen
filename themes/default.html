@@ -180,11 +180,11 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name" href="<%= product.link %>" target="_blank">
+              <a class="email-masthead_name" href="<%- product.link %>" target="_blank">
                 <% if (locals.product.logo) { %>
-                  <img src="<%= product.logo %>" class="email-logo" />
+                  <img src="<%- product.logo %>" class="email-logo" />
                 <% } else { %>
-                  <%= product.name %>
+                  <%- product.name %>
                 <% } %>
                 </a>
             </td>
@@ -196,35 +196,35 @@
                 <!-- Body content -->
                 <tr>
                   <td class="content-cell">
-                    <h1>Hi <%= name %>,</h1>
-                    <p><%= intro %></p>
+                    <h1>Hi <%- name %>,</h1>
+                    <p><%- intro %></p>
                     
                     <!-- Action -->
                     <% if (locals.action) { %>
-                    <p><%= action.instructions %></p>
+                    <p><%- action.instructions %></p>
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
                       <tr>
                         <td align="center">
                           <div>
-                            <a href="<%= action.button.link %>" class="button button--<%= action.button.color %>" target="_blank"><%= action.button.text %></a>
+                            <a href="<%- action.button.link %>" class="button button--<%- action.button.color %>" target="_blank"><%- action.button.text %></a>
                           </div>
                         </td>
                       </tr>
                     </table>
                     <% } %>
                     
-                    <p><%= outro %></p>
+                    <p><%- outro %></p>
                     
-                    <p>Yours truly,<br><%= product.name %></p>
+                    <p>Yours truly,<br><%- product.name %></p>
                     
                     <% if (locals.action) { %>
                     <!-- Sub copy -->
                     <table class="body-sub">
                       <tr>
                         <td>
-                          <p class="sub">If you’re having trouble clicking the "<%= action.button.text %>" button, copy and paste the URL below into your web browser:
+                          <p class="sub">If you’re having trouble clicking the "<%- action.button.text %>" button, copy and paste the URL below into your web browser:
                           </p>
-                          <p class="sub"><a href="<%= action.button.link %>" target="_blank"><%= action.button.link %></a></p>
+                          <p class="sub"><a href="<%- action.button.link %>" target="_blank"><%- action.button.link %></a></p>
                         </td>
                       </tr>
                     </table>
@@ -239,7 +239,7 @@
               <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-cell">
-                    <p class="sub center">&copy; <%= new Date().getFullYear() %> <a href="<%= product.link %>" target="_blank"><%= product.name %></a>. All rights reserved.</p>
+                    <p class="sub center">&copy; <%- new Date().getFullYear() %> <a href="<%- product.link %>" target="_blank"><%- product.name %></a>. All rights reserved.</p>
                   </td>
                 </tr>
               </table>
