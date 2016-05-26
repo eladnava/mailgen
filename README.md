@@ -7,8 +7,8 @@ A Node.js package that generates clean, responsive HTML e-mails for sending tran
 
 ## Demo
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png" height="400" /> 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png" height="400" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png" width="330" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png" width="330" /> 
 
 ## Usage
 
