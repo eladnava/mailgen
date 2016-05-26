@@ -206,7 +206,7 @@ var mailGenerator = new Mailgen({
 ## Contributing
 
 * Want to add another theme?
-* Have an idea for a new e-mail type?
+* Have an idea for a new feature?
 
 Open an issue and let's talk about it!
 
