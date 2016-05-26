@@ -67,7 +67,7 @@ var emailBody = mailGenerator.generate(email);
 
 This code would output the following HTML template:
 
-![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png) 
+![Welcome](https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png) 
 
 ## More Examples
 
@@ -97,7 +97,7 @@ var emailBody = mailGenerator.generate(email);
 
 ##### Output
 
-![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/2.png) 
+![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset.png) 
 
 #### Receipt E-mail
 
@@ -148,7 +148,7 @@ var emailBody = mailGenerator.generate(email);
 
 ##### Output
 
-![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png)
+![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png)
 
 ## Plaintext E-mails
 
