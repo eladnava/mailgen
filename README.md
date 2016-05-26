@@ -3,6 +3,8 @@
 
 A Node.js package that generates clean, responsive HTML e-mails for sending transactional mail.
 
+Programmatically create beautiful e-mails using plain old JavaScript.
+
 ## Demo
 
 <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/1.png" height="400" /> 
