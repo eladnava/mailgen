@@ -39,8 +39,8 @@ var mailGenerator = new Mailgen({
 Next, generate an e-mail using the following code:
 
 ```js
-// Generate e-mail body using mailgen
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
@@ -54,7 +54,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 
 // `emailBody` now contains the HTML body.
 // It's up to you to send the e-mail. 
@@ -71,7 +74,8 @@ This code would output the following HTML template:
 #### Reset Password E-mail
 
 ```js
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'You have received this email because a password reset request for your account was received.',
@@ -85,7 +89,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'If you did not request a password reset, no further action is required on your part.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 ```
 
 ##### Output
@@ -95,7 +102,8 @@ var emailBody = mailGenerator.generate({
 #### Reset Password Confirmation E-mail
 
 ```js
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'Your Mailgen account password has been reset successfully.',
@@ -109,7 +117,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'If you did not request a password reset, please reply to this e-mail and let us know immediately.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 ```
 
 ##### Output
@@ -119,7 +130,8 @@ var emailBody = mailGenerator.generate({
 #### Subscription Renewal E-mail
 
 ```js
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'Your subscription has been renewed successfully.',
@@ -133,12 +145,24 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'We hope you enjoy what we have to offer.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 ```
 
 ##### Output
 
-![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png) 
+![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png)
+
+## Plaintext E-mails
+
+To generate a [plaintext version of the e-mail](https://litmus.com/blog/best-practices-for-plain-text-emails-a-look-at-why-theyre-important), simply call `generatePlaintext()`:
+
+```js
+// Generate plaintext email using mailgen
+var emailText = mailGenerator.generatePlaintext(email);
+```
 
 ## Supported Themes
 
@@ -164,7 +188,9 @@ var Mailgen = require('mailgen');
 var mailGenerator = new Mailgen({
     theme: {
         // Build an absolute path to the theme file within your project
-        path: path.resolve('assets/mailgen/theme.html')
+        path: path.resolve('assets/mailgen/theme.html'),
+        // Also (optionally) provide the path to a plaintext version of the theme (if you wish to use `generatePlaintext()`)
+        plaintextPath: path.resolve('assets/mailgen/theme.txt')
     },
     // Configure your product as usual (see examples above)
     product: {}

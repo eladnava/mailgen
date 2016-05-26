@@ -12,8 +12,8 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate e-mail body using mailgen
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'Your subscription has been renewed successfully.',
@@ -27,7 +27,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'We hope you enjoy what we have to offer.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generatePlaintext(email);
 
 // Optionally, preview the generated e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');

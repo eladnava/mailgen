@@ -12,8 +12,8 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate e-mail body using mailgen
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'Your Mailgen account password has been reset successfully.',
@@ -27,7 +27,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'If you did not request a password reset, please reply to this e-mail and let us know immediately.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 
 // Optionally, preview the generated e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');

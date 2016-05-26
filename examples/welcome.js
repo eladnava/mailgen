@@ -12,8 +12,8 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate welcome e-mail body using mailgen
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
@@ -27,7 +27,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 
 // Optionally, preview the generated e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');

@@ -12,8 +12,8 @@ var mailGenerator = new Mailgen({
     }
 });
 
-// Generate e-mail body using mailgen
-var emailBody = mailGenerator.generate({
+// Prepare email contents
+var email = {
     body: {
         name: 'John Appleseed',
         intro: 'You have received this email because a password reset request for your account was received.',
@@ -27,7 +27,10 @@ var emailBody = mailGenerator.generate({
         },
         outro: 'If you did not request a password reset, no further action is required on your part.'
     }
-});
+};
+
+// Generate HTML email using mailgen
+var emailBody = mailGenerator.generate(email);
 
 // Optionally, preview the generated e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');
