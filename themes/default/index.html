@@ -132,6 +132,32 @@
     p.center {
       text-align: center;
     }
+    
+    /* Data table ------------------------------ */
+    .data-wrapper {
+      width: 100%;
+      margin: 0;
+      padding: 35px 0;
+    }
+    .data-table {
+      width: 100%;
+      margin: 0;
+    }
+    .data-table th {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #EDEFF2;
+    }
+    .data-table th p {
+      margin: 0;
+      color: #9BA2AB;
+      font-size: 12px;
+    }
+    .data-table td {
+      padding: 10px 5px;
+      color: #74787E;
+      font-size: 15px;
+      line-height: 18px;
+    }
 
     /* Buttons ------------------------------ */
     .button {
@@ -198,6 +224,32 @@
                   <td class="content-cell">
                     <h1>Hi <%- name %>,</h1>
                     <p><%- intro %></p>
+                    
+                    <!-- Table -->
+                    <% if (locals.table) { %>
+                    <table class="data-wrapper" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td colspan="2">
+                          <table class="data-table" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <% for (var column in table.data[0]) {%>
+                              <th<% if(locals.table.columns.customWidth[column]) {%> width="<%= table.columns.customWidth[column] %>" <% } %>>
+                                <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
+                              </th>
+                              <% } %>
+                            </tr>
+                            <% for (var i in table.data) {%>
+                            <tr>
+                              <% for (var j in table.data[i]) {%>
+                              <td><%- table.data[i][j] %></td>
+                              <% } %>
+                            </tr>
+                            <% } %>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    <% } %>
                     
                     <!-- Action -->
                     <% if (locals.action) { %>
