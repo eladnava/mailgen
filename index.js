@@ -17,17 +17,26 @@ function Mailgen(options) {
     if (!this.product.name || !this.product.link) {
         throw new Error('Please provide the product name and link.');
     }
-    
-    // Build path to theme's template file
-    var templatePath = __dirname + '/themes/' + this.theme + '.html';
+
+    // Build path to theme file
+    var themePath;
+
+    // Passed in a custom theme path?
+    if (typeof this.theme === 'object' && this.theme.path) {
+        themePath = this.theme.path;
+    }
+    else {
+        // Build path to mailgen theme
+        themePath = __dirname + '/themes/' + this.theme + '.html';
+    }
 
     // Bad path?
-    if (!fs.existsSync(templatePath)) {
+    if (!fs.existsSync(themePath)) {
         throw new Error('You have specified an invalid theme.');
     }
-    
-    // Load template (sync) and cache it for later
-    this.template = fs.readFileSync(templatePath, 'utf8');
+
+    // Load theme (sync) and cache it for later
+    this.theme = fs.readFileSync(themePath, 'utf8');
 }
 
 // HTML e-mail generator
@@ -37,7 +46,7 @@ Mailgen.prototype.generate = function (params) {
         throw new Error('Please provide parameters for generating transactional e-mails.');
     }
 
-    // Get body params to inject into template
+    // Get body params to inject into theme
     var body = params.body;
 
     // Basic body validation
@@ -46,20 +55,20 @@ Mailgen.prototype.generate = function (params) {
     }
 
     // Prepare data to be passed to ejs engine
-    var templateData = {
+    var ejsParams = {
         product: this.product
     };
 
-    // Pass provided body to template
+    // Pass provided body to ejs
     for (var k in body) {
-        templateData[k] = body[k];
+        ejsParams[k] = body[k];
     }
-    
+
     // Fetch cached theme HTML
-    var output = this.template;
-    
-    // Render the template with ejs
-    output = ejs.render(output, templateData);
+    var output = this.theme;
+
+    // Render the theme with ejs, injecting the data accordingly
+    output = ejs.render(output, ejsParams);
 
     // Inline CSS
     output = juice(output);

@@ -148,9 +148,29 @@ The following open-source themes are bundled with this package:
 
 We thank the contributing authors for creating these themes.
 
+### Custom Themes
+
+If you want to create your own custom theme, it's a good idea to base off of the [`themes/default.html`](https://github.com/eladnava/mailgen/blob/master/themes/default.html) file, or at least copy the variable injection logic from it.
+
+We use [ejs](http://ejs.co/) under the hood to inject the `body` you provide into the theme file.
+
+When you've got your theme file ready, initialize the package by providing the path to it as follows:
+
+```js
+// Configure mailgen by providing the path to your custom theme
+var mailGenerator = new Mailgen({
+    theme: {
+        // Build an absolute path to the theme file within your project
+        path: path.resolve('assets/mailgen/theme.html')
+    },
+    // Configure your product as usual (see examples above)
+    product: {}
+});
+```
+
 ## Troubleshooting
 
-1. After sending multiple e-mails to the same Gmail / Inbox address, they become grouped and truncated since they contain similar text, breaking the responsive template layout.
+1. After sending multiple e-mails to the same Gmail / Inbox address, they become grouped and truncated since they contain similar text, breaking the responsive e-mail layout.
 
 > Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation. 
 
