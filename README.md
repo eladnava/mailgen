@@ -176,7 +176,7 @@ We thank the contributing authors for creating these themes.
 
 We use [ejs](http://ejs.co/) under the hood to inject the e-mail body you provide into the theme.
 
-If you want to create your own custom theme, it's a good idea to base off of the [`themes/default.html`](https://github.com/eladnava/mailgen/blob/master/themes/default.html) file, or at least copy the variable injection logic from it.
+If you want to create your own custom theme, it's a good idea to base off of the [`themes/default/index.html`](https://github.com/eladnava/mailgen/blob/master/themes/default/index.html) file, or at least copy the variable injection logic from it.
 
 When you've got your theme ready, initialize the package by providing the path to it as follows:
 
