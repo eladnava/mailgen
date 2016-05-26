@@ -148,7 +148,7 @@ The following open-source themes are bundled with this package:
 
 We thank the contributing authors for creating these themes.
 
-### Custom Themes
+## Custom Themes
 
 If you want to create your own custom theme, it's a good idea to base off of the [`themes/default.html`](https://github.com/eladnava/mailgen/blob/master/themes/default.html) file, or at least copy the variable injection logic from it.
 
@@ -157,6 +157,9 @@ We use [ejs](http://ejs.co/) under the hood to inject the `body` you provide int
 When you've got your theme file ready, initialize the package by providing the path to it as follows:
 
 ```js
+var path = require('path');
+var Mailgen = require('mailgen');
+
 // Configure mailgen by providing the path to your custom theme
 var mailGenerator = new Mailgen({
     theme: {
