@@ -56,7 +56,7 @@ var email = {
     }
 };
 
-// Generate HTML email using mailgen
+// Generate an HTML email using mailgen
 var emailBody = mailGenerator.generate(email);
 
 // `emailBody` now contains the HTML body.
@@ -91,7 +91,7 @@ var email = {
     }
 };
 
-// Generate HTML email using mailgen
+// Generate an HTML email using mailgen
 var emailBody = mailGenerator.generate(email);
 ```
 
@@ -119,7 +119,7 @@ var email = {
     }
 };
 
-// Generate HTML email using mailgen
+// Generate an HTML email using mailgen
 var emailBody = mailGenerator.generate(email);
 ```
 
@@ -147,7 +147,7 @@ var email = {
     }
 };
 
-// Generate HTML email using mailgen
+// Generate an HTML email using mailgen
 var emailBody = mailGenerator.generate(email);
 ```
 

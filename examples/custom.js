@@ -29,7 +29,7 @@ var email = {
     }
 };
 
-// Generate HTML email using mailgen
+// Generate an HTML email using mailgen
 var emailBody = mailGenerator.generatePlaintext(email);
 
 // Optionally, preview the generated e-mail by writing it to a local file
