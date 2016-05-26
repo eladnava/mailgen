@@ -99,34 +99,6 @@ var emailBody = mailGenerator.generate(email);
 
 ![Reset Password](https://raw.github.com/eladnava/mailgen/master/screenshots/default/2.png) 
 
-#### Reset Password Confirmation E-mail
-
-```js
-// Prepare email contents
-var email = {
-    body: {
-        name: 'John Appleseed',
-        intro: 'Your Mailgen account password has been reset successfully.',
-        action: {
-            instructions: 'Click the button below to sign in to your account:',
-            button: {
-                color: 'blue',
-                text: 'Sign in to Mailgen',
-                link: 'https://mailgen.js/login'
-            }
-        },
-        outro: 'If you did not request a password reset, please reply to this e-mail and let us know immediately.'
-    }
-};
-
-// Generate an HTML email using mailgen
-var emailBody = mailGenerator.generate(email);
-```
-
-##### Output
-
-![Reset Password Confirmation](https://raw.github.com/eladnava/mailgen/master/screenshots/default/3.png) 
-
 #### Subscription Renewal E-mail
 
 ```js
@@ -153,7 +125,7 @@ var emailBody = mailGenerator.generate(email);
 
 ##### Output
 
-![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/4.png)
+![Subscription Renewal](https://raw.github.com/eladnava/mailgen/master/screenshots/default/3.png)
 
 ## Plaintext E-mails
 
