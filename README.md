@@ -205,10 +205,10 @@ var mailGenerator = new Mailgen({
 
 ## Contributing
 
-* Want to add another theme?
-* Have an idea for a new feature?
-
-Open an issue and let's talk about it!
+* If you find a bug or wish to suggest a new feature, please create an issue first
+* Make sure your code & comment conventions are in-line with the project's style
+* Make your commits and PRs as tiny as possible - one feature or bugfix at a time
+* Write detailed commit messages, in-line with the project's commit naming conventions
 
 ## License
 
