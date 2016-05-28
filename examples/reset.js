@@ -21,7 +21,7 @@ var email = {
             instructions: 'Click the button below to reset your password:',
             button: {
                 color: 'red',
-                text: 'Reset Your Password',
+                text: 'Reset your password',
                 link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
             }
         },
@@ -45,7 +45,7 @@ require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 //     from: 'no-reply@mailgen.js',
 //     to: 'target@email.com',
 //     subject: 'Mailgen',
-//     body: emailBody
+//     html: emailBody
 // }, function (err) {
 //     if (err) return console.log(err);
 //     console.log('Message sent successfully.');

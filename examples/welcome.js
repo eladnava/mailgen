@@ -21,7 +21,7 @@ var email = {
             instructions: 'To get started with Mailgen, please click here:',
             button: {
                 color: 'green',
-                text: 'Confirm Your Account',
+                text: 'Confirm your account',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }
         },
@@ -45,7 +45,7 @@ require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 //     from: 'no-reply@mailgen.js',
 //     to: 'target@email.com',
 //     subject: 'Mailgen',
-//     body: emailBody
+//     html: emailBody
 // }, function (err) {
 //     if (err) return console.log(err);
 //     console.log('Message sent successfully.');

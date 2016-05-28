@@ -267,16 +267,33 @@
                     
                     <!-- Action -->
                     <% if (locals.action) { %>
-                    <p><%- action.instructions %></p>
-                    <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td align="center">
-                          <div>
-                            <a href="<%- action.button.link %>" class="button button--<%- action.button.color %>" target="_blank"><%- action.button.text %></a>
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
+                      <p><%- action.instructions %></p>
+                      <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td align="center">
+                            <div>
+                              <a href="<%- action.button.link %>" class="button button--<%- action.button.color %>" target="_blank"><%- action.button.text %></a>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    <% } %>
+                    
+                    <!-- Support for Gmail Go-To Actions -->
+                    <% if (locals.goToAction) { %>
+                      <script type="application/ld+json">
+                      {
+                        "@context": "http://schema.org",
+                        "@type": "EmailMessage",
+                        "potentialAction": {
+                          "@type": "ViewAction",
+                          "url": "<%- goToAction.link %>",
+                          "target": "<%- goToAction.link %>",
+                          "name": "<%- goToAction.text %>"
+                        },
+                        "description": "<%- goToAction.description %>"
+                      }
+                      </script>
                     <% } %>
                     
                     <p><%- outro %></p>

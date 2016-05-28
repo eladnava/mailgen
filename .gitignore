@@ -1,3 +1,6 @@
 .vscode/
 node_modules
+
+# Test files
+test.js
 preview.html

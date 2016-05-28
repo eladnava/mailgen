@@ -48,7 +48,7 @@ var email = {
             instructions: 'To get started with Mailgen, please click here:',
             button: {
                 color: 'green',
-                text: 'Confirm Your Account',
+                text: 'Confirm your account',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }
         },
@@ -83,7 +83,7 @@ var email = {
             instructions: 'Click the button below to reset your password:',
             button: {
                 color: 'red',
-                text: 'Reset Your Password',
+                text: 'Reset your password',
                 link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
             }
         },
@@ -195,6 +195,25 @@ var mailGenerator = new Mailgen({
     product: {}
 });
 ```
+
+## Go-To Actions
+
+You can make use of Gmail's [Go-To Actions](https://developers.google.com/gmail/markup/reference/go-to-action) within your e-mails by suppling the `goToActions` object as follows:
+
+```js
+var email = {
+    body: {
+        // Optionally configure a Go-To Action button 
+        goToAction: {
+            text: 'Go to Dashboard',
+            link: 'https://mailgen.com/confirm?s=d9729feb74992cc3482b350163a1a010',
+            description: 'Check the status of your order in your dashboard'
+        }
+    }
+};
+```
+
+> Note that you need to [get your sender address whitelisted](https://developers.google.com/gmail/markup/registering-with-google) before your Go-To Actions will show up in Gmail.
 
 ## Troubleshooting
 

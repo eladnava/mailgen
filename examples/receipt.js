@@ -70,7 +70,7 @@ require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 //     from: 'no-reply@mailgen.js',
 //     to: 'target@email.com',
 //     subject: 'Mailgen',
-//     body: emailBody
+//     html: emailBody
 // }, function (err) {
 //     if (err) return console.log(err);
 //     console.log('Message sent successfully.');
