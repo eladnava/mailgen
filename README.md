@@ -198,7 +198,7 @@ var mailGenerator = new Mailgen({
 
 ## Go-To Actions
 
-You can make use of Gmail's [Go-To Actions](https://developers.google.com/gmail/markup/reference/go-to-action) within your e-mails by suppling the `goToActions` object as follows:
+You can make use of Gmail's [Go-To Actions](https://developers.google.com/gmail/markup/reference/go-to-action) within your e-mails by suppling the `goToAction` object as follows:
 
 ```js
 var email = {
