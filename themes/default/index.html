@@ -124,7 +124,6 @@
       color: #74787E;
       font-size: 16px;
       line-height: 1.5em;
-      text-align: left;
     }
     p.sub {
       font-size: 12px;
@@ -144,6 +143,8 @@
       margin: 0;
     }
     .data-table th {
+      text-align: left;
+      padding: 0px 5px;
       padding-bottom: 8px;
       border-bottom: 1px solid #EDEFF2;
     }
@@ -233,15 +234,28 @@
                           <table class="data-table" width="100%" cellpadding="0" cellspacing="0">
                             <tr>
                               <% for (var column in table.data[0]) {%>
-                              <th<% if(locals.table.columns.customWidth[column]) {%> width="<%= table.columns.customWidth[column] %>" <% } %>>
-                                <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
-                              </th>
+                                <th
+                                  <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
+                                      width="<%= table.columns.customWidth[column] %>" 
+                                  <% } %>
+                                  <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
+                                      style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                  <% } %>
+                                >
+                                  <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
+                                </th>
                               <% } %>
                             </tr>
                             <% for (var i in table.data) {%>
                             <tr>
-                              <% for (var j in table.data[i]) {%>
-                              <td><%- table.data[i][j] %></td>
+                              <% for (var column in table.data[i]) {%>
+                                <td
+                                    <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
+                                        style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                    <% } %>
+                                >
+                                  <%- table.data[i][column] %>
+                                </td>
                               <% } %>
                             </tr>
                             <% } %>

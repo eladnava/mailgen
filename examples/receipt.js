@@ -35,6 +35,10 @@ var email = {
                 customWidth: {
                     item: '20%',
                     price: '15%'
+                },
+                // Optionally, change column text alignment
+                customAlignment: {
+                    price: 'right'
                 }
             }
         },
