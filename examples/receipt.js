@@ -16,7 +16,7 @@ var mailGenerator = new Mailgen({
 var email = {
     body: {
         name: 'John Appleseed',
-        intro: 'Your purchase has been processed successfully.',
+        intro: 'Your order has been processed successfully.',
         table: {
             data: [
                 {
