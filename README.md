@@ -167,7 +167,13 @@ var emailText = mailGenerator.generatePlaintext(email);
 
 The following open-source themes are bundled with this package:
 
-* `default` - [Postmark Transactional Email Templates](https://github.com/wildbit/postmark-templates)
+* `default` by [Postmark Transactional Email Templates](https://github.com/wildbit/postmark-templates)
+
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="200" /> 
+
+* `neopolitan` by [Send With Us](https://github.com/sendwithus/templates/tree/master/templates/neopolitan)
+
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/neopolitan/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/neopolitan/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/neopolitan/receipt.png" height="200" />
 
 We thank the contributing authors for creating these themes.
 
@@ -176,6 +182,8 @@ We thank the contributing authors for creating these themes.
 We use [ejs](http://ejs.co/) under the hood to inject the e-mail body you provide into the theme.
 
 If you want to create your own custom theme, it's a good idea to base off of the [`themes/default/index.txt`](https://github.com/eladnava/mailgen/blob/master/themes/default/index.txt) file, or at least copy the variable injection logic from it to your custom theme file.
+
+> Check out [THEME.md](THEME.md) for variable injection code snippets.
 
 When you've got your theme ready, provide the path to it as follows:
 
@@ -223,10 +231,19 @@ var email = {
 
 ## Contributing
 
-* If you find a bug or wish to suggest a new feature, please create an issue first
-* Make sure your code & comment conventions are in-line with the project's style
-* Make your commits and PRs as tiny as possible - one feature or bugfix at a time
-* Write detailed commit messages, in-line with the project's commit naming conventions
+Thanks so much for wanting to help! We really appreciate it.
+
+* Have an idea for a new feature?
+* Want to add a new built-in theme?
+
+Excellent! You've come to the right place.
+
+1. If you find a bug or wish to suggest a new feature, please create an issue first
+2. Make sure your code & comment conventions are in-line with the project's style
+3. Make your commits and PRs as tiny as possible - one feature or bugfix at a time
+4. Write detailed commit messages, in-line with the project's commit naming conventions
+
+> Check out [THEME.md](THEME.md) if you want to add a new built-in theme to Mailgen.
 
 ## License
 
