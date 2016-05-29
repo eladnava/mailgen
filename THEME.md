@@ -4,10 +4,10 @@ Here are instructions for creating a new built-in Mailgen theme.
 
 1. Create a new directory inside `themes` with the desired theme name
 2. Create an `index.html` file and an `index.txt` file within your theme directory
-3. Copy the contents of `themes/defaults/index.txt` to your `index.txt` file (we may change this in the future)
+3. Copy the contents of `themes/default/index.txt` to your `index.txt` file and make any necessary changes
 4. Paste your custom template HTML into the `index.html` file you created
 
-Now, all that's left is to inject the e-mail variables into your template.
+Now, all that's left is to inject the Mailgen e-mail variables into your template.
 
 ## Product Name Injection
 
@@ -29,7 +29,7 @@ The following will inject either the product logo or name into the template.
 <% } %>
 ```
 
-> It's a good idea to add the following CSS declaration to set `max-height: 50px` for the logo:
+It's a good idea to add the following CSS declaration to set `max-height: 50px` for the logo:
 
 ```css
 .email-logo {
