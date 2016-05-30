@@ -47,7 +47,7 @@ If you want to create a new **built-in** Mailgen theme:
 6. Scroll down to the [injection snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
 7. Test the theme by running the `examples/*.js` scripts (insert your theme name in each script) and observing the template output in `preview.html`
 8. Take a screenshot of your theme portraying each example and place it in `screenshots/{theme}/{example}.png`
-9. Add the theme name, credit, and screenshots to the `README.md` file's [Supported Themes](readme.md#supported-themes) section (copy one of the existing themes' markup and modify it accordingly)
+9. Add the theme name, credit, and screenshots to the `README.md` file's [Supported Themes](README.md#supported-themes) section (copy one of the existing themes' markup and modify it accordingly)
 7. Submit a pull request with your changes and we'll let you know if anything's missing!
 
 Thanks again for your contribution!
