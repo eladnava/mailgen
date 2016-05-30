@@ -1,3 +1,9 @@
+<% 
+// Make it possible to override action button color (specify fallback color if no color specified)
+if (locals.action && !locals.action.button.color) { 
+    locals.action.button.color = '#48CFAD';
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,7 +306,7 @@
                                                 <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
                                                     <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
                                                         <tr>
-                                                            <td align="center"><a href="<%- action.button.link %>" target="_blank" style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: #48CFAD; border-top: 15px solid #48CFAD; border-bottom: 15px solid #48CFAD; border-left: 25px solid #48CFAD; border-right: 25px solid #48CFAD; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;" class="mobile-button"><%- action.button.text %> &rarr;</a></td>
+                                                            <td align="center"><a href="<%- action.button.link %>" target="_blank" style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: <%- action.button.color %>; border-top: 15px solid <%- action.button.color %>; border-bottom: 15px solid <%- action.button.color %>; border-left: 25px solid <%- action.button.color %>; border-right: 25px solid <%- action.button.color %>; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;" class="mobile-button"><%- action.button.text %> &rarr;</a></td>
                                                         </tr>
                                                     </table>
                                                 </td>

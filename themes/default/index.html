@@ -1,3 +1,9 @@
+<% 
+// Make it possible to override action button color (specify fallback color if no color specified)
+if (locals.action && !locals.action.button.color) { 
+    locals.action.button.color = 'blue';
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
