@@ -2,7 +2,7 @@
 
 This file contains instructions on adding themes to Mailgen:
 
-* [Using a Custom Theme](#creating-a-custom-theme)
+* [Using a Custom Theme](#using-a-custom-theme)
 * [Creating a Built-In Theme](#creating-a-built-in-theme)
 
 > We use [ejs](http://ejs.co/) under the hood to inject the e-mail body into themes.
