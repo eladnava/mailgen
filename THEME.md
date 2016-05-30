@@ -120,6 +120,17 @@ The following will inject the action link (or button) into the e-mail:
 <% } %>
 ```
 
+It's a good idea to add this to the top of the template to specify a fallback color for the action button in case it wasn't provided by the user:
+
+``html
+<% 
+// Make it possible to override action button color (specify fallback color if no color specified)
+if (locals.action && !locals.action.button.color) { 
+    locals.action.button.color = 'blue';
+}
+%>
+```
+
 ## Table Injection
 
 The following will inject the table into the e-mail:
