@@ -1,0 +1,12 @@
+Hi <%- name %>,
+
+<%- intro %>
+<% if (locals.action) { %>
+<%- action.instructions %>
+<%- action.button.link %>
+<% } %>
+<%- outro %>
+
+<%- product.name %>
+
+Copyright <%- new Date().getFullYear() %> <%- product.name %>. All rights reserved.
