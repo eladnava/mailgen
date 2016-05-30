@@ -1,13 +1,58 @@
-# Creating a Theme
+# Theming Instructions
 
-Here are instructions for creating a new built-in Mailgen theme.
+This file contains instructions on adding themes to Mailgen:
 
-1. Create a new directory inside `themes` with the desired theme name
-2. Create an `index.html` file and an `index.txt` file within your theme directory
-3. Copy the contents of `themes/default/index.txt` to your `index.txt` file and make any necessary changes
-4. Paste your custom template HTML into the `index.html` file you created
+* [Using a Custom Theme](#creating-a-custom-theme)
+* [Creating a Built-In Theme](#creating-a-built-in-theme)
 
-Now, all that's left is to inject the Mailgen e-mail variables into your template.
+> We use [ejs](http://ejs.co/) under the hood to inject the e-mail body you provide into the theme.
+
+## Using a Custom Theme
+
+If you want to supply your own **custom theme** for Mailgen to use (but don't want it included with Mailgen):
+
+1. Create an `.html` file within your project directory
+2. Paste your e-mail template into the file
+3. Scroll down to the [injection code snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
+4. Optionally create a `.txt` file for the plaintext version of your theme (base off of [`index.txt`](themes/default/index.txt))
+
+When you've got your custom theme file(s) ready, apply them as follows:
+
+```js
+var path = require('path');
+var Mailgen = require('mailgen');
+
+// Configure mailgen by providing the path to your custom theme
+var mailGenerator = new Mailgen({
+    theme: {
+        // Build an absolute path to the theme file within your project
+        path: path.resolve('assets/mailgen/theme.html'),
+        // Also (optionally) provide the path to a plaintext version of the theme (if you wish to use `generatePlaintext()`)
+        plaintextPath: path.resolve('assets/mailgen/theme.txt')
+    },
+    // Configure your product as usual (see examples above)
+    product: {}
+});
+```
+
+# Creating a Built-In Theme
+
+If you want to create a new **built-in** Mailgen theme:
+
+1. Fork the repository to your GitHub account and clone it to your computer
+2. Create a new directory inside `themes` with the desired theme name
+3. Create an `index.html` file and an `index.txt` file within your theme directory
+4. Copy the contents of [`themes/default/index.txt`](themes/default/index.txt) to your `index.txt` file and make any necessary changes
+5. Paste your custom template HTML into the `index.html` file you created
+6. Scroll down to the [injection code snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
+7. Test the theme by running `examples/*.js` scripts and observing the template output in `preview.html`
+8. Take a screenshot of each example and place it in `screenshots/{theme}/{example}.png`
+9. Add the theme name, credit, and screenshots to the `README.md` file's [Supported Themes](readme.md#supported-themes) section
+7. Submit a pull request with your changes and we'll let you know if anything's missing!
+
+Thanks again for your contribution!
+
+# Injection Snippets
 
 ## Product Name Injection
 
@@ -144,11 +189,3 @@ In order to support Gmail's [Go-To Actions](https://developers.google.com/gmail/
     </script>
 <% } %>
 ```
-
-## Submit PR
-
-Once you're done testing the theme using the `examples/*.js` scripts, take screenshots of the theme and place them into the `screenshots/` directory.
-
-Finally, submit a PR with the new theme and screenshot files, and we'll let you know if anything's missing!
-
-Thanks again for your contribution!

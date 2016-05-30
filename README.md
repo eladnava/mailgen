@@ -99,30 +99,7 @@ We thank the contributing authors for creating these themes.
 
 ## Custom Themes
 
-We use [ejs](http://ejs.co/) under the hood to inject the e-mail body you provide into the theme.
-
-If you want to create your own custom theme, it's a good idea to base off of the [`themes/default/index.txt`](https://github.com/eladnava/mailgen/blob/master/themes/default/index.txt) file, or at least copy the variable injection logic from it to your custom theme file.
-
-> Check out [THEME.md](THEME.md) for variable injection code snippets.
-
-When you've got your theme ready, provide the path to it as follows:
-
-```js
-var path = require('path');
-var Mailgen = require('mailgen');
-
-// Configure mailgen by providing the path to your custom theme
-var mailGenerator = new Mailgen({
-    theme: {
-        // Build an absolute path to the theme file within your project
-        path: path.resolve('assets/mailgen/theme.html'),
-        // Also (optionally) provide the path to a plaintext version of the theme (if you wish to use `generatePlaintext()`)
-        plaintextPath: path.resolve('assets/mailgen/theme.txt')
-    },
-    // Configure your product as usual (see examples above)
-    product: {}
-});
-```
+If you want to supply your own custom theme or add a new built-in theme to Mailgen, check out [THEME.md](THEME.md) for instructions.
 
 ## Go-To Actions
 
