@@ -5,7 +5,7 @@ This file contains instructions on adding themes to Mailgen:
 * [Using a Custom Theme](#creating-a-custom-theme)
 * [Creating a Built-In Theme](#creating-a-built-in-theme)
 
-> We use [ejs](http://ejs.co/) under the hood to inject the e-mail body you provide into the theme.
+> We use [ejs](http://ejs.co/) under the hood to inject the e-mail body into themes.
 
 ## Using a Custom Theme
 
@@ -13,8 +13,8 @@ If you want to supply your own **custom theme** for Mailgen to use (but don't wa
 
 1. Create an `.html` file within your project directory
 2. Paste your e-mail template into the file
-3. Scroll down to the [injection code snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
-4. Optionally create a `.txt` file for the plaintext version of your theme (base off of [`index.txt`](themes/default/index.txt))
+3. Scroll down to the [injection snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
+4. Optionally create a `.txt` file for the plaintext version of your theme (base off of [`themes/default/index.txt`](themes/default/index.txt))
 
 When you've got your custom theme file(s) ready, apply them as follows:
 
@@ -44,10 +44,10 @@ If you want to create a new **built-in** Mailgen theme:
 3. Create an `index.html` file and an `index.txt` file within your theme directory
 4. Copy the contents of [`themes/default/index.txt`](themes/default/index.txt) to your `index.txt` file and make any necessary changes
 5. Paste your custom template HTML into the `index.html` file you created
-6. Scroll down to the [injection code snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
-7. Test the theme by running `examples/*.js` scripts and observing the template output in `preview.html`
-8. Take a screenshot of each example and place it in `screenshots/{theme}/{example}.png`
-9. Add the theme name, credit, and screenshots to the `README.md` file's [Supported Themes](readme.md#supported-themes) section
+6. Scroll down to the [injection snippets](#injection-snippets) and copy and paste each code snippet into the relevant area of your template markup
+7. Test the theme by running the `examples/*.js` scripts (insert your theme name in each script) and observing the template output in `preview.html`
+8. Take a screenshot of your theme portraying each example and place it in `screenshots/{theme}/{example}.png`
+9. Add the theme name, credit, and screenshots to the `README.md` file's [Supported Themes](readme.md#supported-themes) section (copy one of the existing themes' markup and modify it accordingly)
 7. Submit a pull request with your changes and we'll let you know if anything's missing!
 
 Thanks again for your contribution!

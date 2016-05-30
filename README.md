@@ -99,7 +99,7 @@ We thank the contributing authors for creating these themes.
 
 ## Custom Themes
 
-If you want to supply your own custom theme or add a new built-in theme to Mailgen, check out [THEME.md](THEME.md) for instructions.
+If you want to supply your own custom theme or add a new built-in theme, check out [THEME.md](THEME.md) for instructions.
 
 ## Go-To Actions
 
