@@ -114,7 +114,7 @@ The following will inject the action link (or button) into the e-mail:
 <!-- Action -->
 <% if (locals.action) { %>
     <p><%- action.instructions %></p>
-    <a href="<%- action.button.link %>" class="button--<%- action.button.color %>" target="_blank">
+    <a href="<%- action.button.link %>" style="color:<%- action.button.color %>" target="_blank">
         <%- action.button.text %>
     </a>
 <% } %>
