@@ -210,7 +210,7 @@ In order to support Gmail's [Go-To Actions](https://developers.google.com/gmail/
 <% } %>
 ```
 
-## RTL Support
+## Text Direction Injection
 
 In order to support generating RTL e-mails, inject the `textDirection` variable into the `<html>` tag:
 
