@@ -209,3 +209,11 @@ In order to support Gmail's [Go-To Actions](https://developers.google.com/gmail/
     </script>
 <% } %>
 ```
+
+## RTL Support
+
+In order to support generating RTL e-mails, inject the `textDirection` variable into the `<html>` tag:
+
+```html
+<html dir="<%- textDirection %>">
+```
