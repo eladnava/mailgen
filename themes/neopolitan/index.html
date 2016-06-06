@@ -5,7 +5,7 @@ if (locals.action && !locals.action.button.color) {
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="<%- textDirection %>">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -109,7 +109,7 @@ if (locals.action && !locals.action.button.color) {
     }
   </style>
 </head>
-<body class="body" style="padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none;" bgcolor="#ffffff">
+<body class="body" dir="<%- textDirection %>" style="padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none;" bgcolor="#ffffff">
 <!-- Support for Gmail Go-To Actions -->
 <% if (locals.goToAction) { %>
 <script type="application/ld+json">

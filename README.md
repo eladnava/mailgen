@@ -105,6 +105,18 @@ We thank the contributing authors for creating these themes.
 
 If you want to supply your own custom theme or add a new built-in theme, check out [THEME.md](THEME.md) for instructions.
 
+## RTL Support
+
+To change the default text direction (left-to-right), simply override it as follows:
+
+```js
+var mailGenerator = new Mailgen({
+    theme: 'salted',
+    // Custom text direction
+    textDirection: 'rtl',
+});
+```
+
 ## Language Customizations
 
 To customize the e-mail greeting (Hi) or signature (Yours truly), supply custom strings within the e-mail `body`:

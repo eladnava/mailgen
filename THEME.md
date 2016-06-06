@@ -212,8 +212,8 @@ In order to support Gmail's [Go-To Actions](https://developers.google.com/gmail/
 
 ## Text Direction Injection
 
-In order to support generating RTL e-mails, inject the `textDirection` variable into the `<html>` tag:
+In order to support generating RTL e-mails, inject the `textDirection` variable into the `<body>` tag:
 
 ```html
-<html dir="<%- textDirection %>">
+<body dir="<%- textDirection %>">
 ```
