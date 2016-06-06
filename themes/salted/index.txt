@@ -1,4 +1,4 @@
-Hi <%- name %>,
+<%- greeting %> <%- name %>,
 
 <%- intro %>
 <% if (locals.action) { %>
@@ -7,6 +7,4 @@ Hi <%- name %>,
 <% } %>
 <%- outro %>
 
-<%- product.name %>
-
-Copyright <%- new Date().getFullYear() %> <%- product.name %>. All rights reserved.
+<%- product.copyright %>

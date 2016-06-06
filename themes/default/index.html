@@ -229,7 +229,7 @@ if (locals.action && !locals.action.button.color) {
                 <!-- Body content -->
                 <tr>
                   <td class="content-cell">
-                    <h1>Hi <%- name %>,</h1>
+                    <h1><%- greeting %> <%- name %>,</h1>
                     <p><%- intro %></p>
                     
                     <!-- Table -->
@@ -304,7 +304,11 @@ if (locals.action && !locals.action.button.color) {
                     
                     <p><%- outro %></p>
                     
-                    <p>Yours truly,<br><%- product.name %></p>
+                    <p>
+                      <%- signature %>,
+                      <br>
+                      <%- product.name %>
+                    </p>
                     
                     <% if (locals.action) { %>
                     <!-- Sub copy -->
@@ -328,7 +332,9 @@ if (locals.action && !locals.action.button.color) {
               <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-cell">
-                    <p class="sub center">&copy; <%- new Date().getFullYear() %> <a href="<%- product.link %>" target="_blank"><%- product.name %></a>. All rights reserved.</p>
+                    <p class="sub center">
+                      <%- product.copyright %>
+                    </p>
                   </td>
                 </tr>
               </table>

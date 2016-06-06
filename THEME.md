@@ -82,12 +82,12 @@ It's a good idea to add the following CSS declaration to set `max-height: 50px` 
 }
 ```
 
-## Recipient Name Injection
+## Greeting Injection
 
-The following will inject the recipient's name into the e-mail.
+The following will inject the recipient's name along with a greeting keyword (e.g. Hi) into the e-mail:
 
 ```html
-<%- name %>
+<%- greeting %> <%- name %>,
 ```
 
 ## Intro Injection
@@ -104,6 +104,15 @@ The following will inject the outro text into the e-mail:
 
 ```html
 <%- outro %>
+```
+
+## Signature Injection
+
+The following will inject the signature phrase (e.g. Yours truly) along with the product name into the e-mail:
+
+```html
+<%- signature %>,
+<%- product.name %>
 ```
 
 ## Action Injection
@@ -172,10 +181,10 @@ The following will inject the table into the e-mail:
 
 ## Copyright Injection
 
-The following will inject the copyright symbol, the current year, and the product name into the e-mail:
+The following will inject the copyright notice into the e-mail:
 
 ```html
-&copy; <%- new Date().getFullYear() %> <a href="<%- product.link %>" target="_blank"><%- product.name %></a>. All rights reserved.
+<%- product.copyright %>
 ```
 
 ## Go-To Action Injection

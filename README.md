@@ -105,6 +105,41 @@ We thank the contributing authors for creating these themes.
 
 If you want to supply your own custom theme or add a new built-in theme, check out [THEME.md](THEME.md) for instructions.
 
+## Language Customizations
+
+To customize the e-mail greeting (Hi) or signature (Yours truly), supply custom strings within the e-mail `body`:
+
+```js
+var email = {
+    body: {
+        // Custom greeting
+        greeting: 'Dear',
+        
+        name: 'John Appleseed',
+        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
+        
+        // Custom signature
+        signature: 'Sincerely' 
+    }
+};
+```
+
+To customize the `copyright`, override it when initializing `Mailgen` within your `product` as follows:
+
+```js
+// Configure mailgen 
+var mailGenerator = new Mailgen({
+    theme: 'salted',
+    product: {
+        name: 'Mailgen',
+        link: 'https://mailgen.js/',
+        
+        // Custom copyright notice
+        copyright: 'Copyright © 2016 Mailgen. All rights reserved.',
+    }
+});
+``` 
+
 ## Go-To Actions
 
 You can make use of Gmail's [Go-To Actions](https://developers.google.com/gmail/markup/reference/go-to-action) within your e-mails by suppling the `goToAction` object as follows:

@@ -221,7 +221,7 @@ if (locals.action && !locals.action.button.color) {
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="font-size: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333333;" class="padding-copy">
-                                                Hi <%- name %>,
+                                                <%- greeting %> <%- name %>,
                                             </td>
                                         </tr>
                                         <tr>
@@ -346,7 +346,7 @@ if (locals.action && !locals.action.button.color) {
                             <tr>
                                 <td align="center" valign="middle" style="font-size: 12px; line-height: 18px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color:#666666;">
                                     <span class="appleFooter" style="color:#666666;">
-                                        &copy; <%- new Date().getFullYear() %> <a href="<%- product.link %>" target="_blank"><%- product.name %></a>. All rights reserved.
+                                        <%- product.copyright %>
                                     </span>
                                     <br>
                                 </td>

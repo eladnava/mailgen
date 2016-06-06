@@ -18,6 +18,9 @@ function Mailgen(options) {
     if (!this.product.name || !this.product.link) {
         throw new Error('Please provide the product name and link.');
     }
+    
+    // Support for custom copyright (fallback to sensible default)
+    this.product.copyright = this.product.copyright || '&copy; ' + new Date().getFullYear() + ' <a href="' + this.product.link + '" target="_blank">' + this.product.name + '</a>. All rights reserved.';
 
     // Cache theme files for later to avoid spamming fs.readFileSync()
     this.cacheThemes();
@@ -88,6 +91,10 @@ Mailgen.prototype.parseParams = function (params) {
     if (!body || typeof body !== 'object') {
         throw new Error('Please provide the `body` parameter as an object.');
     }
+    
+    // Support for custom greeting/signature (fallback to sensible defaults)
+    body.greeting = body.greeting || 'Hi';
+    body.signature = body.signature || 'Yours truly';
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {
