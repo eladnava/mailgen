@@ -18,10 +18,10 @@ function Mailgen(options) {
     if (!this.product.name || !this.product.link) {
         throw new Error('Please provide the product name and link.');
     }
-    
+
     // Support for custom text direction (fallback to LTR)
     this.textDirection = options.textDirection || 'ltr';
-    
+
     // Support for custom copyright (fallback to sensible default)
     this.product.copyright = this.product.copyright || '&copy; ' + new Date().getFullYear() + ' <a href="' + this.product.link + '" target="_blank">' + this.product.name + '</a>. All rights reserved.';
 
@@ -94,13 +94,19 @@ Mailgen.prototype.parseParams = function (params) {
     if (!body || typeof body !== 'object') {
         throw new Error('Please provide the `body` parameter as an object.');
     }
-    
+
     // Pass text direction to template
     body.textDirection = this.textDirection;
-    
+
     // Support for custom greeting/signature (fallback to sensible defaults)
     body.greeting = body.greeting || 'Hi';
     body.signature = body.signature || 'Yours truly';
+
+    // Convert intro to an array if a single string is used
+    var intro = body.intro;
+    if (typeof intro == 'string') {
+        intro = [intro]
+    }
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {

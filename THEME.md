@@ -101,10 +101,14 @@ The following will inject the main title of the email (e.g. Welcome to Mailgen!)
 
 ## Intro Injection
 
-The following will inject the intro text into the e-mail:
+The following will inject the intro text (string or array) into the e-mail:
 
 ```html
-<%- intro %>
+<% if (locals.intro) { %>
+  <% intro.forEach(function (introItem) { -%>
+    <p><%- introItem %></p>
+  <% }) -%>
+<% } %>
 ```
 
 ## Outro Injection

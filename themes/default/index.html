@@ -231,7 +231,11 @@ if (locals.action && !locals.action.button.color) {
                     <% } else { %>
                       <h1><%- greeting %> <%- name %>,</h1>
                     <% } %>
-                    <p><%- intro %></p>
+                    <% if (locals.intro) { %>
+                      <% intro.forEach(function (introItem) { -%>
+                        <p><%- introItem %></p>
+                      <% }) -%>
+                    <% } %>
 
                     <!-- Table -->
                     <% if (locals.table) { %>

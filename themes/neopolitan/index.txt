@@ -4,7 +4,12 @@
 <%- greeting %> <%- name %>,
 <% } %>
 
-<%- intro %>
+<% if (locals.intro) { %>
+<% intro.forEach(function (introItem) { -%>
+<%- introItem %>
+<% }) -%>
+<% } %>
+
 <% if (locals.action) { %>
 <%- action.instructions %>
 <%- action.button.link %>
