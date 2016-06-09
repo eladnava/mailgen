@@ -84,11 +84,20 @@ It's a good idea to add the following CSS declaration to set `max-height: 50px` 
 
 ## Greeting Injection
 
-The following will inject the recipient's name along with a greeting keyword (e.g. Hi) into the e-mail:
+The following will inject the recipient's name along with a greeting keyword (e.g. Hi) as a title into the e-mail:
 
 ```html
 <%- greeting %> <%- name %>,
 ```
+
+## Title Injection
+
+The following will inject the main title of the email (e.g. Welcome to Mailgen!) into the e-mail:
+
+```html
+<%- title %>
+```
+**Note:** This will override `greeting`/`name` if present.
 
 ## Intro Injection
 
@@ -132,9 +141,9 @@ The following will inject the action link (or button) into the e-mail:
 It's a good idea to add this to the top of the template to specify a fallback color for the action button in case it wasn't provided by the user:
 
 ```html
-<% 
+<%
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) { 
+if (locals.action && !locals.action.button.color) {
     locals.action.button.color = 'blue';
 }
 %>
@@ -152,10 +161,10 @@ The following will inject the table into the e-mail:
         <% for (var column in table.data[0]) {%>
         <th
             <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                width="<%= table.columns.customWidth[column] %>" 
+                width="<%= table.columns.customWidth[column] %>"
             <% } %>
             <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                style="text-align:<%= table.columns.customAlignment[column] %>" 
+                style="text-align:<%= table.columns.customAlignment[column] %>"
             <% } %>
         >
             <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
@@ -167,7 +176,7 @@ The following will inject the table into the e-mail:
         <% for (var column in table.data[i]) {%>
         <td
             <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                style="text-align:<%= table.columns.customAlignment[column] %>" 
+                style="text-align:<%= table.columns.customAlignment[column] %>"
             <% } %>
         >
             <%- table.data[i][column] %>

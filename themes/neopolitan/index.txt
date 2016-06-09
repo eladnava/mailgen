@@ -1,4 +1,8 @@
+<% if (locals.title) { %>
+<%- title %>
+<% } else { %>
 <%- greeting %> <%- name %>,
+<% } %>
 
 <%- intro %>
 <% if (locals.action) { %>

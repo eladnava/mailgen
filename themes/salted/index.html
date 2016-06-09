@@ -1,6 +1,6 @@
-<% 
+<%
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) { 
+if (locals.action && !locals.action.button.color) {
     locals.action.button.color = '#48CFAD';
 }
 %>
@@ -43,17 +43,17 @@ if (locals.action && !locals.action.button.color) {
     /* iOS BLUE LINKS */
     .appleBody a {color:#68440a; text-decoration: none;}
     .appleFooter a {color:#999999; text-decoration: none;}
-    
+
     /* MAILGEN STYLES */
     body {
         max-width: 575px;
         margin: 0 auto;
     }
-    
+
     .email-logo {
         max-height: 50px;
     }
-    
+
      /* Data table ------------------------------ */
     .data-wrapper {
       width: 100%;
@@ -81,7 +81,7 @@ if (locals.action && !locals.action.button.color) {
       font-size: 15px;
       line-height: 18px;
     }
-    
+
     /* MOBILE STYLES */
     @media screen and (max-width: 525px) {
 
@@ -221,7 +221,11 @@ if (locals.action && !locals.action.button.color) {
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="font-size: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333333;" class="padding-copy">
-                                                <%- greeting %> <%- name %>,
+                                                <% if (locals.title) { %>
+                                                  <%- title %>
+                                                <% } else { %>
+                                                  <%- greeting %> <%- name %>,
+                                                <% } %>
                                             </td>
                                         </tr>
                                         <tr>
@@ -241,10 +245,10 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[0]) {%>
                                             <th
                                                 <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                                                    width="<%= table.columns.customWidth[column] %>" 
+                                                    width="<%= table.columns.customWidth[column] %>"
                                                 <% } %>
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
@@ -256,7 +260,7 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[i]) {%>
                                             <td
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <%- table.data[i][column] %>

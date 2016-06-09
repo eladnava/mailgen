@@ -1,6 +1,6 @@
-<% 
+<%
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) { 
+if (locals.action && !locals.action.button.color) {
     locals.action.button.color = '#414141';
 }
 %>
@@ -46,12 +46,12 @@ if (locals.action && !locals.action.button.color) {
   td {
     text-align: center;
   }
-  
+
   .data-table td, .data-table th {
       text-align: left;
       padding: 0 5px;
   }
-  
+
   .data-table td {
       padding: 5px 5px;
   }
@@ -82,11 +82,11 @@ if (locals.action && !locals.action.button.color) {
 
  .force-full-width {
   width: 100% !important;
- } 
+ }
  .data-table {
      font-size: 14px;
  }
- 
+
 .data-table th {
     border-bottom: 1px solid rgba(0, 74, 74, 0.3);
 }
@@ -149,7 +149,11 @@ if (locals.action && !locals.action.button.color) {
                   <tr>
                     <td class="headline">
                       <div style="margin-top: 30px">
-                      <%- greeting %> <%- name %>!
+                      <% if (locals.title) { %>
+                        <%- title %>
+                      <% } else { %>
+                        <%- greeting %> <%- name %>!
+                      <% } %>
                       </div>
                     </td>
                   </tr>
@@ -179,10 +183,10 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[0]) {%>
                                             <th
                                                 <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                                                    width="<%= table.columns.customWidth[column] %>" 
+                                                    width="<%= table.columns.customWidth[column] %>"
                                                 <% } %>
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
@@ -194,7 +198,7 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[i]) {%>
                                             <td
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <%- table.data[i][column] %>
@@ -254,7 +258,7 @@ if (locals.action && !locals.action.button.color) {
                             <br>
                             <br>
                             <% } %>
-                            
+
                               <%- outro %>
                               <br>
                               <br>
