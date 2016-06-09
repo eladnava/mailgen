@@ -323,17 +323,21 @@ if (locals.action && !locals.action.button.color) {
                                     </td>
                                 </tr>
                             <% } %>
-                            <tr>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
-                                                <p><%- outro %></p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
+                            <% if (locals.outro) { %>
+                              <tr>
+                                  <td>
+                                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                              <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
+                                                  <% outro.forEach(function (outroItem) { -%>
+                                                    <p><%- outroItem %></p>
+                                                  <% }) -%>
+                                              </td>
+                                          </tr>
+                                      </table>
+                                  </td>
+                              </tr>
+                            <% } %>
                         </table>
                     </td>
                 </tr>

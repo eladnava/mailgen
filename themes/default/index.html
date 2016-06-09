@@ -307,7 +307,11 @@ if (locals.action && !locals.action.button.color) {
                       </script>
                     <% } %>
 
-                    <p><%- outro %></p>
+                    <% if (locals.outro) { %>
+                      <% outro.forEach(function (outroItem) { -%>
+                        <p><%- outroItem %></p>
+                      <% }) -%>
+                    <% } %>
 
                     <p>
                       <%- signature %>,

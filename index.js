@@ -102,11 +102,14 @@ Mailgen.prototype.parseParams = function (params) {
     body.greeting = body.greeting || 'Hi';
     body.signature = body.signature || 'Yours truly';
 
-    // Convert intro to an array if a single string is used
-    var intro = body.intro;
-    if (typeof intro == 'string') {
-        intro = [intro]
+    function convertToArray(data) {
+      if (typeof data == 'string') {return [data];}
+      return data;
     }
+
+    // Convert intro/outro to arrays if a string is used instead
+    body.intro = convertToArray(body.intro)
+    body.outro = convertToArray(body.outro)
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {

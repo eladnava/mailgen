@@ -14,7 +14,12 @@
 <%- action.instructions %>
 <%- action.button.link %>
 <% } %>
-<%- outro %>
+
+<% if (locals.outro) { %>
+<% outro.forEach(function (outroItem) { -%>
+<%- outroItem %>
+<% }) -%>
+<% } %>
 
 <%- signature %>,
 <%- product.name %>

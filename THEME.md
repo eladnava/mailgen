@@ -113,10 +113,14 @@ The following will inject the intro text (string or array) into the e-mail:
 
 ## Outro Injection
 
-The following will inject the outro text into the e-mail:
+The following will inject the outro text (string or array) into the e-mail:
 
 ```html
-<%- outro %>
+<% if (locals.outro) { %>
+  <% outro.forEach(function (outroItem) { -%>
+    <p><%- outroItem %></p>
+  <% }) -%>
+<% } %>
 ```
 
 ## Signature Injection

@@ -263,9 +263,14 @@ if (locals.action && !locals.action.button.color) {
                             <br>
                             <% } %>
 
-                              <%- outro %>
-                              <br>
-                              <br>
+                              <% if (locals.outro) { %>
+                                <% outro.forEach(function (outroItem) { -%>
+                                  <%- outroItem %>
+                                  <br>
+                                  <br>
+                                <% }) -%>
+                              <% } %>
+
                               <%- signature %>,
                               <br>
                               <%- product.name %>
