@@ -105,9 +105,9 @@ The following will inject the intro text (string or array) into the e-mail:
 
 ```html
 <% if (locals.intro) { %>
-  <% intro.forEach(function (introItem) { -%>
-    <p><%- introItem %></p>
-  <% }) -%>
+    <% intro.forEach(function (introItem) { -%>
+        <p><%- introItem %></p>
+    <% }) -%>
 <% } %>
 ```
 
@@ -117,9 +117,9 @@ The following will inject the outro text (string or array) into the e-mail:
 
 ```html
 <% if (locals.outro) { %>
-  <% outro.forEach(function (outroItem) { -%>
-    <p><%- outroItem %></p>
-  <% }) -%>
+    <% outro.forEach(function (outroItem) { -%>
+        <p><%- outroItem %></p>
+    <% }) -%>
 <% } %>
 ```
 
@@ -155,6 +155,22 @@ if (locals.action && !locals.action.button.color) {
     locals.action.button.color = 'blue';
 }
 %>
+```
+
+## Dictionary Injection
+
+The following will inject a `<dl>` of key-value pairs into the e-mail:
+
+```html
+<!-- Action -->
+<% if (locals.dictionary) { %>
+    <dl>
+    <% dictionary.forEach(function (dictionaryItem) { -%>
+        <dt><%- dictionaryItem.term %></dt>
+        <dd><%- dictionaryItem.description %></dd>
+    <% }) -%>
+    </dl>
+<% } %>
 ```
 
 ## Table Injection

@@ -91,6 +91,26 @@ if (locals.action && !locals.action.button.color) {
       padding: 0;
       text-align: center;
     }
+    .body-dictionary {
+      width: 100%;
+      overflow: hidden;
+      margin: 20px auto 10px;
+      padding: 0;
+    }
+    .body-dictionary dt,
+    .body-dictionary dd {
+      float: left;
+    }
+    .body-dictionary dt {
+      clear: both;
+      color: #000;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    .body-dictionary dd {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
     .body-sub {
       margin-top: 25px;
       padding-top: 25px;
@@ -288,6 +308,16 @@ if (locals.action && !locals.action.button.color) {
                           </td>
                         </tr>
                       </table>
+                    <% } %>
+
+                    <!-- Dictionary -->
+                    <% if (locals.dictionary) { %>
+                    <dl class="body-dictionary">
+                      <% dictionary.forEach(function (dictionaryItem) { -%>
+                        <dt><%- dictionaryItem.term %></dt>
+                        <dd><%- dictionaryItem.description %></dd>
+                      <% }) -%>
+                    </dl>
                     <% } %>
 
                     <!-- Support for Gmail Go-To Actions -->

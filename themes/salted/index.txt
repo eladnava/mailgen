@@ -15,6 +15,12 @@
 <%- action.button.link %>
 <% } %>
 
+<% if (locals.dictionary) { %>
+<% dictionary.forEach(function (dictionaryItem) { -%>
+<%- dictionaryItem.term %>: <%- dictionaryItem.description %>
+<% }) -%>
+<% } %>
+
 <% if (locals.outro) { %>
 <% outro.forEach(function (outroItem) { -%>
 <%- outroItem %>

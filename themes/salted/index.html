@@ -46,12 +46,12 @@ if (locals.action && !locals.action.button.color) {
 
     /* MAILGEN STYLES */
     body {
-        max-width: 575px;
-        margin: 0 auto;
+      max-width: 575px;
+      margin: 0 auto;
     }
 
     .email-logo {
-        max-height: 50px;
+      max-height: 50px;
     }
 
      /* Data table ------------------------------ */
@@ -80,6 +80,28 @@ if (locals.action && !locals.action.button.color) {
       color: #74787E;
       font-size: 15px;
       line-height: 18px;
+    }
+
+    /* Dictionary ------------------------------ */
+    .dictionary {
+      width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .dictionary dt,
+    .dictionary dd {
+      float: left;
+    }
+    .dictionary dt {
+      clear: both;
+      color: #000;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    .dictionary dd {
+      margin-left: 0;
+      margin-bottom: 10px;
     }
 
     /* MOBILE STYLES */
@@ -323,6 +345,26 @@ if (locals.action && !locals.action.button.color) {
                                     </td>
                                 </tr>
                             <% } %>
+                            <!-- Dictionary -->
+                            <% if (locals.dictionary) { %>
+                              <tr>
+                                  <td>
+                                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                              <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
+                                                  <dl class="dictionary">
+                                                    <% dictionary.forEach(function (dictionaryItem) { -%>
+                                                      <dt><%- dictionaryItem.term %></dt>
+                                                      <dd><%- dictionaryItem.description %></dd>
+                                                    <% }) -%>
+                                                  </dl>
+                                              </td>
+                                          </tr>
+                                      </table>
+                                  </td>
+                              </tr>
+                            <% } %>
+
                             <% if (locals.outro) { %>
                               <tr>
                                   <td>
