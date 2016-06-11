@@ -349,10 +349,10 @@ if (locals.action && !locals.action.button.color) {
                                           <tr>
                                               <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
                                                   <dl class="dictionary">
-                                                    <% dictionary.forEach(function (dictionaryItem) { -%>
-                                                      <dt><%- dictionaryItem.term %></dt>
-                                                      <dd><%- dictionaryItem.description %></dd>
-                                                    <% }) -%>
+                                                    <% for (item in dictionary) { -%>
+                                                      <dt><%- item %></dt>
+                                                      <dd><%- dictionary[item] %></dd>
+                                                    <% } -%>
                                                   </dl>
                                               </td>
                                           </tr>

@@ -311,10 +311,10 @@ if (locals.action && !locals.action.button.color) {
                     <!-- Dictionary -->
                     <% if (locals.dictionary) { %>
                     <dl class="body-dictionary">
-                      <% dictionary.forEach(function (dictionaryItem) { -%>
-                        <dt><%- dictionaryItem.term %></dt>
-                        <dd><%- dictionaryItem.description %></dd>
-                      <% }) -%>
+                      <% for (item in dictionary) { -%>
+                        <dt><%- item %></dt>
+                        <dd><%- dictionary[item] %></dd>
+                      <% } -%>
                     </dl>
                     <% } %>
 

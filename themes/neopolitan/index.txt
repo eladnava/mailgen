@@ -12,9 +12,9 @@
 <% } %>
 
 <% if (locals.dictionary) { %>
-<% dictionary.forEach(function (dictionaryItem) { -%>
-<%- dictionaryItem.term %>: <%- dictionaryItem.description %>
-<% }) -%>
+<% for (item in dictionary) { -%>
+<%- item %>: <%- dictionary[item] %>
+<% } -%>
 <% } %>
 
 <% if (locals.outro) { %>

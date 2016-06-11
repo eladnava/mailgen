@@ -165,10 +165,10 @@ The following will inject a `<dl>` of key-value pairs into the e-mail:
 <!-- Dictionary -->
 <% if (locals.dictionary) { %>
     <dl>
-    <% dictionary.forEach(function (dictionaryItem) { -%>
-        <dt><%- dictionaryItem.term %></dt>
-        <dd><%- dictionaryItem.description %></dd>
-    <% }) -%>
+    <% for (item in dictionary) { -%>
+        <dt><%- item %></dt>
+        <dd><%- dictionary[item] %></dd>
+    <% } -%>
     </dl>
 <% } %>
 ```
