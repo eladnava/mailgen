@@ -1,8 +1,4 @@
-<% if (locals.title) { %>
 <%- title %>
-<% } else { %>
-<%- greeting %> <%- name %>,
-<% } %>
 
 <% if (locals.intro) { %>
 <% intro.forEach(function (introItem) { -%>

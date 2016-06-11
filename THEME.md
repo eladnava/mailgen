@@ -162,7 +162,7 @@ if (locals.action && !locals.action.button.color) {
 The following will inject a `<dl>` of key-value pairs into the e-mail:
 
 ```html
-<!-- Action -->
+<!-- Dictionary -->
 <% if (locals.dictionary) { %>
     <dl>
     <% dictionary.forEach(function (dictionaryItem) { -%>

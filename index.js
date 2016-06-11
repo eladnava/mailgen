@@ -107,6 +107,11 @@ Mailgen.prototype.parseParams = function (params) {
     body.greeting = body.greeting || 'Hi';
     body.signature = body.signature || 'Yours truly';
 
+    // Use `greeting` and `name` for title if not set
+    if (!body.title) {
+        body.title = body.greeting + ' ' + body.name + ',';
+    }
+
     // Convert intro/outro to arrays if a string is used instead
     body.intro = convertToArrayIfString(body.intro)
     body.outro = convertToArrayIfString(body.outro)
