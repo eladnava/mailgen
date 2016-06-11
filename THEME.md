@@ -82,14 +82,13 @@ It's a good idea to add the following CSS declaration to set `max-height: 50px` 
 }
 ```
 
-## Greeting/Title Injection
+## Title Injection
 
-The following will inject the `greeting` (e.g. Hi) and the `name` (e.g. Bob) as a title into the e-mail followed by a comma:
+The following will inject the e-mail title (Hi John Appleseed,) or a custom title provided by the user:
 
 ```html
 <%- title %>
 ```
-**Note:** If `title` is supplied this will be used instead.
 
 ## Intro Injection
 
