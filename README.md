@@ -39,7 +39,6 @@ var mailGenerator = new Mailgen({
 Next, generate an e-mail using the following code:
 
 ```js
-// Prepare email contents
 var email = {
     body: {
         name: 'John Appleseed',
@@ -124,13 +123,7 @@ To customize the e-mail greeting (Hi) or signature (Yours truly), supply custom 
 ```js
 var email = {
     body: {
-        // Custom greeting
         greeting: 'Dear',
-
-        name: 'John Appleseed',
-        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
-
-        // Custom signature
         signature: 'Sincerely'
     }
 };
@@ -156,11 +149,97 @@ var mailGenerator = new Mailgen({
     product: {
         name: 'Mailgen',
         link: 'https://mailgen.js/',
-
         // Custom copyright notice
         copyright: 'Copyright © 2016 Mailgen. All rights reserved.',
     }
 });
+```
+
+## Multiline Support
+
+To inject multiple lines of text for the `intro` or `outro`, simply supply an array of strings:
+
+```js
+var email = {
+    body: {
+        intro: ['Welcome to Mailgen!', 'We’re very excited to have you on board.'],
+        outro: ['Need help, or have questions?', 'Just reply to this email, we\'d love to help.'],
+    }
+};
+```
+
+## Elements
+
+Mailgen supports injecting custom elements such as dictionaries, tables and action buttons into e-mails.
+
+### Action
+
+To inject an action button in to the e-mail, supply the `action` object as follows:
+
+```js
+var email = {
+    body: {
+        action: {
+            instructions: 'To get started with Mailgen, please click here:',
+            button: {
+                color: 'green',
+                text: 'Confirm your account',
+                link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
+            }
+        }
+    }
+};
+```
+
+### Table
+
+To inject a table into the e-mail, supply the `table` object as follows:
+
+```js
+var email = {
+    body: {
+        table: {
+            data: [
+                {
+                    item: 'Node.js',
+                    description: 'Event-driven I/O server-side JavaScript environment based on V8.',
+                    price: '$10.99'
+                },
+                {
+                    item: 'Mailgen',
+                    description: 'Programmatically create beautiful e-mails using plain old JavaScript.',
+                    price: '$1.99'
+                }
+            ],
+            columns: {
+                // Optionally, customize the column widths
+                customWidth: {
+                    item: '20%',
+                    price: '15%'
+                },
+                // Optionally, change column text alignment
+                customAlignment: {
+                    price: 'right'
+                }
+            }
+        }
+    }
+};
+```
+
+ ### Dictionary
+
+ To inject key-value pairs of data into the e-mail, supply the `dictionary` object as follows:
+
+ ```js
+var email = {
+    body: {
+        dictionary: {
+            date: 'June 11th, 2016',
+            address: '123 Park Avenue, Miami, Florida'
+        }
+    }
+};
 ```
 
 ## Go-To Actions
