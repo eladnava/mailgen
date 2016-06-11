@@ -30,7 +30,11 @@ function Mailgen(options) {
 }
 
 function convertToArrayIfString(data) {
-    if (typeof data == 'string') {return [data];}
+    // Convert string to single-element array 
+    if (typeof data === 'string') {
+        return [data];
+    }
+
     return data;
 }
 
