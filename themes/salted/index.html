@@ -259,7 +259,7 @@ if (locals.action && !locals.action.button.color) {
                                                 <% if (locals.dictionary) { %>
                                                   <dl class="dictionary">
                                                     <% for (item in dictionary) { -%>
-                                                      <dt><%- item %></dt>
+                                                      <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
                                                       <dd><%- dictionary[item] %></dd>
                                                     <% } -%>
                                                   </dl>

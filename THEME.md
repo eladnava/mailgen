@@ -158,7 +158,7 @@ The following will inject a `<dl>` of key-value pairs into the e-mail:
 <% if (locals.dictionary) { %>
     <dl>
     <% for (item in dictionary) { -%>
-        <dt><%- item %></dt>
+        <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
         <dd><%- dictionary[item] %></dd>
     <% } -%>
     </dl>

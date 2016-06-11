@@ -8,7 +8,7 @@
 
 <% if (locals.dictionary) { %>
 <% for (item in dictionary) { -%>
-<%- item %>: <%- dictionary[item] %>
+<%- item.charAt(0).toUpperCase() + item.slice(1) %>: <%- dictionary[item] %>
 <% } -%>
 <% } %>
 
