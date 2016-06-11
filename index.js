@@ -29,6 +29,11 @@ function Mailgen(options) {
     this.cacheThemes();
 }
 
+function convertToArrayIfString(data) {
+    if (typeof data == 'string') {return [data];}
+    return data;
+}
+
 Mailgen.prototype.cacheThemes = function () {
     // Build path to theme file (make it possible to pass in a custom theme path, fallback to mailgen-bundled theme)
     var themePath = (typeof this.theme === 'object' && this.theme.path) ? this.theme.path : __dirname + '/themes/' + this.themeName + '/index.html';
@@ -102,14 +107,9 @@ Mailgen.prototype.parseParams = function (params) {
     body.greeting = body.greeting || 'Hi';
     body.signature = body.signature || 'Yours truly';
 
-    function convertToArray(data) {
-      if (typeof data == 'string') {return [data];}
-      return data;
-    }
-
     // Convert intro/outro to arrays if a string is used instead
-    body.intro = convertToArray(body.intro)
-    body.outro = convertToArray(body.outro)
+    body.intro = convertToArrayIfString(body.intro)
+    body.outro = convertToArrayIfString(body.outro)
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {
