@@ -1,6 +1,6 @@
-<% 
+<%
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) { 
+if (locals.action && !locals.action.button.color) {
     locals.action.button.color = '#48CFAD';
 }
 %>
@@ -43,17 +43,17 @@ if (locals.action && !locals.action.button.color) {
     /* iOS BLUE LINKS */
     .appleBody a {color:#68440a; text-decoration: none;}
     .appleFooter a {color:#999999; text-decoration: none;}
-    
+
     /* MAILGEN STYLES */
     body {
-        max-width: 575px;
-        margin: 0 auto;
+      max-width: 575px;
+      margin: 0 auto;
     }
-    
+
     .email-logo {
-        max-height: 50px;
+      max-height: 50px;
     }
-    
+
      /* Data table ------------------------------ */
     .data-wrapper {
       width: 100%;
@@ -81,7 +81,25 @@ if (locals.action && !locals.action.button.color) {
       font-size: 15px;
       line-height: 18px;
     }
-    
+
+    /* Dictionary ------------------------------ */
+    .dictionary {
+      width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .dictionary dt {
+      clear: both;
+      color: #000;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    .dictionary dd {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+
     /* MOBILE STYLES */
     @media screen and (max-width: 525px) {
 
@@ -221,12 +239,27 @@ if (locals.action && !locals.action.button.color) {
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="font-size: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333333;" class="padding-copy">
-                                                <%- greeting %> <%- name %>,
+                                                <%- title %>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
-                                                <%- intro %>
+                                              <!-- Intro -->
+                                                <% if (locals.intro) { %>
+                                                  <% intro.forEach(function (introItem) { -%>
+                                                    <p><%- introItem %></p>
+                                                  <% }) -%>
+                                                <% } %>
+
+                                                <!-- Dictionary -->
+                                                <% if (locals.dictionary) { %>
+                                                  <dl class="dictionary">
+                                                    <% for (item in dictionary) { -%>
+                                                      <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
+                                                      <dd><%- dictionary[item] %></dd>
+                                                    <% } -%>
+                                                  </dl>
+                                                <% } %>
                                             </td>
                                         </tr>
                                     </table>
@@ -241,10 +274,10 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[0]) {%>
                                             <th
                                                 <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                                                    width="<%= table.columns.customWidth[column] %>" 
+                                                    width="<%= table.columns.customWidth[column] %>"
                                                 <% } %>
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
@@ -256,7 +289,7 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[i]) {%>
                                             <td
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <%- table.data[i][column] %>
@@ -315,17 +348,23 @@ if (locals.action && !locals.action.button.color) {
                                     </td>
                                 </tr>
                             <% } %>
-                            <tr>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
-                                                <p><%- outro %></p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
+
+                            <!-- Outro -->
+                            <% if (locals.outro) { %>
+                              <tr>
+                                  <td>
+                                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                              <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
+                                                  <% outro.forEach(function (outroItem) { -%>
+                                                    <p><%- outroItem %></p>
+                                                  <% }) -%>
+                                              </td>
+                                          </tr>
+                                      </table>
+                                  </td>
+                              </tr>
+                            <% } %>
                         </table>
                     </td>
                 </tr>

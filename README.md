@@ -7,8 +7,8 @@ A Node.js package that generates clean, responsive HTML e-mails for sending tran
 
 ## Demo
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" /> 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="400" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" />
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="400" />
 
 ## Usage
 
@@ -60,14 +60,14 @@ var email = {
 var emailBody = mailGenerator.generate(email);
 
 // `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
+// It's up to you to send the e-mail.
+// Check out nodemailer to accomplish this:
 // https://nodemailer.com/
 ```
 
 This code would output the following HTML template:
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" />
 
 ## More Examples
 
@@ -89,7 +89,7 @@ The following open-source themes are bundled with this package:
 
 * `default` by [Postmark Transactional Email Templates](https://github.com/wildbit/postmark-templates)
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="200" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="200" />
 
 * `neopolitan` by [Send With Us](https://github.com/sendwithus/templates/tree/master/templates/neopolitan)
 
@@ -104,6 +104,19 @@ We thank the contributing authors for creating these themes.
 ## Custom Themes
 
 If you want to supply your own custom theme or add a new built-in theme, check out [THEME.md](THEME.md) for instructions.
+
+## Title Support
+
+To use a simple title string rather than a greeting/name introduction, provide it instead of `name`:
+
+```js
+var email = {
+    body: {
+        // Title will override `name`
+        title: 'Welcome to Mailgen!'
+    }
+};
+```
 
 ## RTL Support
 
@@ -126,12 +139,12 @@ var email = {
     body: {
         // Custom greeting
         greeting: 'Dear',
-        
+
         name: 'John Appleseed',
         intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
-        
+
         // Custom signature
-        signature: 'Sincerely' 
+        signature: 'Sincerely'
     }
 };
 ```
@@ -139,18 +152,18 @@ var email = {
 To customize the `copyright`, override it when initializing `Mailgen` within your `product` as follows:
 
 ```js
-// Configure mailgen 
+// Configure mailgen
 var mailGenerator = new Mailgen({
     theme: 'salted',
     product: {
         name: 'Mailgen',
         link: 'https://mailgen.js/',
-        
+
         // Custom copyright notice
         copyright: 'Copyright © 2016 Mailgen. All rights reserved.',
     }
 });
-``` 
+```
 
 ## Go-To Actions
 
@@ -159,7 +172,7 @@ You can make use of Gmail's [Go-To Actions](https://developers.google.com/gmail/
 ```js
 var email = {
     body: {
-        // Optionally configure a Go-To Action button 
+        // Optionally configure a Go-To Action button
         goToAction: {
             text: 'Go to Dashboard',
             link: 'https://mailgen.com/confirm?s=d9729feb74992cc3482b350163a1a010',
@@ -175,7 +188,7 @@ var email = {
 
 1. After sending multiple e-mails to the same Gmail / Inbox address, they become grouped and truncated since they contain similar text, breaking the responsive e-mail layout.
 
-> Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation. 
+> Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation.
 
 ## Contributing
 

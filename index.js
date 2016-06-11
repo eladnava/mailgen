@@ -18,15 +18,20 @@ function Mailgen(options) {
     if (!this.product.name || !this.product.link) {
         throw new Error('Please provide the product name and link.');
     }
-    
+
     // Support for custom text direction (fallback to LTR)
     this.textDirection = options.textDirection || 'ltr';
-    
+
     // Support for custom copyright (fallback to sensible default)
     this.product.copyright = this.product.copyright || '&copy; ' + new Date().getFullYear() + ' <a href="' + this.product.link + '" target="_blank">' + this.product.name + '</a>. All rights reserved.';
 
     // Cache theme files for later to avoid spamming fs.readFileSync()
     this.cacheThemes();
+}
+
+function convertToArrayIfString(data) {
+    if (typeof data == 'string') {return [data];}
+    return data;
 }
 
 Mailgen.prototype.cacheThemes = function () {
@@ -94,13 +99,22 @@ Mailgen.prototype.parseParams = function (params) {
     if (!body || typeof body !== 'object') {
         throw new Error('Please provide the `body` parameter as an object.');
     }
-    
+
     // Pass text direction to template
     body.textDirection = this.textDirection;
-    
+
     // Support for custom greeting/signature (fallback to sensible defaults)
     body.greeting = body.greeting || 'Hi';
     body.signature = body.signature || 'Yours truly';
+
+    // Use `greeting` and `name` for title if not set
+    if (!body.title) {
+        body.title = body.greeting + ' ' + body.name + ',';
+    }
+
+    // Convert intro/outro to arrays if a string is used instead
+    body.intro = convertToArrayIfString(body.intro)
+    body.outro = convertToArrayIfString(body.outro)
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {

@@ -16,7 +16,14 @@ var mailGenerator = new Mailgen({
 var email = {
     body: {
         name: 'John Appleseed',
-        intro: 'Your order has been processed successfully.',
+        intro: [
+            'Your order has been processed successfully.',
+            'Here are some details about your purchase:'
+        ],
+        dictionary: {
+            date: 'June 11th, 2016',
+            address: '123 Park Avenue, Miami, Florida'
+        },
         table: {
             data: [
                 {
@@ -61,8 +68,8 @@ var emailBody = mailGenerator.generate(email);
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 
 // `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
+// It's up to you to send the e-mail.
+// Check out nodemailer to accomplish this:
 // https://nodemailer.com/
 
 // Send the e-mail with your favorite mailer

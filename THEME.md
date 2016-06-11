@@ -82,28 +82,37 @@ It's a good idea to add the following CSS declaration to set `max-height: 50px` 
 }
 ```
 
-## Greeting Injection
+## Greeting/Title Injection
 
-The following will inject the recipient's name along with a greeting keyword (e.g. Hi) into the e-mail:
+The following will inject the `greeting` (e.g. Hi) and the `name` (e.g. Bob) as a title into the e-mail followed by a comma:
 
 ```html
-<%- greeting %> <%- name %>,
+<%- title %>
 ```
+**Note:** If `title` is supplied this will be used instead.
 
 ## Intro Injection
 
-The following will inject the intro text into the e-mail:
+The following will inject the intro text (string or array) into the e-mail:
 
 ```html
-<%- intro %>
+<% if (locals.intro) { %>
+    <% intro.forEach(function (introItem) { -%>
+        <p><%- introItem %></p>
+    <% }) -%>
+<% } %>
 ```
 
 ## Outro Injection
 
-The following will inject the outro text into the e-mail:
+The following will inject the outro text (string or array) into the e-mail:
 
 ```html
-<%- outro %>
+<% if (locals.outro) { %>
+    <% outro.forEach(function (outroItem) { -%>
+        <p><%- outroItem %></p>
+    <% }) -%>
+<% } %>
 ```
 
 ## Signature Injection
@@ -132,12 +141,28 @@ The following will inject the action link (or button) into the e-mail:
 It's a good idea to add this to the top of the template to specify a fallback color for the action button in case it wasn't provided by the user:
 
 ```html
-<% 
+<%
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) { 
+if (locals.action && !locals.action.button.color) {
     locals.action.button.color = 'blue';
 }
 %>
+```
+
+## Dictionary Injection
+
+The following will inject a `<dl>` of key-value pairs into the e-mail:
+
+```html
+<!-- Dictionary -->
+<% if (locals.dictionary) { %>
+    <dl>
+    <% for (item in dictionary) { -%>
+        <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
+        <dd><%- dictionary[item] %></dd>
+    <% } -%>
+    </dl>
+<% } %>
 ```
 
 ## Table Injection
@@ -152,10 +177,10 @@ The following will inject the table into the e-mail:
         <% for (var column in table.data[0]) {%>
         <th
             <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                width="<%= table.columns.customWidth[column] %>" 
+                width="<%= table.columns.customWidth[column] %>"
             <% } %>
             <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                style="text-align:<%= table.columns.customAlignment[column] %>" 
+                style="text-align:<%= table.columns.customAlignment[column] %>"
             <% } %>
         >
             <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
@@ -167,7 +192,7 @@ The following will inject the table into the e-mail:
         <% for (var column in table.data[i]) {%>
         <td
             <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                style="text-align:<%= table.columns.customAlignment[column] %>" 
+                style="text-align:<%= table.columns.customAlignment[column] %>"
             <% } %>
         >
             <%- table.data[i][column] %>

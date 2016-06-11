@@ -1,11 +1,27 @@
-<%- greeting %> <%- name %>,
+<%- title %>
 
-<%- intro %>
+<% if (locals.intro) { %>
+<% intro.forEach(function (introItem) { -%>
+<%- introItem %>
+<% }) -%>
+<% } %>
+
+<% if (locals.dictionary) { %>
+<% for (item in dictionary) { -%>
+<%- item.charAt(0).toUpperCase() + item.slice(1) %>: <%- dictionary[item] %>
+<% } -%>
+<% } %>
+
 <% if (locals.action) { %>
 <%- action.instructions %>
 <%- action.button.link %>
 <% } %>
-<%- outro %>
+
+<% if (locals.outro) { %>
+<% outro.forEach(function (outroItem) { -%>
+<%- outroItem %>
+<% }) -%>
+<% } %>
 
 <%- signature %>,
 <%- product.name %>
