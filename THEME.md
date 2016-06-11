@@ -82,22 +82,14 @@ It's a good idea to add the following CSS declaration to set `max-height: 50px` 
 }
 ```
 
-## Greeting Injection
+## Greeting/Title Injection
 
-The following will inject the recipient's name along with a greeting keyword (e.g. Hi) as a title into the e-mail:
-
-```html
-<%- greeting %> <%- name %>,
-```
-
-## Title Injection
-
-The following will inject the main title of the email (e.g. Welcome to Mailgen!) into the e-mail:
+The following will inject the `greeting` (e.g. Hi) and the `name` (e.g. Bob) as a title into the e-mail followed by a comma:
 
 ```html
 <%- title %>
 ```
-**Note:** This will override `greeting`/`name` if present.
+**Note:** If `title` is supplied this will be used instead.
 
 ## Intro Injection
 
