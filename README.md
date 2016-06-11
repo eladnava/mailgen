@@ -229,7 +229,7 @@ var email = {
 };
 ```
 
- ### Dictionary
+### Dictionary
 
  To inject key-value pairs of data into the e-mail, supply the `dictionary` object as follows:
 
