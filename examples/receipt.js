@@ -16,14 +16,7 @@ var mailGenerator = new Mailgen({
 var email = {
     body: {
         name: 'John Appleseed',
-        intro: [
-            'Your order has been processed successfully.',
-            'Here are some details about your purchase:'
-        ],
-        dictionary: {
-            date: 'June 11th, 2016',
-            address: '123 Park Avenue, Miami, Florida'
-        },
+        intro: 'Your order has been processed successfully.',
         table: {
             data: [
                 {
