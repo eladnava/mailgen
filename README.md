@@ -105,19 +105,6 @@ We thank the contributing authors for creating these themes.
 
 If you want to supply your own custom theme or add a new built-in theme, check out [THEME.md](THEME.md) for instructions.
 
-## Title Support
-
-To use a simple title string rather than a greeting/name introduction, provide it instead of `name`:
-
-```js
-var email = {
-    body: {
-        // Title will override `name`
-        title: 'Welcome to Mailgen!'
-    }
-};
-```
-
 ## RTL Support
 
 To change the default text direction (left-to-right), simply override it as follows:
@@ -145,6 +132,17 @@ var email = {
 
         // Custom signature
         signature: 'Sincerely'
+    }
+};
+```
+
+To use a custom title string rather than a greeting/name introduction, provide it instead of `name`:
+
+```js
+var email = {
+    body: {
+        // Title will override `name`
+        title: 'Welcome to Mailgen!'
     }
 };
 ```
