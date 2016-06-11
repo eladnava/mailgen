@@ -246,9 +246,7 @@ if (locals.action && !locals.action.button.color) {
                 <!-- Body content -->
                 <tr>
                   <td class="content-cell">
-                    <% if (locals.title) { %>
-                      <h1><%- title %></h1>
-                    <% } %>
+                    <h1><%- title %></h1>
                     <% if (locals.intro) { %>
                       <% intro.forEach(function (introItem) { -%>
                         <p><%- introItem %></p>
