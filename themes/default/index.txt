@@ -6,15 +6,15 @@
 <% }) -%>
 <% } %>
 
-<% if (locals.action) { %>
-<%- action.instructions %>
-<%- action.button.link %>
-<% } %>
-
 <% if (locals.dictionary) { %>
 <% for (item in dictionary) { -%>
 <%- item %>: <%- dictionary[item] %>
 <% } -%>
+<% } %>
+
+<% if (locals.action) { %>
+<%- action.instructions %>
+<%- action.button.link %>
 <% } %>
 
 <% if (locals.outro) { %>

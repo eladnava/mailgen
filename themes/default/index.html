@@ -255,6 +255,16 @@ if (locals.action && !locals.action.button.color) {
                       <% }) -%>
                     <% } %>
 
+                    <!-- Dictionary -->
+                    <% if (locals.dictionary) { %>
+                    <dl class="body-dictionary">
+                      <% for (item in dictionary) { -%>
+                        <dt><%- item %></dt>
+                        <dd><%- dictionary[item] %></dd>
+                      <% } -%>
+                    </dl>
+                    <% } %>
+
                     <!-- Table -->
                     <% if (locals.table) { %>
                     <table class="data-wrapper" width="100%" cellpadding="0" cellspacing="0">
@@ -306,16 +316,6 @@ if (locals.action && !locals.action.button.color) {
                           </td>
                         </tr>
                       </table>
-                    <% } %>
-
-                    <!-- Dictionary -->
-                    <% if (locals.dictionary) { %>
-                    <dl class="body-dictionary">
-                      <% for (item in dictionary) { -%>
-                        <dt><%- item %></dt>
-                        <dd><%- dictionary[item] %></dd>
-                      <% } -%>
-                    </dl>
                     <% } %>
 
                     <!-- Support for Gmail Go-To Actions -->

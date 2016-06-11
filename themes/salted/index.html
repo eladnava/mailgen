@@ -248,10 +248,21 @@ if (locals.action && !locals.action.button.color) {
                                         </tr>
                                         <tr>
                                             <td align="center" style="padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
+                                              <!-- Intro -->
                                                 <% if (locals.intro) { %>
                                                   <% intro.forEach(function (introItem) { -%>
                                                     <p><%- introItem %></p>
                                                   <% }) -%>
+                                                <% } %>
+
+                                                <!-- Dictionary -->
+                                                <% if (locals.dictionary) { %>
+                                                  <dl class="dictionary">
+                                                    <% for (item in dictionary) { -%>
+                                                      <dt><%- item %></dt>
+                                                      <dd><%- dictionary[item] %></dd>
+                                                    <% } -%>
+                                                  </dl>
                                                 <% } %>
                                             </td>
                                         </tr>
@@ -341,26 +352,8 @@ if (locals.action && !locals.action.button.color) {
                                     </td>
                                 </tr>
                             <% } %>
-                            <!-- Dictionary -->
-                            <% if (locals.dictionary) { %>
-                              <tr>
-                                  <td>
-                                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                              <td align="center" style="padding: 25px 30px 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
-                                                  <dl class="dictionary">
-                                                    <% for (item in dictionary) { -%>
-                                                      <dt><%- item %></dt>
-                                                      <dd><%- dictionary[item] %></dd>
-                                                    <% } -%>
-                                                  </dl>
-                                              </td>
-                                          </tr>
-                                      </table>
-                                  </td>
-                              </tr>
-                            <% } %>
 
+                            <!-- Outro -->
                             <% if (locals.outro) { %>
                               <tr>
                                   <td>

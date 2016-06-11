@@ -189,6 +189,16 @@ if (locals.action && !locals.action.button.color) {
                                       <p><%- introItem %></p>
                                     <% }) -%>
                                   <% } %>
+
+                                  <!-- Dictionary -->
+                                  <% if (locals.dictionary) { %>
+                                  <dl class="dictionary">
+                                    <% for (item in dictionary) { -%>
+                                      <dt><%- item %></dt>
+                                      <dd><%- dictionary[item] %></dd>
+                                    <% } -%>
+                                  </dl>
+                                  <% } %>
                                 </td>
                             </tr>
                       </table>
@@ -282,16 +292,6 @@ if (locals.action && !locals.action.button.color) {
                             <![endif]--></div>
                             <br>
                             <br>
-                            <% } %>
-
-                            <!-- Dictionary -->
-                            <% if (locals.dictionary) { %>
-                            <dl class="dictionary">
-                              <% for (item in dictionary) { -%>
-                                <dt><%- item %></dt>
-                                <dd><%- dictionary[item] %></dd>
-                              <% } -%>
-                            </dl>
                             <% } %>
 
                               <% if (locals.outro) { %>
