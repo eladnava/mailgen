@@ -145,7 +145,7 @@ if (locals.action && !locals.action.button.color) {
                   </tr>
                 </table>
 
-                <table style="margin: 0 auto; border-radius: 3px 3px 0 0;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#4dbfbf">
+                <table style="margin: 0 auto; border-radius: 3px 3px 0 0; padding: 0 15px;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#4dbfbf">
                   <tr>
                     <td class="headline">
                       <div style="margin-top: 30px">
@@ -158,7 +158,7 @@ if (locals.action && !locals.action.button.color) {
                       <br />
                         <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="70%">
                             <tr>
-                                <td>
+                                <td style="padding: 0 15px;">
                                 <%- intro %>
                                 </td>
                             </tr>
@@ -223,9 +223,9 @@ if (locals.action && !locals.action.button.color) {
                             <!-- Action -->
                             <% if (locals.action) { %>
                             <center>
-                                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%">
+                                <table style="margin: 0 auto; padding: 0 15px;" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td>
+                                    <td style="padding: 0 15px;">
                                     <br>
                                     <%- action.instructions %>
                                     <br>
@@ -237,7 +237,7 @@ if (locals.action && !locals.action.button.color) {
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="padding: 0 15px;">
                             <div><!--[if mso]>
                                 <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
                                 <w:anchorlock/>
@@ -268,18 +268,9 @@ if (locals.action && !locals.action.button.color) {
                       </center>
                     </td>
                   </tr>
-                </table>
-                <table style="margin: 0 auto;border-radius: 0 0 3px 3px;" cellpadding="0" cellspacing="0" class="force-full-width" bgcolor="#414141" style="margin: 0 auto">
                   <tr>
-                    <td style="background-color:#414141;">
-                    <br>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="color:#bbbbbb; padding: 0 0 4px 0; font-size:12px;">
+                    <td style="background-color:#414141; color:#bbbbbb; padding: 22px 0 22px 0; font-size:12px;">
                         <%- product.copyright %>
-                       <br>
-                       <br>
                     </td>
                   </tr>
                 </table>
