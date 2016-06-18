@@ -61,8 +61,8 @@ var emailBody = mailGenerator.generate(email);
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 
 // `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
+// It's up to you to send the e-mail.
+// Check out nodemailer to accomplish this:
 // https://nodemailer.com/
 
 // Send the e-mail with your favorite mailer

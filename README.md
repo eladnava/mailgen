@@ -7,8 +7,10 @@ A Node.js package that generates clean, responsive HTML e-mails for sending tran
 
 ## Demo
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" /> 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="400" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/reset.png" height="400" />
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/receipt.png" height="400" />
+
+> These e-mails were generated using the built-in `salted` theme.
 
 ## Usage
 
@@ -39,7 +41,6 @@ var mailGenerator = new Mailgen({
 Next, generate an e-mail using the following code:
 
 ```js
-// Prepare email contents
 var email = {
     body: {
         name: 'John Appleseed',
@@ -60,14 +61,14 @@ var email = {
 var emailBody = mailGenerator.generate(email);
 
 // `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
+// It's up to you to send the e-mail.
+// Check out nodemailer to accomplish this:
 // https://nodemailer.com/
 ```
 
 This code would output the following HTML template:
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="400" />
 
 ## More Examples
 
@@ -89,7 +90,7 @@ The following open-source themes are bundled with this package:
 
 * `default` by [Postmark Transactional Email Templates](https://github.com/wildbit/postmark-templates)
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="200" /> 
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/default/receipt.png" height="200" />
 
 * `neopolitan` by [Send With Us](https://github.com/sendwithus/templates/tree/master/templates/neopolitan)
 
@@ -124,14 +125,19 @@ To customize the e-mail greeting (Hi) or signature (Yours truly), supply custom 
 ```js
 var email = {
     body: {
-        // Custom greeting
         greeting: 'Dear',
-        
-        name: 'John Appleseed',
-        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
-        
-        // Custom signature
-        signature: 'Sincerely' 
+        signature: 'Sincerely'
+    }
+};
+```
+
+To use a custom title string rather than a greeting/name introduction, provide it instead of `name`:
+
+```js
+var email = {
+    body: {
+        // Title will override `name`
+        title: 'Welcome to Mailgen!'
     }
 };
 ```
@@ -139,18 +145,104 @@ var email = {
 To customize the `copyright`, override it when initializing `Mailgen` within your `product` as follows:
 
 ```js
-// Configure mailgen 
+// Configure mailgen
 var mailGenerator = new Mailgen({
     theme: 'salted',
     product: {
         name: 'Mailgen',
         link: 'https://mailgen.js/',
-        
         // Custom copyright notice
         copyright: 'Copyright © 2016 Mailgen. All rights reserved.',
     }
 });
-``` 
+```
+
+## Multiline Support
+
+To inject multiple lines of text for the `intro` or `outro`, simply supply an array of strings:
+
+```js
+var email = {
+    body: {
+        intro: ['Welcome to Mailgen!', 'We’re very excited to have you on board.'],
+        outro: ['Need help, or have questions?', 'Just reply to this email, we\'d love to help.'],
+    }
+};
+```
+
+## Elements
+
+Mailgen supports injecting custom elements such as dictionaries, tables and action buttons into e-mails.
+
+### Action
+
+To inject an action button in to the e-mail, supply the `action` object as follows:
+
+```js
+var email = {
+    body: {
+        action: {
+            instructions: 'To get started with Mailgen, please click here:',
+            button: {
+                color: 'green',
+                text: 'Confirm your account',
+                link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
+            }
+        }
+    }
+};
+```
+
+### Table
+
+To inject a table into the e-mail, supply the `table` object as follows:
+
+```js
+var email = {
+    body: {
+        table: {
+            data: [
+                {
+                    item: 'Node.js',
+                    description: 'Event-driven I/O server-side JavaScript environment based on V8.',
+                    price: '$10.99'
+                },
+                {
+                    item: 'Mailgen',
+                    description: 'Programmatically create beautiful e-mails using plain old JavaScript.',
+                    price: '$1.99'
+                }
+            ],
+            columns: {
+                // Optionally, customize the column widths
+                customWidth: {
+                    item: '20%',
+                    price: '15%'
+                },
+                // Optionally, change column text alignment
+                customAlignment: {
+                    price: 'right'
+                }
+            }
+        }
+    }
+};
+```
+
+### Dictionary
+
+ To inject key-value pairs of data into the e-mail, supply the `dictionary` object as follows:
+
+ ```js
+var email = {
+    body: {
+        dictionary: {
+            date: 'June 11th, 2016',
+            address: '123 Park Avenue, Miami, Florida'
+        }
+    }
+};
+```
 
 ## Go-To Actions
 
@@ -159,7 +251,7 @@ You can make use of Gmail's [Go-To Actions](https://developers.google.com/gmail/
 ```js
 var email = {
     body: {
-        // Optionally configure a Go-To Action button 
+        // Optionally configure a Go-To Action button
         goToAction: {
             text: 'Go to Dashboard',
             link: 'https://mailgen.com/confirm?s=d9729feb74992cc3482b350163a1a010',
@@ -175,7 +267,7 @@ var email = {
 
 1. After sending multiple e-mails to the same Gmail / Inbox address, they become grouped and truncated since they contain similar text, breaking the responsive e-mail layout.
 
-> Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation. 
+> Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation.
 
 ## Contributing
 

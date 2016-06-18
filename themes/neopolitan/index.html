@@ -1,6 +1,6 @@
-<% 
+<%
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) { 
+if (locals.action && !locals.action.button.color) {
     locals.action.button.color = '#414141';
 }
 %>
@@ -46,12 +46,12 @@ if (locals.action && !locals.action.button.color) {
   td {
     text-align: center;
   }
-  
+
   .data-table td, .data-table th {
       text-align: left;
       padding: 0 5px;
   }
-  
+
   .data-table td {
       padding: 5px 5px;
   }
@@ -80,16 +80,35 @@ if (locals.action && !locals.action.button.color) {
     font-size: 36px;
   }
 
- .force-full-width {
-  width: 100% !important;
- } 
- .data-table {
-     font-size: 14px;
- }
- 
-.data-table th {
+  .force-full-width {
+    width: 100% !important;
+  }
+
+  .data-table {
+    font-size: 14px;
+  }
+
+  .data-table th {
     border-bottom: 1px solid rgba(0, 74, 74, 0.3);
-}
+  }
+
+  .dictionary {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto 10px;
+    padding: 0;
+  }
+
+  .dictionary dt {
+    clear: both;
+    color: #000;
+    font-weight: bold;
+    margin-right: 4px;
+  }
+
+  .dictionary dd {
+      margin: 0 0 10px 0;
+  }
   </style>
   <style type="text/css" media="screen">
       @media screen {
@@ -149,7 +168,7 @@ if (locals.action && !locals.action.button.color) {
                   <tr>
                     <td class="headline">
                       <div style="margin-top: 30px">
-                      <%- greeting %> <%- name %>!
+                        <%- title %>
                       </div>
                     </td>
                   </tr>
@@ -158,8 +177,22 @@ if (locals.action && !locals.action.button.color) {
                       <br />
                         <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="70%">
                             <tr>
-                                <td style="padding: 0 15px;">
-                                <%- intro %>
+                                <td style="padding: 0 15px;"> 
+                                  <% if (locals.intro) { %>
+                                    <% intro.forEach(function (introItem) { -%>
+                                      <p><%- introItem %></p>
+                                    <% }) -%>
+                                  <% } %>
+
+                                  <!-- Dictionary -->
+                                  <% if (locals.dictionary) { %>
+                                  <dl class="dictionary">
+                                    <% for (item in dictionary) { -%>
+                                      <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
+                                      <dd><%- dictionary[item] %></dd>
+                                    <% } -%>
+                                  </dl>
+                                  <% } %>
                                 </td>
                             </tr>
                       </table>
@@ -179,10 +212,10 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[0]) {%>
                                             <th
                                                 <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                                                    width="<%= table.columns.customWidth[column] %>" 
+                                                    width="<%= table.columns.customWidth[column] %>"
                                                 <% } %>
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
@@ -194,7 +227,7 @@ if (locals.action && !locals.action.button.color) {
                                             <% for (var column in table.data[i]) {%>
                                             <td
                                                 <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                                    style="text-align:<%= table.columns.customAlignment[column] %>" 
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
                                                 <% } %>
                                             >
                                                 <%- table.data[i][column] %>
@@ -254,10 +287,15 @@ if (locals.action && !locals.action.button.color) {
                             <br>
                             <br>
                             <% } %>
-                            
-                              <%- outro %>
-                              <br>
-                              <br>
+
+                              <% if (locals.outro) { %>
+                                <% outro.forEach(function (outroItem) { -%>
+                                  <%- outroItem %>
+                                  <br>
+                                  <br>
+                                <% }) -%>
+                              <% } %>
+
                               <%- signature %>,
                               <br>
                               <%- product.name %>
