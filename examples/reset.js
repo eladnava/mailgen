@@ -20,7 +20,6 @@ var email = {
         action: {
             instructions: 'Click the button below to reset your password:',
             button: {
-                color: 'red',
                 text: 'Reset your password',
                 link: 'https://mailgen.js/reset?s=b350163a1a010d9729feb74992c1a010'
             }
