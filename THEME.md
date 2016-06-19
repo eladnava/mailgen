@@ -131,16 +131,6 @@ It's a good idea to add this to the top of the template to improve the styling o
 }
 ```
 
-## Signature Injection
-
-The following will inject the signature phrase (e.g. Yours truly) along with the product name into the e-mail:
-
-```html
-<%- signature %>,
-<br />
-<%- product.name %>
-```
-
 ## Action Injection
 
 The following will inject the action link (or button) into the e-mail:
@@ -205,6 +195,37 @@ The following will inject the table into the e-mail:
 <% } %>
 ```
 
+It's a good idea to add this to the top of the template to improve the styling of the table:
+
+```css
+/* Table */
+.data-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 35px 0;
+}
+.data-table {
+    width: 100%;
+    margin: 0;
+}
+.data-table th {
+    text-align: left;
+    padding: 0px 5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #DEDEDE;
+}
+.data-table th p {
+    margin: 0;
+    font-size: 12px;
+}
+.data-table td {
+    text-align: left;
+    padding: 10px 5px;
+    font-size: 15px;
+    line-height: 18px;
+}
+```
+
 ## Outro Injection
 
 The following will inject the outro text (string or array) into the e-mail:
@@ -215,6 +236,16 @@ The following will inject the outro text (string or array) into the e-mail:
         <p><%- outroItem %></p>
     <% }) -%>
 <% } %>
+```
+
+## Signature Injection
+
+The following will inject the signature phrase (e.g. Yours truly) along with the product name into the e-mail:
+
+```html
+<%- signature %>,
+<br />
+<%- product.name %>
 ```
 
 ## Copyright Injection
