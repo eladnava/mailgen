@@ -101,13 +101,34 @@ The following will inject a `<dl>` of key-value pairs into the e-mail:
 ```html
 <!-- Dictionary -->
 <% if (locals.dictionary) { %>
-    <dl>
+    <dl class="dictionary">
     <% for (item in dictionary) { -%>
         <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
         <dd><%- dictionary[item] %></dd>
     <% } -%>
     </dl>
 <% } %>
+```
+
+It's a good idea to add this to the top of the template to improve the styling of the dictionary:
+
+```css
+/* Dictionary */
+.dictionary {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+}
+.dictionary dt {
+    clear: both;
+    color: #000;
+    font-weight: bold;
+    margin-right: 4px;
+}
+.dictionary dd {
+    margin: 0 0 10px 0;
+}
 ```
 
 ## Signature Injection
