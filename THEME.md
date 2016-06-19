@@ -120,6 +120,7 @@ The following will inject the signature phrase (e.g. Yours truly) along with the
 
 ```html
 <%- signature %>,
+<br />
 <%- product.name %>
 ```
 
