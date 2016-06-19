@@ -99,6 +99,10 @@ The following open-source themes are bundled with this package:
 
 <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/receipt.png" height="200" />
 
+* `cerberus` by [Ted Goas](http://tedgoas.github.io/Cerberus/)
+
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/cerberus/welcome.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/cerberus/reset.png" height="200" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/cerberus/receipt.png" height="200" />
+
 We thank the contributing authors for creating these themes.
 
 ## Custom Themes

@@ -1,0 +1,369 @@
+<%
+// Make it possible to override action button color (specify fallback color if no color specified)
+if (locals.action && !locals.action.button.color) {
+    locals.action.button.color = '#222222';
+}
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+	<title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+	<!-- Web Font / @font-face : BEGIN -->
+	<!-- NOTE: If web fonts are not required, lines 9 - 26 can be safely removed. -->
+	
+	<!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+	<!--[if mso]>
+		<style>
+			* {
+				font-family: sans-serif !important;
+			}
+		</style>
+	<![endif]-->
+	
+	<!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+	<!--[if !mso]><!-->
+		<!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+	<!--<![endif]-->
+
+	<!-- Web Font / @font-face : END -->
+	
+  	<!-- CSS Reset -->
+    <style type="text/css">
+
+		/* What it does: Remove spaces around the email design added by some email clients. */
+		/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+	        margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+        
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* What is does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin:0 !important;
+        }
+        
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+                
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            Margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto; 
+        }
+        
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        .branding {
+            color: #fff;
+            font-size: 25px;
+            font-family: sans-serif;
+        }
+
+        .copyright a {
+            color:#888888; 
+            text-decoration:underline;
+        }
+
+        .email-logo {
+            max-height: 50px;
+        }
+        
+        /* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+        .yshortcuts a {
+            border-bottom: none !important;
+        }
+        
+        /* What it does: A work-around for iOS meddling in triggered links. */
+        .mobile-link--footer a,
+        a[x-apple-data-detectors] {
+            color:inherit !important;
+            text-decoration: underline !important;
+        }
+
+        /* Dictionary */
+        .dictionary {
+        width: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+        padding: 0;
+        }
+        .dictionary dt {
+        clear: both;
+        color: #000;
+        font-weight: bold;
+        margin-right: 4px;
+        }
+        .dictionary dd {
+        margin: 0 0 10px 0;
+        }
+
+        /* Table */
+        .data-wrapper {
+            width: 100%;
+            margin: 0;
+            padding: 35px 0;
+        }
+        .data-table {
+            width: 100%;
+            margin: 0;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 0px 5px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #DEDEDE;
+        }
+        .data-table th p {
+            margin: 0;
+            font-size: 12px;
+        }
+        .data-table td {
+            text-align: left;
+            padding: 10px 5px;
+            font-size: 15px;
+            line-height: 18px;
+        }
+      
+    </style>
+    
+    <!-- Progressive Enhancements -->
+    <style>
+        
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+    </style>
+
+</head>
+<body width="100%" bgcolor="#222222" style="Margin: 0;" dir="<%- textDirection %>">
+    <center style="width: 100%; background: #222222;">
+
+        <!--    
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px; margin: auto;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Header : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px;">
+				<tr>
+					<td class="branding" style="padding: 30px 0; text-align: center">
+						<% if (locals.product.logo) { %>
+                            <img src="<%- product.logo %>" class="email-logo" />
+                        <% } else { %>
+                            <%- product.name %>
+                        <% } %>
+					</td>
+				</tr>
+            </table>
+            <!-- Email Header : END -->
+            
+            <!-- Email Body : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%" style="max-width: 600px;">
+                
+                <!-- Hero Image, Flush : BEGIN -->
+                <tr>
+					<td>
+						<h3 style="font-family: sans-serif; font-size: 26px; padding: 40px 10px 0; text-align: center;">
+                            <%- title %>
+                        </h3>
+					</td>
+                </tr>
+                <!-- Hero Image, Flush : END -->
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td>
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        	<tr>
+	                            <td style="text-align: center; padding: 10px 40px 40px 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
+	                                <% if (locals.intro) { %>
+                                        <% intro.forEach(function (introItem) { -%>
+                                            <p><%- introItem %></p>
+                                        <% }) -%>
+                                    <% } %>
+
+                                    <!-- Dictionary -->
+                                    <% if (locals.dictionary) { %>
+                                        <br />
+                                        <dl class="dictionary">
+                                        <% for (item in dictionary) { -%>
+                                            <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
+                                            <dd><%- dictionary[item] %></dd>
+                                        <% } -%>
+                                        </dl>
+                                        <br />
+                                    <% } %>
+
+                                    <!-- Table -->
+                                    <% if (locals.table) { %>
+                                    <br />
+                                    <table class="data-table" width="100%" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <% for (var column in table.data[0]) {%>
+                                            <th
+                                                <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
+                                                    width="<%= table.columns.customWidth[column] %>"
+                                                <% } %>
+                                                <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
+                                                <% } %>
+                                            >
+                                                <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
+                                            </th>
+                                            <% } %>
+                                        </tr>
+                                        <% for (var i in table.data) {%>
+                                        <tr>
+                                            <% for (var column in table.data[i]) {%>
+                                            <td
+                                                <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
+                                                    style="text-align:<%= table.columns.customAlignment[column] %>"
+                                                <% } %>
+                                            >
+                                                <%- table.data[i][column] %>
+                                            </td>
+                                            <% } %>
+                                        </tr>
+                                        <% } %>
+                                    </table>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        	<tr>
+                                 <td style="background: #f8f8f8; text-align: center; padding: 20px 40px 40px 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
+	                                <br>
+                                    <!-- Action -->
+                                    <% if (locals.action) { %>
+                                        <p><%- action.instructions %></p>
+                                        <br />
+                                         <!-- Button : Begin -->
+                                        <table cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto;">
+                                            <tr>
+                                                <td style="border-radius: 3px; background: <%- action.button.color %>; text-align: center;" class="button-td">
+                                                    <a href="<%- action.button.link %>" target="_blank" style="background: <%- action.button.color %>; border: 15px solid <%- action.button.color %>; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff"><%- action.button.text %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <br />
+                                        <!-- Button : END -->
+                                    <% } %>
+	                            </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : BEGIN -->
+               
+                <!-- 2 Even Columns : BEGIN -->
+                <tr>
+                    <td>
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        	<tr>
+	                            <td style="text-align: center; padding: 30px 40px 20px 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
+	                               <% if (locals.outro) { %>
+                                        <% outro.forEach(function (outroItem) { -%>
+                                            <p><%- outroItem %></p>
+                                        <% }) -%>
+                                    <% } %>
+                                </td>
+                            </tr>
+                            <tr>
+	                            <td style="text-align: center; padding: 0 40px 40px 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
+	                                <%- signature %>,
+                                    <br />
+                                    <%- product.name %>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- Two Even Columns : END -->
+
+            </table>
+            <!-- Email Body : END -->
+          
+            <!-- Email Footer : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;">
+                <tr>
+                    <td class="copyright" style="padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; mso-height-rule: exactly; line-height:18px; text-align: center; color: #888888;">
+                        <%- product.copyright %>
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Footer : END -->
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </center>
+
+<!-- Support for Gmail Go-To Actions -->
+<% if (locals.goToAction) { %>
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "EmailMessage",
+        "potentialAction": {
+            "@type": "ViewAction",
+            "url": "<%- goToAction.link %>",
+            "target": "<%- goToAction.link %>",
+            "name": "<%- goToAction.text %>"
+        },
+        "description": "<%- goToAction.description %>"
+    }
+    </script>
+<% } %>
+
+</body>
+</html>
