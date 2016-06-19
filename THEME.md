@@ -54,14 +54,6 @@ Thanks again for your contribution!
 
 # Injection Snippets
 
-## Product Name Injection
-
-The following will inject the product name into the template.
-
-```html
-<%- product.name %>
-```
-
 ## Product Branding Injection
 
 The following will inject either the product logo or name into the template.
@@ -102,15 +94,19 @@ The following will inject the intro text (string or array) into the e-mail:
 <% } %>
 ```
 
-## Outro Injection
+## Dictionary Injection
 
-The following will inject the outro text (string or array) into the e-mail:
+The following will inject a `<dl>` of key-value pairs into the e-mail:
 
 ```html
-<% if (locals.outro) { %>
-    <% outro.forEach(function (outroItem) { -%>
-        <p><%- outroItem %></p>
-    <% }) -%>
+<!-- Dictionary -->
+<% if (locals.dictionary) { %>
+    <dl>
+    <% for (item in dictionary) { -%>
+        <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
+        <dd><%- dictionary[item] %></dd>
+    <% } -%>
+    </dl>
 <% } %>
 ```
 
@@ -149,22 +145,6 @@ if (locals.action && !locals.action.button.color) {
 %>
 ```
 
-## Dictionary Injection
-
-The following will inject a `<dl>` of key-value pairs into the e-mail:
-
-```html
-<!-- Dictionary -->
-<% if (locals.dictionary) { %>
-    <dl>
-    <% for (item in dictionary) { -%>
-        <dt><%- item.charAt(0).toUpperCase() + item.slice(1) %>:</dt>
-        <dd><%- dictionary[item] %></dd>
-    <% } -%>
-    </dl>
-<% } %>
-```
-
 ## Table Injection
 
 The following will inject the table into the e-mail:
@@ -201,6 +181,18 @@ The following will inject the table into the e-mail:
     </tr>
     <% } %>
 </table>
+<% } %>
+```
+
+## Outro Injection
+
+The following will inject the outro text (string or array) into the e-mail:
+
+```html
+<% if (locals.outro) { %>
+    <% outro.forEach(function (outroItem) { -%>
+        <p><%- outroItem %></p>
+    <% }) -%>
 <% } %>
 ```
 
