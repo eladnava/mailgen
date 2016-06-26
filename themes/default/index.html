@@ -1,20 +1,21 @@
 <%
-// Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) {
-    locals.action.button.color = 'blue';
-}
+if (locals.action) {
+  // Make it possible to override action button color (specify fallback color if no color specified)
+  if (!locals.action.button.color) {
+      locals.action.button.color = 'blue';
+  }
 
-// Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color
-if (locals.action.button.color === 'red') {
-  locals.action.button.color = '#DC4D2F';
+  // Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color
+  if (locals.action.button.color === 'red') {
+    locals.action.button.color = '#DC4D2F';
+  }
+  else if (locals.action.button.color === 'green') {
+    locals.action.button.color = '#22BC66';
+  }
+  else if (locals.action.button.color === 'blue') {
+    locals.action.button.color = '#3869D4';
+  }
 }
-else if (locals.action.button.color === 'green') {
-  locals.action.button.color = '#22BC66';
-}
-else if (locals.action.button.color === 'blue') {
-  locals.action.button.color = '#3869D4';
-}
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
