@@ -45,7 +45,7 @@ var email = {
         action: {
             instructions: 'You can check the status of your order and more in your dashboard:',
             button: {
-                color: 'blue',
+                color: '#3869D4',
                 text: 'Go to Dashboard',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }
