@@ -54,6 +54,11 @@ if (locals.action && !locals.action.button.color) {
       max-height: 50px;
     }
 
+    .branding a {
+        color: inherit;
+        text-decoration: none;
+    }
+
      /* Data table ------------------------------ */
     .data-wrapper {
       width: 100%;
@@ -202,13 +207,15 @@ if (locals.action && !locals.action.button.color) {
                                     <td bgcolor="#ffffff" width="400" align="center" class="mobile-hide">
                                         <table border="0" cellpadding="0" cellspacing="0">
                                             <tr>
-                                                <td align="center" style="padding: 0 0 5px 0; font-size: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666; text-decoration: none;">
-                                                    <span style="color: #666666; text-decoration: none;">
-                                                    <% if (locals.product.logo) { %>
-                                                        <img src="<%- product.logo %>" class="email-logo" />
-                                                    <% } else { %>
-                                                        <%- product.name %>
-                                                    <% } %>
+                                                <td align="center" style="padding: 0 0 5px 0; font-size: 23px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666; text-decoration: none;">
+                                                    <span class="branding" style="color: #666666; text-decoration: none;">
+                                                        <a href="<%- product.link %>" target="_blank">
+                                                            <% if (locals.product.logo) { %>
+                                                                <img src="<%- product.logo %>" class="email-logo" />
+                                                            <% } else { %>
+                                                                <%- product.name %>
+                                                            <% } %>
+                                                        </a>
                                                     </span>
                                                 </td>
                                             </tr>

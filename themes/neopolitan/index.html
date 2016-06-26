@@ -32,6 +32,10 @@ if (locals.action && !locals.action.button.color) {
     color: #bbbbbb;
   }
 
+  .branding a {
+    color: inherit;
+  }
+
   a img {
     border: none;
   }
@@ -154,12 +158,14 @@ if (locals.action && !locals.action.button.color) {
             <td align="center" valign="top">
                 <table style="margin: 10px auto;" cellpadding="0" cellspacing="0" width="100%" style="margin:0 auto;">
                   <tr>
-                    <td style="font-size: 30px; text-align:center;">
-                        <% if (locals.product.logo) { %>
-                            <img src="<%- product.logo %>" class="email-logo" />
-                        <% } else { %>
-                            <%- product.name %>
-                        <% } %>
+                    <td class="branding" style="font-size: 30px; text-align:center;">
+                        <a href="<%- product.link %>" target="_blank">
+                            <% if (locals.product.logo) { %>
+                                <img src="<%- product.logo %>" class="email-logo" />
+                            <% } else { %>
+                                <%- product.name %>
+                            <% } %>
+                        </a>
                     </td>
                   </tr>
                 </table>
