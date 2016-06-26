@@ -59,11 +59,13 @@ Thanks again for your contribution!
 The following will inject either the product logo or name into the template.
 
 ```html
-<% if (locals.product.logo) { %>
-    <img src="<%- product.logo %>" class="email-logo" />
-<% } else { %>
-    <%- product.name %>
-<% } %>
+<a href="<%- product.link %>" target="_blank">
+    <% if (locals.product.logo) { %>
+        <img src="<%- product.logo %>" class="email-logo" />
+    <% } else { %>
+        <%- product.name %>
+    <% } %>
+</a>
 ```
 
 It's a good idea to add the following CSS declaration to set `max-height: 50px` for the logo:
