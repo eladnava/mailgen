@@ -48,7 +48,7 @@ var email = {
         action: {
             instructions: 'To get started with Mailgen, please click here:',
             button: {
-                color: '#22BC66',
+                color: '#22BC66', // Optional action button color
                 text: 'Confirm your account',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }
@@ -57,10 +57,18 @@ var email = {
     }
 };
 
-// Generate an HTML email using mailgen
+// Generate an HTML email with the provided contents
 var emailBody = mailGenerator.generate(email);
 
-// `emailBody` now contains the HTML body.
+// Generate the plaintext version of the e-mail (for clients that do not support HTML)
+var emailText = mailGenerator.generatePlaintext(email);
+
+// Optionally, preview the generated HTML e-mail by writing it to a local file
+require('fs').writeFileSync('preview.html', emailBody, 'utf8');
+
+// `emailBody` now contains the HTML body,
+// and `emailText` contains the textual version.
+// 
 // It's up to you to send the e-mail.
 // Check out nodemailer to accomplish this:
 // https://nodemailer.com/
@@ -188,7 +196,7 @@ var email = {
         action: {
             instructions: 'To get started with Mailgen, please click here:',
             button: {
-                color: '#48cfad', // Set a custom color for the action button
+                color: '#48cfad', // Optional action button color
                 text: 'Confirm your account',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }

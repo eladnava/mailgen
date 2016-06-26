@@ -29,15 +29,20 @@ var email = {
     }
 };
 
-// Generate an HTML email using mailgen
+// Generate an HTML email with the provided contents
 var emailBody = mailGenerator.generate(email);
 
-// Optionally, preview the generated e-mail by writing it to a local file
+// Generate the plaintext version of the e-mail (for clients that do not support HTML)
+var emailText = mailGenerator.generatePlaintext(email);
+
+// Optionally, preview the generated HTML e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 
-// `emailBody` now contains the HTML body.
-// It's up to you to send the e-mail. 
-// Check out nodemailer to accomplish this: 
+// `emailBody` now contains the HTML body,
+// and `emailText` contains the textual version.
+// 
+// It's up to you to send the e-mail.
+// Check out nodemailer to accomplish this:
 // https://nodemailer.com/
 
 // Send the e-mail with your favorite mailer
@@ -45,7 +50,8 @@ require('fs').writeFileSync('preview.html', emailBody, 'utf8');
 //     from: 'no-reply@mailgen.js',
 //     to: 'target@email.com',
 //     subject: 'Mailgen',
-//     html: emailBody
+//     html: emailBody,
+//     text: emailText,
 // }, function (err) {
 //     if (err) return console.log(err);
 //     console.log('Message sent successfully.');
