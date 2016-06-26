@@ -3,6 +3,18 @@
 if (locals.action && !locals.action.button.color) {
     locals.action.button.color = 'blue';
 }
+
+// Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color
+if (locals.action.button.color === 'red') {
+  locals.action.button.color = '#dc4d2f';
+}
+else if (locals.action.button.color === 'green') {
+  locals.action.button.color = '#22BC66';
+}
+else if (locals.action.button.color === 'blue') {
+  locals.action.button.color = '#3869D4';
+}
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -196,16 +208,6 @@ if (locals.action && !locals.action.button.color) {
       mso-hide: all;
     }
 
-    .button--green {
-      background-color: #22BC66;
-    }
-    .button--red {
-      background-color: #dc4d2f;
-    }
-    .button--blue {
-      background-color: #3869D4;
-    }
-
     /*Media Queries ------------------------------ */
     @media only screen and (max-width: 600px) {
       .email-body_inner,
@@ -307,7 +309,7 @@ if (locals.action && !locals.action.button.color) {
                         <tr>
                           <td align="center">
                             <div>
-                              <a href="<%- action.button.link %>" class="button button--<%- action.button.color %>" target="_blank"><%- action.button.text %></a>
+                              <a href="<%- action.button.link %>" class="button" style="background-color: <%- action.button.color %>" target="_blank"><%- action.button.text %></a>
                             </div>
                           </td>
                         </tr>

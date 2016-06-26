@@ -187,7 +187,7 @@ var email = {
         action: {
             instructions: 'To get started with Mailgen, please click here:',
             button: {
-                color: '#48cfad',
+                color: '#48cfad', // Set a custom color for the action button
                 text: 'Confirm your account',
                 link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
             }
