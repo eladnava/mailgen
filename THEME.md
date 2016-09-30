@@ -205,15 +205,21 @@ It's a good idea to add this to the top of the template to improve the styling o
 
 ## Action Injection
 
-The following will inject the action link (or button) into the e-mail:
+The following will inject the action link (or button) into the e-mail.
 
 ```html
 <!-- Action -->
+<% if(locals.action.constructor !== Array){ %>
+<%    action = [action]; %>
+<% } %>
+
 <% if (locals.action) { %>
-    <p><%- action.instructions %></p>
-    <a href="<%- action.button.link %>" style="color:<%- action.button.color %>" target="_blank">
-        <%- action.button.text %>
-    </a>
+    <% action.forEach(function (actionItem) { -%>
+        <p><%- actionItem.instructions %></p>
+        <a href="<%- actionItem.button.link %>" style="color:<%- actionItem.button.color %>" target="_blank">
+            <%- actionItem.button.text %>
+        </a>
+    <% }) -%>
 <% } %>
 ```
 
@@ -221,9 +227,24 @@ It's a good idea to add this to the top of the template to specify a fallback co
 
 ```html
 <%
+if (locals.action){
+
+    // If there is only one action, make into array of one actions
+    if(locals.action.constructor !== Array){
+        action = [action];
+    }
+
+    locals.action.forEach(function(actionItem){
+        fallbackColor(actionItem.button);
+    });
+}
+
+
 // Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) {
-    locals.action.button.color = 'blue';
+function fallbackColor(button){
+    if (!button.color) {
+        button.color = '#48CFAD';
+    }
 }
 %>
 ```
