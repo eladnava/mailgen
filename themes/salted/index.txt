@@ -1,5 +1,5 @@
 <%- title %>
-<% if (locals.action && locals.action.constructor !== Array) { action = [action]; } %>
+
 <% if (locals.intro) { %>
 <% intro.forEach(function (introItem) { -%>
 <%- introItem %>

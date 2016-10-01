@@ -1,10 +1,5 @@
 <%
 if (locals.action) {
-    // If there is only one action, make into array of one actions
-    if (locals.action.constructor !== Array) {
-        action = [action];
-    }
-
     locals.action.forEach(function(actionItem) {
         // Make it possible to override action button color (specify fallback color if no color specified)
         if (!actionItem.button.color) {

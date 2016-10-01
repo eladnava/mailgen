@@ -209,10 +209,6 @@ The following will inject the action link (or button) into the e-mail:
 
 ```html
 <!-- Action -->
-<% if (locals.action.constructor !== Array) { %>
-<%    action = [action]; %>
-<% } %>
-
 <% if (locals.action) { %>
     <% action.forEach(function (actionItem) { -%>
         <p><%- actionItem.instructions %></p>
@@ -228,11 +224,6 @@ It's a good idea to add this to the top of the template to specify a fallback co
 ```html
 <%
 if (locals.action) {
-    // If there is only one action, make into array of one actions
-    if (locals.action.constructor !== Array) {
-        action = [action];
-    }
-    
     // Make it possible to override action button color (specify fallback color if no color specified)
     locals.action.forEach(function(actionItem) {
         if (!actionItem.button.color) {
