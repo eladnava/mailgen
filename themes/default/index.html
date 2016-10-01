@@ -1,19 +1,24 @@
 <%
 if (locals.action) {
-  // Make it possible to override action button color (specify fallback color if no color specified)
-  if (!locals.action.button.color) {
-      locals.action.button.color = 'blue';
-  }
+    locals.action.forEach(function(actionItem) {
+        // Make it possible to override action button color (specify fallback color if no color specified)
+        if (!actionItem.button.color) {
+            actionItem.button.color = 'blue';
+        }
+        deprecatedColorToHex(actionItem.button);
+    });
 
   // Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color
-  if (locals.action.button.color === 'red') {
-    locals.action.button.color = '#DC4D2F';
-  }
-  else if (locals.action.button.color === 'green') {
-    locals.action.button.color = '#22BC66';
-  }
-  else if (locals.action.button.color === 'blue') {
-    locals.action.button.color = '#3869D4';
+  function deprecatedColorToHex(button) {
+      if (button.color === 'red') {
+            button.color = '#DC4D2F';
+      }
+      else if (button.color === 'green') {
+            button.color = '#22BC66';
+      }
+      else if (button.color === 'blue') {
+            button.color = '#3869D4';
+      }
   }
 }
 %>
@@ -305,16 +310,18 @@ if (locals.action) {
 
                     <!-- Action -->
                     <% if (locals.action) { %>
-                      <p><%- action.instructions %></p>
-                      <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td align="center">
-                            <div>
-                              <a href="<%- action.button.link %>" class="button" style="background-color: <%- action.button.color %>" target="_blank"><%- action.button.text %></a>
-                            </div>
-                          </td>
-                        </tr>
-                      </table>
+                      <% action.forEach(function (actionItem) { -%>
+                          <p><%- actionItem.instructions %></p>
+                          <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td align="center">
+                                <div>
+                                  <a href="<%- actionItem.button.link %>" class="button" style="background-color: <%- actionItem.button.color %>" target="_blank"><%- actionItem.button.text %></a>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                      <% }) -%>
                     <% } %>
 
                     <!-- Support for Gmail Go-To Actions -->
@@ -347,16 +354,18 @@ if (locals.action) {
                     </p>
 
                     <% if (locals.action) { %>
-                    <!-- Sub copy -->
-                    <table class="body-sub">
-                      <tr>
-                        <td>
-                          <p class="sub">If you’re having trouble clicking the "<%- action.button.text %>" button, copy and paste the URL below into your web browser:
-                          </p>
-                          <p class="sub"><a href="<%- action.button.link %>" target="_blank"><%- action.button.link %></a></p>
-                        </td>
-                      </tr>
-                    </table>
+                      <!-- Sub copy -->
+                      <table class="body-sub">
+                            <% action.forEach(function (actionItem) { -%>
+                            <tr>
+                            <td>
+                              <p class="sub">If you’re having trouble clicking the "<%- actionItem.button.text %>" button, copy and paste the URL below into your web browser:
+                              </p>
+                              <p class="sub"><a href="<%- actionItem.button.link %>" target="_blank"><%- actionItem.button.link %></a></p>
+                            </td>
+                          </tr>
+                          <% }) -%>
+                      </table>
                     <% } %>
                   </td>
                 </tr>

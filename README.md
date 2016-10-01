@@ -205,6 +205,32 @@ var email = {
 };
 ```
 
+To inject multiple action buttons in to the e-mail, supply the `action` object as follows:
+
+```js
+var email = {
+    body: {
+        action: [
+            {
+                instructions: 'To get started with Mailgen, please click here:',
+                button: {
+                    color: '#22BC66',
+                    text: 'Confirm your account',
+                    link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
+                }
+            },
+            {
+                instructions: 'To read our frequently asked questions, please click here:',
+                button: {
+                    text: 'Read our FAQ',
+                    link: 'https://mailgen.js/faq'
+                }        
+            }
+        ]
+    }
+};
+```
+
 ### Table
 
 To inject a table into the e-mail, supply the `table` object as follows:
