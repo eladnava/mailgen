@@ -1,22 +1,16 @@
 <%
-if (locals.action){
-
+if (locals.action) {
     // If there is only one action, make into array of one actions
-    if(locals.action.constructor !== Array){
+    if (locals.action.constructor !== Array) {
         action = [action];
     }
 
-    locals.action.forEach(function(actionItem){
-        fallbackColor(actionItem.button);
+    // Make it possible to override action button color (specify fallback color if no color specified)
+    locals.action.forEach(function(actionItem) {
+        if (!actionItem.button.color) {
+            actionItem.button.color = '#414141';
+        }
     });
-}
-
-
-// Make it possible to override action button color (specify fallback color if no color specified)
-function fallbackColor(button){
-    if (!button.color) {
-        button.color = '#414141';
-    }
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

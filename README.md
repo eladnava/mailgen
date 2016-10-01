@@ -218,13 +218,15 @@ var email = {
                     text: 'Confirm your account',
                     link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
                 }
-            },{
+            },
+            {
                 instructions: 'To read our frequently asked questions, please click here:',
                 button: {
                     text: 'Read our FAQ',
                     link: 'https://mailgen.js/faq'
                 }        
-            }],
+            }
+        ]
     }
 };
 ```
