@@ -31,7 +31,7 @@ function Mailgen(options) {
 
 function convertToArray(data) {
     // Convert object to array
-    if (data.constructor !== Array) {
+    if (data && data.constructor !== Array) {
         return [data];
     }
 
@@ -117,7 +117,7 @@ Mailgen.prototype.parseParams = function (params) {
         body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
     }
 
-    // Convert intro,outro, and action to arrays if a string or object is used instead
+    // Convert intro, outro, and action to arrays if a string or object is used instead
     body.intro  = convertToArray(body.intro)
     body.outro  = convertToArray(body.outro)
     body.action = convertToArray(body.action)
