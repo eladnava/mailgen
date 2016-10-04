@@ -1,7 +1,11 @@
 <%
-// Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) {
-    locals.action.button.color = '#48CFAD';
+if (locals.action) {
+    // Make it possible to override action button color (specify fallback color if no color specified)
+    locals.action.forEach(function(actionItem) {
+        if (!actionItem.button.color) {
+            actionItem.button.color = '#48CFAD';
+        }
+    });
 }
 %>
 <!DOCTYPE html>
@@ -318,41 +322,43 @@ if (locals.action && !locals.action.button.color) {
 <!-- ONE COLUMN SECTION -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
-        <td bgcolor="#ffffff" align="center" style="padding: 40px 15px 40px 15px;" class="section-padding">
+        <td bgcolor="#ffffff" align="center" style="padding: 15px 15px 40px 15px;" class="section-padding">
             <table border="0" cellpadding="0" cellspacing="0" width="500" class="responsive-table">
                 <tr>
                     <td>
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <!-- Action -->
                             <% if (locals.action) { %>
-                                <tr>
-                                    <td>
-                                        <!-- COPY -->
-                                        <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td align="center" style="padding: 0 0 0 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
-                                                    <p><%- action.instructions %></p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- BULLETPROOF BUTTON -->
-                                        <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
-                                            <tr>
-                                                <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
-                                                    <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
-                                                        <tr>
-                                                            <td align="center"><a href="<%- action.button.link %>" target="_blank" style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: <%- action.button.color %>; border-top: 15px solid <%- action.button.color %>; border-bottom: 15px solid <%- action.button.color %>; border-left: 25px solid <%- action.button.color %>; border-right: 25px solid <%- action.button.color %>; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;" class="mobile-button"><%- action.button.text %> &rarr;</a></td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
+                            <% action.forEach(function (actionItem) { -%>
+                                    <tr>
+                                        <td>
+                                            <!-- COPY -->
+                                            <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td align="center" style="padding: 25px 0 0 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
+                                                        <p><%- actionItem.instructions %></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <!-- BULLETPROOF BUTTON -->
+                                            <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                                <tr>
+                                                    <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
+                                                        <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
+                                                            <tr>
+                                                                <td align="center"><a href="<%- actionItem.button.link %>" target="_blank" style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: <%- actionItem.button.color %>; border-top: 15px solid <%- actionItem.button.color %>; border-bottom: 15px solid <%- actionItem.button.color %>; border-left: 25px solid <%- actionItem.button.color %>; border-right: 25px solid <%- actionItem.button.color %>; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;" class="mobile-button"><%- actionItem.button.text %> &rarr;</a></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                <% }) -%>
                             <% } %>
                             <!-- Outro -->
                             <% if (locals.outro) { %>

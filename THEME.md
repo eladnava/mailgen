@@ -210,20 +210,26 @@ The following will inject the action link (or button) into the e-mail:
 ```html
 <!-- Action -->
 <% if (locals.action) { %>
-    <p><%- action.instructions %></p>
-    <a href="<%- action.button.link %>" style="color:<%- action.button.color %>" target="_blank">
-        <%- action.button.text %>
-    </a>
+    <% action.forEach(function (actionItem) { -%>
+        <p><%- actionItem.instructions %></p>
+        <a href="<%- actionItem.button.link %>" style="color:<%- actionItem.button.color %>" target="_blank">
+            <%- actionItem.button.text %>
+        </a>
+    <% }) -%>
 <% } %>
 ```
 
-It's a good idea to add this to the top of the template to specify a fallback color for the action button in case it wasn't provided by the user:
+It's a good idea to add this to the top of the template to specify a fallback color for the action buttons in case it wasn't provided by the user:
 
 ```html
 <%
-// Make it possible to override action button color (specify fallback color if no color specified)
-if (locals.action && !locals.action.button.color) {
-    locals.action.button.color = 'blue';
+if (locals.action) {
+    // Make it possible to override action button color (specify fallback color if no color specified)
+    locals.action.forEach(function(actionItem) {
+        if (!actionItem.button.color) {
+            actionItem.button.color = '#48CFAD';
+        }
+    });
 }
 %>
 ```

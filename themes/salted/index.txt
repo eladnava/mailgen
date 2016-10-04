@@ -13,8 +13,10 @@
 <% } %>
 
 <% if (locals.action) { %>
-<%- action.instructions %>
-<%- action.button.link %>
+<% action.forEach(function (actionItem) { -%>
+<%- actionItem.instructions %>
+<%- actionItem.button.link %>
+<% }) -%>
 <% } %>
 
 <% if (locals.outro) { %>
