@@ -16,7 +16,7 @@ var mailGenerator = new Mailgen({
 var email = {
     body: {
         name: 'John Appleseed',
-        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
+        intro: 'Welcome to Mailgen! We\'re very excited to have you on board.',
         action: {
             instructions: 'To get started with Mailgen, please click here:',
             button: {

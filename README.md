@@ -44,7 +44,7 @@ Next, generate an e-mail using the following code:
 var email = {
     body: {
         name: 'John Appleseed',
-        intro: 'Welcome to Mailgen! We’re very excited to have you on board.',
+        intro: 'Welcome to Mailgen! We\'re very excited to have you on board.',
         action: {
             instructions: 'To get started with Mailgen, please click here:',
             button: {
@@ -176,7 +176,7 @@ To inject multiple lines of text for the `intro` or `outro`, simply supply an ar
 ```js
 var email = {
     body: {
-        intro: ['Welcome to Mailgen!', 'We’re very excited to have you on board.'],
+        intro: ['Welcome to Mailgen!', 'We\'re very excited to have you on board.'],
         outro: ['Need help, or have questions?', 'Just reply to this email, we\'d love to help.'],
     }
 };
