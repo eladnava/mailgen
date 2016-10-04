@@ -1,11 +1,7 @@
 <%
-if (locals.action) {
-    // Make it possible to override action button color (specify fallback color if no color specified)
-    locals.action.forEach(function(actionItem) {
-        if (!actionItem.button.color) {
-            actionItem.button.color = '#414141';
-        }
-    });
+// Make it possible to override action button color (specify fallback color if no color specified)
+if (locals.action && !locals.action.button.color) {
+    locals.action.button.color = '#414141';
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -265,41 +261,38 @@ if (locals.action) {
                             <br>
                             <!-- Action -->
                             <% if (locals.action) { %>
-                                <% action.forEach(function (actionItem) { -%>
-
-                                    <center>
-                                        <table style="margin: 0 auto; padding: 0 15px;" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td style="padding: 0 15px;">
-                                            <br>
-                                            <%- actionItem.instructions %>
-                                            <br>
-                                            <br>
-                                            </td>
-                                        </tr>
-                                        </table>
-                                    </center>
-                                    </td>
-                                </tr>
+                            <center>
+                                <table style="margin: 0 auto; padding: 0 15px;" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td style="padding: 0 15px;">
-                                    <div><!--[if mso]>
-                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
-                                        <w:anchorlock/>
-                                        <center>
-                                        <![endif]-->
-                                            <a target="_blank" href="<%- actionItem.button.link %>"
-                                    style="background-color:<%- actionItem.button.color %>;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">
-                                    <%- actionItem.button.text %>
-                                    </a>
-                                        <!--[if mso]>
-                                        </center>
-                                        </v:roundrect>
-                                    <![endif]--></div>
-                                <% }) -%>
+                                    <br>
+                                    <%- action.instructions %>
+                                    <br>
+                                    <br>
+                                    </td>
+                                </tr>
+                                </table>
+                            </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 15px;">
+                            <div><!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
+                                <w:anchorlock/>
+                                <center>
+                                <![endif]-->
+                                    <a target="_blank" href="<%- action.button.link %>"
+                            style="background-color:<%- action.button.color %>;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">
+                            <%- action.button.text %>
+                            </a>
+                                <!--[if mso]>
+                                </center>
+                                </v:roundrect>
+                            <![endif]--></div>
+                            <br>
+                            <br>
                             <% } %>
-                                <br>
-                                <br>
 
                               <% if (locals.outro) { %>
                                 <% outro.forEach(function (outroItem) { -%>

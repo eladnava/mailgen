@@ -29,9 +29,9 @@ function Mailgen(options) {
     this.cacheThemes();
 }
 
-function convertToArray(data) {
-    // Convert object to array
-    if (data && data.constructor !== Array) {
+function convertToArrayIfString(data) {
+    // Convert string to single-element array 
+    if (typeof data === 'string') {
         return [data];
     }
 
@@ -117,10 +117,9 @@ Mailgen.prototype.parseParams = function (params) {
         body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
     }
 
-    // Convert intro, outro, and action to arrays if a string or object is used instead
-    body.intro  = convertToArray(body.intro)
-    body.outro  = convertToArray(body.outro)
-    body.action = convertToArray(body.action)
+    // Convert intro/outro to arrays if a string is used instead
+    body.intro = convertToArrayIfString(body.intro)
+    body.outro = convertToArrayIfString(body.outro)
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {
