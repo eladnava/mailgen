@@ -85,6 +85,12 @@ Mailgen.prototype.generatePlaintext = function (params) {
     // Render the plaintext theme with ejs, injecting the data accordingly
     var output = ejs.render(this.cachedPlaintextTheme, ejsParams);
 
+    // Strip all linebreaks from the rendered plaintext
+    output = output.replace(/(?:\r\n|\r|\n)/g, '');
+    
+    // Replace htl break tags with linebreaks
+    output = output.replace(/(?:\<br\s*\/\>)/g, '\n');
+
     // All done!
     return output;
 };

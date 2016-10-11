@@ -2,7 +2,7 @@ var Mailgen = require('../');
 
 // Configure mailgen by setting a theme and your product info
 var mailGenerator = new Mailgen({
-    theme: 'default',
+    theme: 'neopolitan',
     product: {
         // Appears in header & footer of e-mails
         name: 'Mailgen',
@@ -62,6 +62,7 @@ var emailText = mailGenerator.generatePlaintext(email);
 
 // Optionally, preview the generated HTML e-mail by writing it to a local file
 require('fs').writeFileSync('preview.html', emailBody, 'utf8');
+require('fs').writeFileSync('preview.txt', emailText, 'utf8');
 
 // `emailBody` now contains the HTML body,
 // and `emailText` contains the textual version.
