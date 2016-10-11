@@ -4,16 +4,12 @@
 <% intro.forEach(function (introItem) { -%>
 <%- introItem %><br />
 <% }) -%>
-<% } %>
-<% if (locals.intro) { %>
 <br />
 <% } %>
 <% if (locals.dictionary) { %>
 <% for (item in dictionary) { -%>
 <%- item.charAt(0).toUpperCase() + item.slice(1) %>: <%- dictionary[item] %><br />
 <% } -%>
-<% } %>
-<% if (locals.dictionary) { %>
 <br />
 <% } %>
 <% if (locals.action) { %>
@@ -21,16 +17,12 @@
 <%- actionItem.instructions %><br />
 <%- actionItem.button.link %><br />
 <% }) -%>
-<% } %>
-<% if (locals.action) { %>
 <br />
 <% } %>
 <% if (locals.outro) { %>
 <% outro.forEach(function (outroItem) { -%>
 <%- outroItem %><br />
 <% }) -%>
-<% } %>
-<% if (locals.outro) { %>
 <br />
 <% } %>
 <%- signature %>,<br />

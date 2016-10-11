@@ -85,11 +85,18 @@ Mailgen.prototype.generatePlaintext = function (params) {
     // Render the plaintext theme with ejs, injecting the data accordingly
     var output = ejs.render(this.cachedPlaintextTheme, ejsParams);
 
-    // Strip all linebreaks from the rendered plaintext
-    output = output.replace(/(?:\r\n|\r|\n)/g, '');
+    // Definition of the <br /> tag as a regex pattern
+    var breakTag = /(?:\<br\s*\/\>)/g;
+    var breakTagPattern = new RegExp(breakTag);
     
-    // Replace htl break tags with linebreaks
-    output = output.replace(/(?:\<br\s*\/\>)/g, '\n');
+    // Check the plaintext for html break tag, maintains backwards compatiblity
+    if (breakTagPattern.test(this.cachedPlaintextTheme)) {
+        // Strip all linebreaks from the rendered plaintext
+        output = output.replace(/(?:\r\n|\r|\n)/g, '');
+
+        // Replace html break tags with linebreaks
+        output = output.replace(breakTag, '\n');
+    }
 
     // All done!
     return output;
