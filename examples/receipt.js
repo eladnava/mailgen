@@ -2,7 +2,7 @@ var Mailgen = require('../');
 
 // Configure mailgen by setting a theme and your product info
 var mailGenerator = new Mailgen({
-    theme: 'neopolitan',
+    theme: 'default',
     product: {
         // Appears in header & footer of e-mails
         name: 'Mailgen',
