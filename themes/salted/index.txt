@@ -16,8 +16,8 @@
 <% action.forEach(function (actionItem) { -%>
 <%- actionItem.instructions %><br />
 <%- actionItem.button.link %><br />
-<% }) -%>
 <br />
+<% }) -%>
 <% } %>
 <% if (locals.outro) { %>
 <% outro.forEach(function (outroItem) { -%>
