@@ -1,28 +1,31 @@
-<%- title %>
-
+<%- title %><br />
+<br />
 <% if (locals.intro) { %>
 <% intro.forEach(function (introItem) { -%>
-<%- introItem %>
+<%- introItem %><br />
 <% }) -%>
+<br />
 <% } %>
-
 <% if (locals.dictionary) { %>
 <% for (item in dictionary) { -%>
-<%- item.charAt(0).toUpperCase() + item.slice(1) %>: <%- dictionary[item] %>
+<%- item.charAt(0).toUpperCase() + item.slice(1) %>: <%- dictionary[item] %><br />
 <% } -%>
+<br />
 <% } %>
-
 <% if (locals.action) { %>
 <% action.forEach(function (actionItem) { -%>
-<%- actionItem.instructions %>
-<%- actionItem.button.link %>
+<%- actionItem.instructions %><br />
+<%- actionItem.button.link %><br />
+<br />
 <% }) -%>
 <% } %>
-
 <% if (locals.outro) { %>
 <% outro.forEach(function (outroItem) { -%>
-<%- outroItem %>
+<%- outroItem %><br />
 <% }) -%>
+<br />
 <% } %>
-
+<%- signature %>,<br />
+<%- product.name %><br />
+<br />
 <%- product.copyright %>
