@@ -131,9 +131,9 @@ Mailgen.prototype.parseParams = function (params) {
     }
 
     // Convert intro, outro, and action to arrays if a string or object is used instead
-    body.intro  = convertToArray(body.intro)
-    body.outro  = convertToArray(body.outro)
-    body.action = convertToArray(body.action)
+    body.intro  = convertToArray(body.intro);
+    body.outro  = convertToArray(body.outro);
+    body.action = convertToArray(body.action);
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {
