@@ -86,7 +86,7 @@ Mailgen.prototype.generatePlaintext = function (params) {
     var output = ejs.render(this.cachedPlaintextTheme, ejsParams);
 
     // Definition of the <br /> tag as a regex pattern
-    var breakTag = /(?:\<br\s*\/\>)/g;
+    var breakTag = /(?:\<br\s*\/?\>)/g;
     var breakTagPattern = new RegExp(breakTag);
     
     // Check the plaintext for html break tag, maintains backwards compatiblity
