@@ -96,6 +96,9 @@ Mailgen.prototype.generatePlaintext = function (params) {
 
         // Replace html break tags with linebreaks
         output = output.replace(breakTag, '\n');
+
+        // Remove plaintext theme indentation (tabs or spaces in the beginning of each line)
+        output = output.replace(/^(?: |\t)*/gm, "");
     }
 
     // All done!
