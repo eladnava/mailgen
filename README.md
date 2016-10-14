@@ -267,6 +267,8 @@ var email = {
 };
 ```
 
+> Note: Tables are currently not supported in plaintext versions of e-mails.
+
 ### Dictionary
 
  To inject key-value pairs of data into the e-mail, supply the `dictionary` object as follows:
