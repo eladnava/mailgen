@@ -7,8 +7,7 @@ A Node.js package that generates clean, responsive HTML e-mails for sending tran
 
 ## Demo
 
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/reset.png" height="400" />
-<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/receipt.png" height="400" />
+<img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/reset.png" height="400" /> <img src="https://raw.github.com/eladnava/mailgen/master/screenshots/salted/receipt.png" height="400" />
 
 > These e-mails were generated using the built-in `salted` theme.
 
