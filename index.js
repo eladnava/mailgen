@@ -38,6 +38,19 @@ function convertToArray(data) {
     return data;
 }
 
+function escapePlaintextBreaks(unparsedPlaintexts) {
+    // Replace <br /> with \n, preserve downwards compatibility
+    if (unparsedPlaintexts && Array.isArray(unparsedPlaintexts)) {
+        var parsedPlaintexts = [];
+        for (var i = 0; i < unparsedPlaintexts.length; i++) {
+            // Matches <br>, <br/> and <br />
+            parsedPlaintexts.push(unparsedPlaintexts[i].replace(/\<br\s*\/\>/g, '\n'));
+        }
+        return parsedPlaintexts
+    }
+    return unparsedPlaintexts;
+}
+
 Mailgen.prototype.cacheThemes = function () {
     // Build path to theme file (make it possible to pass in a custom theme path, fallback to mailgen-bundled theme)
     var themePath = (typeof this.theme === 'object' && this.theme.path) ? this.theme.path : __dirname + '/themes/' + this.themeName + '/index.html';
@@ -81,6 +94,10 @@ Mailgen.prototype.generate = function (params) {
 Mailgen.prototype.generatePlaintext = function (params) {
     // Parse email params and get back an object with data to inject
     var ejsParams = this.parseParams(params);
+
+    // Replace break tags in plaintext data
+    ejsParams.intro = escapePlaintextBreaks(ejsParams.intro)
+    ejsParams.outro = escapePlaintextBreaks(ejsParams.outro)
 
     // Render the plaintext theme with ejs, injecting the data accordingly
     var output = ejs.render(this.cachedPlaintextTheme, ejsParams);
