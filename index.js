@@ -130,7 +130,7 @@ Mailgen.prototype.parseParams = function (params) {
     // Use `greeting` and `name` for title if not set
     if (!body.title) {
         // Use name if provided, otherwise, default to greeting only
-        body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
+        body.title = (body.name ? body.greeting + ', ' + body.name : body.greeting);
     }
 
     // Convert intro, outro, and action to arrays if a string or object is used instead
