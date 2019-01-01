@@ -203,7 +203,6 @@ if (locals.action) {
     .button {
       display: inline-block;
       width: 200px;
-      background-color: #3869D4;
       border-radius: 3px;
       color: #ffffff;
       font-size: 15px;
@@ -311,16 +310,28 @@ if (locals.action) {
                     <!-- Action -->
                     <% if (locals.action) { %>
                       <% action.forEach(function (actionItem) { -%>
-                          <p><%- actionItem.instructions %></p>
-                          <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td align="center">
-                                <div>
-                                  <a href="<%- actionItem.button.link %>" class="button" style="background-color: <%- actionItem.button.color %>" target="_blank"><%- actionItem.button.text %></a>
-                                </div>
-                              </td>
-                            </tr>
-                          </table>
+                        <p><%- actionItem.instructions %></p>
+                        <!--[if mso]>
+                          <center>
+                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%- actionItem.button.link %>" style="height: 45px; v-text-anchor: middle; width: 200px;" arcsize="10%" stroke="f" fillcolor="<%- actionItem.button.color %>">
+                              <w:anchorlock/>
+                              <center style="color: #ffffff; font-family: sans-serif; font-size: 15px;">
+                                <%- actionItem.button.text %>
+                              </center>
+                            </v:roundrect>
+                          </center>
+                        <![endif]-->
+                        <![if !mso]>
+                        <table class="body-action" align="center" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td align="center">
+                              <a href="<%- actionItem.button.link %>" class="button" target="_blank" style="background-color: <%- actionItem.button.color %>;">
+                                <%- actionItem.button.text %>
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                        <![endif]>
                       <% }) -%>
                     <% } %>
 
