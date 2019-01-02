@@ -18,7 +18,7 @@ if (locals.action) {
 
 	<!-- Web Font / @font-face : BEGIN -->
 	<!-- NOTE: If web fonts are not required, lines 9 - 26 can be safely removed. -->
-	
+
 	<!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
 	<!--[if mso]>
 		<style>
@@ -27,14 +27,14 @@ if (locals.action) {
 			}
 		</style>
 	<![endif]-->
-	
+
 	<!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
 	<!--[if !mso]><!-->
 		<!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
 	<!--<![endif]-->
 
 	<!-- Web Font / @font-face : END -->
-	
+
   	<!-- CSS Reset -->
     <style type="text/css">
 
@@ -47,25 +47,26 @@ if (locals.action) {
             height: 100% !important;
             width: 100% !important;
         }
-        
+
         /* What it does: Stops email clients resizing small text. */
         * {
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
+            font-family: sans-serif;
         }
-        
+
         /* What is does: Centers email on Android 4.4 */
         div[style*="margin: 16px 0"] {
             margin:0 !important;
         }
-        
+
         /* What it does: Stops Outlook from adding extra spacing to tables. */
         table,
         td {
             mso-table-lspace: 0pt !important;
             mso-table-rspace: 0pt !important;
         }
-                
+
         /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
         table {
             border-spacing: 0 !important;
@@ -74,9 +75,9 @@ if (locals.action) {
             Margin: 0 auto !important;
         }
         table table table {
-            table-layout: auto; 
+            table-layout: auto;
         }
-        
+
         /* What it does: Uses a better rendering method when resizing images in IE. */
         img {
             -ms-interpolation-mode:bicubic;
@@ -89,24 +90,24 @@ if (locals.action) {
         }
 
         .branding a {
-            color: inherit;
+            color: #fff;
             text-decoration:none;
         }
 
         .copyright a {
-            color:#888888; 
+            color:#888888;
             text-decoration:underline;
         }
 
         .email-logo {
             max-height: 50px;
         }
-        
+
         /* What it does: Overrides styles added when Yahoo's auto-senses a link. */
         .yshortcuts a {
             border-bottom: none !important;
         }
-        
+
         /* What it does: A work-around for iOS meddling in triggered links. */
         .mobile-link--footer a,
         a[x-apple-data-detectors] {
@@ -157,12 +158,30 @@ if (locals.action) {
             font-size: 15px;
             line-height: 18px;
         }
-      
+
+        /* Button */
+        .button-td {
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .button-a {
+            border-radius: 3px;
+            display: block;
+            font-family: sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 1.1;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+
     </style>
-    
+
     <!-- Progressive Enhancements -->
     <style>
-        
+
         /* What it does: Hover styles for buttons */
         .button-td,
         .button-a {
@@ -180,7 +199,7 @@ if (locals.action) {
 <body width="100%" bgcolor="#222222" style="Margin: 0;" dir="<%- textDirection %>">
     <center style="width: 100%; background: #222222;">
 
-        <!--    
+        <!--
             Set the email width. Defined in two places:
             1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
             2. MSO tags for Desktop Windows Outlook enforce a 600px width.
@@ -207,10 +226,10 @@ if (locals.action) {
 				</tr>
             </table>
             <!-- Email Header : END -->
-            
+
             <!-- Email Body : BEGIN -->
             <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%" style="max-width: 600px;">
-                
+
                 <!-- Hero Image, Flush : BEGIN -->
                 <tr>
 					<td>
@@ -294,16 +313,28 @@ if (locals.action) {
                                         <% action.forEach(function (actionItem) { -%>
                                             <p><%- actionItem.instructions %></p>
                                             <br />
-                                             <!-- Button : Begin -->
-                                            <table cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto;">
-                                                <tr>
-                                                    <td style="border-radius: 3px; background: <%- actionItem.button.color %>; text-align: center;" class="button-td">
-                                                        <a href="<%- actionItem.button.link %>" target="_blank" style="background: <%- actionItem.button.color %>; border: 15px solid <%- actionItem.button.color %>; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff"><%- actionItem.button.text %></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            <!-- Button : Begin -->
+                                            <!--[if mso]>
+                                                <center>
+                                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%- actionItem.button.link %>" style="height: 45px; v-text-anchor: middle; width: 200px;" arcsize="10%" stroke="f" fillcolor="<%- actionItem.button.color %>">
+                                                        <w:anchorlock/>
+                                                        <center style="color: #ffffff; font-family: sans-serif; font-size: 13px; font-weight: bold;">
+                                                            <%- actionItem.button.text %>
+                                                        </center>
+                                                    </v:roundrect>
+                                                </center>
+                                            <![endif]-->
+                                            <![if !mso]>
+                                                <table cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto;">
+                                                    <tr>
+                                                        <td style="background-color: <%- actionItem.button.color %>;" class="button-td">
+                                                            <a href="<%- actionItem.button.link %>" target="_blank" style="background-color: <%- actionItem.button.color %>; border-color: <%- actionItem.button.color %>;" class="button-a">
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff"><%- actionItem.button.text %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            <![endif]>
                                             <br />
                                             <!-- Button : END -->
                                         <% }) -%>
@@ -314,7 +345,7 @@ if (locals.action) {
                     </td>
                 </tr>
                 <!-- 1 Column Text + Button : BEGIN -->
-               
+
                 <!-- 2 Even Columns : BEGIN -->
                 <tr>
                     <td>
@@ -342,7 +373,7 @@ if (locals.action) {
 
             </table>
             <!-- Email Body : END -->
-          
+
             <!-- Email Footer : BEGIN -->
             <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;">
                 <tr>
