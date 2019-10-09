@@ -266,6 +266,71 @@ var email = {
 };
 ```
 
+To inject multiple tables into the e-mail, supply the `table` property with an array of objects as follows:
+
+```js
+var email = {
+    body: {
+        table: [
+            {
+                // Optionally, add a title to each table.
+                title: 'Order 1',
+                data: [
+                    {
+                        item: 'Item 1',
+                        description: 'Item 1 description',
+                        price: '$1.99'
+                    },
+                    {
+                        item: 'Item 2',
+                        description: 'Item 2 description',
+                        price: '$2.99'
+                    }
+                ],
+                columns: {
+                    // Optionally, customize the column widths
+                    customWidth: {
+                        item: '20%',
+                        price: '15%'
+                    },
+                    // Optionally, change column text alignment
+                    customAlignment: {
+                        price: 'right'
+                    }
+                }
+            },
+            {
+                // Optionally, add a title to each table.
+                title: 'Order 2',
+                data: [
+                    {
+                        item: 'Item 1',
+                        description: 'Item 1 description',
+                        price: '$2.99'
+                    },
+                    {
+                        item: 'Item 2',
+                        description: 'Item 2 description',
+                        price: '$1.99'
+                    }
+                ],
+                columns: {
+                    // Optionally, customize the column widths
+                    customWidth: {
+                        item: '20%',
+                        price: '15%'
+                    },
+                    // Optionally, change column text alignment
+                    customAlignment: {
+                        price: 'right'
+                    }
+                }
+            }
+        ]
+    }
+};
+```
+
 > Note: Tables are currently not supported in plaintext versions of e-mails.
 
 ### Dictionary
