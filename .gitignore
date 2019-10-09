@@ -2,6 +2,7 @@
 node_modules
 
 # Test files
+tests/
 test.js
 preview.html
 preview.txt

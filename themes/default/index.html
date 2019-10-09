@@ -172,10 +172,15 @@ if (locals.action) {
     }
 
     /* Data table ------------------------------ */
+    .data-table-title {
+      width: 100%;
+      margin: 0;
+      padding: 20px 0 15px 0;
+    }
     .data-wrapper {
       width: 100%;
       margin: 0;
-      padding: 35px 0;
+      padding: 0 0 35px 0;
     }
     .data-table {
       width: 100%;
@@ -270,41 +275,44 @@ if (locals.action) {
 
                     <!-- Table -->
                     <% if (locals.table) { %>
-                    <table class="data-wrapper" width="100%" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td colspan="2">
-                          <table class="data-table" width="100%" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <% for (var column in table.data[0]) {%>
-                                <th
-                                  <% if(locals.table.columns && locals.table.columns.customWidth && locals.table.columns.customWidth[column]) { %>
-                                      width="<%= table.columns.customWidth[column] %>"
-                                  <% } %>
-                                  <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                      style="text-align:<%= table.columns.customAlignment[column] %>"
-                                  <% } %>
-                                >
-                                  <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
-                                </th>
-                              <% } %>
-                            </tr>
-                            <% for (var i in table.data) {%>
-                            <tr>
-                              <% for (var column in table.data[i]) {%>
-                                <td
-                                    <% if(locals.table.columns && locals.table.columns.customAlignment && locals.table.columns.customAlignment[column]) { %>
-                                        style="text-align:<%= table.columns.customAlignment[column] %>"
+                      <% table.forEach(function (tableItem, i) { -%>
+                      <h1 class="data-table-title"><%- tableItem.title %></h1>
+                      <table class="data-wrapper" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td colspan="2">
+                            <table class="data-table" width="100%" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <% for (var column in tableItem.data[0]) {%>
+                                  <th
+                                    <% if(tableItem.columns && tableItem.columns.customWidth && tableItem.columns.customWidth[column]) { %>
+                                        width="<%= tableItem.columns.customWidth[column] %>"
                                     <% } %>
-                                >
-                                  <%- table.data[i][column] %>
-                                </td>
+                                    <% if(tableItem.columns && tableItem.columns.customAlignment && tableItem.columns.customAlignment[column]) { %>
+                                        style="text-align:<%= tableItem.columns.customAlignment[column] %>"
+                                    <% } %>
+                                  >
+                                    <p><%- column.charAt(0).toUpperCase() + column.slice(1) %></p>
+                                  </th>
+                                <% } %>
+                              </tr>
+                              <% for (var i in tableItem.data) {%>
+                              <tr>
+                                <% for (var column in tableItem.data[i]) {%>
+                                  <td
+                                      <% if(tableItem.columns && tableItem.columns.customAlignment && tableItem.columns.customAlignment[column]) { %>
+                                          style="text-align:<%= tableItem.columns.customAlignment[column] %>"
+                                      <% } %>
+                                  >
+                                    <%- tableItem.data[i][column] %>
+                                  </td>
+                                <% } %>
+                              </tr>
                               <% } %>
-                            </tr>
-                            <% } %>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <% }) %>
                     <% } %>
 
                     <!-- Action -->
