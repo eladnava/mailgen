@@ -137,6 +137,7 @@ Mailgen.prototype.parseParams = function (params) {
     body.intro  = convertToArray(body.intro);
     body.outro  = convertToArray(body.outro);
     body.action = convertToArray(body.action);
+    body.table  = convertToArray(body.table);
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {
