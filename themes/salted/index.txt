@@ -17,7 +17,7 @@
         <%- item.charAt(0).toUpperCase() + item.slice(1) %>: <%- dictionary[item] %>
         <br />
     <% } -%>
-    
+
     <br />
 <% } %>
 
@@ -27,7 +27,7 @@
         <br />
         <%- actionItem.button.link %>
         <br />
-        
+
         <br />
     <% }) -%>
 <% } %>
@@ -37,13 +37,15 @@
         <%- outroItem %>
         <br />
     <% }) -%>
-    
+
     <br />
 <% } %>
 
-<%- signature %>,
-<br />
-<%- product.name %>
+<% if (signature) { %>
+  <%- signature %>,
+  <br />
+  <%- product.name %>
+<% } %>
 
 <br />
 <br />

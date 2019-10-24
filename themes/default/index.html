@@ -367,11 +367,13 @@ if (locals.action) {
                       <% }) -%>
                     <% } %>
 
-                    <p>
-                      <%- signature %>,
-                      <br>
-                      <%- product.name %>
-                    </p>
+                    <% if (signature) { %>
+                      <p>
+                        <%- signature %>,
+                        <br>
+                        <%- product.name %>
+                      </p>
+                    <% } %>
                   </td>
                 </tr>
               </table>
