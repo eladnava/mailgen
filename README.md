@@ -147,7 +147,7 @@ To not include the signature at all, set the signature field to false:
 ```js
 var email = {
     body: {
-      signature: false;
+      signature: false,
     }
 };
 ```
