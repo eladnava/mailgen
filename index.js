@@ -88,7 +88,7 @@ Mailgen.prototype.generatePlaintext = function (params) {
     // Definition of the <br /> tag as a regex pattern
     var breakTag = /(?:\<br\s*\/?\>)/g;
     var breakTagPattern = new RegExp(breakTag);
-    
+
     // Check the plaintext for html break tag, maintains backwards compatiblity
     if (breakTagPattern.test(this.cachedPlaintextTheme)) {
         // Strip all linebreaks from the rendered plaintext
@@ -125,7 +125,11 @@ Mailgen.prototype.parseParams = function (params) {
 
     // Support for custom greeting/signature (fallback to sensible defaults)
     body.greeting = body.greeting || 'Hi';
-    body.signature = body.signature || 'Yours truly';
+
+    // Only set signature if signature is not false
+    if (body.signature !== false) {
+      body.signature = body.signature || 'Yours truly';
+    }
 
     // Use `greeting` and `name` for title if not set
     if (!body.title) {
