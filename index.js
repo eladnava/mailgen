@@ -127,7 +127,7 @@ Mailgen.prototype.parseParams = function (params) {
     body.greeting = body.greeting || 'Hi';
 
     // Only set signature if signature is not false
-    if (!(body.signature === false)) {
+    if (body.signature !== false) {
       body.signature = body.signature || 'Yours truly';
     }
 
