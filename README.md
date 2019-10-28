@@ -142,7 +142,7 @@ var email = {
 };
 ```
 
-To not display the signature at all, set the signature field to false:
+To not include the signature at all, set the signature field to false:
 
 ```js
 var email = {
