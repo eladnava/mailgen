@@ -42,6 +42,7 @@ Mailgen.prototype.cacheThemes = function () {
     // Build path to theme file (make it possible to pass in a custom theme path, fallback to mailgen-bundled theme)
     var themePath = (typeof this.theme === 'object' && this.theme.path) ? this.theme.path : __dirname + '/themes/' + this.themeName + '/index.html';
 
+
     // Bad theme path?
     if (!fs.existsSync(themePath)) {
         throw new Error('You have specified an invalid theme.');
@@ -58,6 +59,9 @@ Mailgen.prototype.cacheThemes = function () {
         throw new Error('You have specified an invalid plaintext theme.');
     }
 
+    // Keep this for referencing in ejs.render()
+    this.themePath = themePath;
+
     // Load plaintext theme (sync) and cache it for later
     this.cachedPlaintextTheme = fs.readFileSync(plaintextPath, 'utf8');
 };
@@ -68,7 +72,7 @@ Mailgen.prototype.generate = function (params) {
     var ejsParams = this.parseParams(params);
 
     // Render the theme with ejs, injecting the data accordingly
-    var output = ejs.render(this.cachedTheme, ejsParams);
+    var output = ejs.render(this.cachedTheme, ejsParams, { filename: this.themePath });
 
     // Inline CSS
     output = juice(output);
