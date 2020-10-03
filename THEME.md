@@ -61,7 +61,11 @@ The following will inject either the product logo or name into the template.
 ```html
 <a href="<%- product.link %>" target="_blank">
     <% if (locals.product.logo) { %>
-        <img src="<%- product.logo %>" class="email-logo" />
+        <% if (locals.product.logoHeight) { %> 
+            <img src="<%- product.logo %>" style="height: <%- product.logoHeight %>;" alt="" />
+            <% } else { %>
+            <img src="<%- product.logo %>" class="email-logo" alt="" />
+            <% } %>
     <% } else { %>
         <%- product.name %>
     <% } %>

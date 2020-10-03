@@ -129,6 +129,21 @@ var mailGenerator = new Mailgen({
 });
 ```
 
+## Custom Logo Height
+
+To change the default product logo height, set it as follows:
+
+```js
+var mailGenerator = new Mailgen({
+    product: {
+        // Custom product logo URL
+        logo: 'https://mailgen.js/img/logo.png',
+        // Custom logo height
+        logoHeight: '30px'
+    }
+});
+```
+
 ## Language Customizations
 
 To customize the e-mail greeting (Hi) or signature (Yours truly), supply custom strings within the e-mail `body`:
