@@ -215,7 +215,7 @@ if (locals.action) {
                                                     <span class="branding" style="color: #666666; text-decoration: none;">
                                                         <a href="<%- product.link %>" target="_blank">
                                                             <% if (locals.product.logo) { %>
-                                                                <% if (product.logoHeight) { %> 
+                                                                <% if (locals.product.logoHeight) { %> 
                                                                     <img src="<%- product.logo %>" style=" height: <%- product.logoHeight %>;" alt="" />
                                                                   <% } else { %>
                                                                     <img src="<%- product.logo %>" class="email-logo" alt="" />
