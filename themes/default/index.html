@@ -76,9 +76,7 @@ if (locals.action) {
       text-decoration: none;
       text-shadow: 0 1px 0 white;
     }
-    .email-logo {
-      max-height: 50px;
-    }
+  
 
     /* Body ------------------------------ */
     .email-body {
@@ -243,7 +241,7 @@ if (locals.action) {
             <td class="email-masthead">
               <a class="email-masthead_name" href="<%- product.link %>" target="_blank">
                 <% if (locals.product.logo) { %>
-                  <img src="<%- product.logo %>" class="email-logo" alt="" />
+                  <img src="<%- product.logo %>" style="height: <%- product.logoHeight %>;" alt="" />
                 <% } else { %>
                   <%- product.name %>
                 <% } %>

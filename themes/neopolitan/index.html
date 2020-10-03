@@ -79,10 +79,6 @@ if (locals.action) {
     border-collapse: collapse !important;
   }
 
-  .email-logo {
-       max-height: 50px;
-  }
-
   .headline {
     color: #ffffff;
     font-size: 36px;
@@ -165,7 +161,7 @@ if (locals.action) {
                     <td class="branding" style="font-size: 30px; text-align:center;">
                         <a href="<%- product.link %>" target="_blank">
                             <% if (locals.product.logo) { %>
-                                <img src="<%- product.logo %>" class="email-logo" alt="" />
+                                <img src="<%- product.logo %>" style="height: <%- product.logoHeight %>;" alt="" />
                             <% } else { %>
                                 <%- product.name %>
                             <% } %>

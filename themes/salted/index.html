@@ -54,10 +54,6 @@ if (locals.action) {
       margin: 0 auto;
     }
 
-    .email-logo {
-      max-height: 50px;
-    }
-
     .branding a {
         color: inherit;
         text-decoration: none;
@@ -215,7 +211,7 @@ if (locals.action) {
                                                     <span class="branding" style="color: #666666; text-decoration: none;">
                                                         <a href="<%- product.link %>" target="_blank">
                                                             <% if (locals.product.logo) { %>
-                                                                <img src="<%- product.logo %>" class="email-logo" alt="" />
+                                                                <img src="<%- product.logo %>" style="height: <%- product.logoHeight %>;" alt="" />
                                                             <% } else { %>
                                                                 <%- product.name %>
                                                             <% } %>
