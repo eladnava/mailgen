@@ -19,6 +19,9 @@ function Mailgen(options) {
         throw new Error('Please provide the product name and link.');
     }
 
+    // Support for custom logo height (fallback to 50px)
+    this.product.logoHeight = this.product.logoHeight || '50px'
+    
     // Support for custom text direction (fallback to LTR)
     this.textDirection = options.textDirection || 'ltr';
 
