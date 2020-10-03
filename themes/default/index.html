@@ -243,7 +243,11 @@ if (locals.action) {
             <td class="email-masthead">
               <a class="email-masthead_name" href="<%- product.link %>" target="_blank">
                 <% if (locals.product.logo) { %>
-                  <img src="<%- product.logo %>" class="email-logo" alt="" />
+                  <% if (product.logoHeight) { %> 
+                    <img src="<%- product.logo %>" style=" height: <%- product.logoHeight %>;" alt="" />
+                  <% } else { %>
+                    <img src="<%- product.logo %>" class="email-logo" alt="" />
+                    <% } %>
                 <% } else { %>
                   <%- product.name %>
                 <% } %>
