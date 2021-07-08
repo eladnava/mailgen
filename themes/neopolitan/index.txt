@@ -46,7 +46,3 @@
   <br />
   <%- product.name %>
 <% } %>
-
-<br />
-<br />
-<%- product.copyright %>
