@@ -1,3 +1,4 @@
+var he = require('he');
 var fs = require('fs');
 var ejs = require('ejs');
 var juice = require('juice');
@@ -104,6 +105,12 @@ Mailgen.prototype.generatePlaintext = function (params) {
         // Remove plaintext theme indentation (tabs or spaces in the beginning of each line)
         output = output.replace(/^(?: |\t)*/gm, "");
     }
+
+    // Strip all HTML tags from plaintext output
+    output = output.replace(/<.+?>/g, '');
+
+    // Decode HTML entities such as &copy;
+    output = he.decode(output);
 
     // All done!
     return output;
