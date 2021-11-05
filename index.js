@@ -134,18 +134,24 @@ Mailgen.prototype.parseParams = function (params) {
     // Pass text direction to template
     body.textDirection = this.textDirection;
 
-    // Support for custom greeting/signature (fallback to sensible defaults)
-    body.greeting = body.greeting || 'Hi';
+    // Only set greeting if greeting is not false (allow any greeting (name & title) to be optional)
+    // Setting greeting to false will override title and name options
+    if (body.greeting !== false) {
+
+        // Support for custom greeting/signature (fallback to sensible defaults)
+        body.greeting = body.greeting || 'Hi';
+
+        // Use `greeting` or `name` for title if not set
+        if (!body.title) {
+            // Use name if provided, otherwise, default to greeting only
+            body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
+        }
+
+    }
 
     // Only set signature if signature is not false
     if (body.signature !== false) {
       body.signature = body.signature || 'Yours truly';
-    }
-
-    // Use `greeting` and `name` for title if not set
-    if (!body.title) {
-        // Use name if provided, otherwise, default to greeting only
-        body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
     }
 
     // Convert intro, outro, and action to arrays if a string or object is used instead

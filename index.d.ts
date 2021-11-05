@@ -42,8 +42,8 @@ declare namespace Mailgen {
 
     interface ContentBody {
         name?: string;
-        greeting?: string;
-        signature?: string;
+        greeting?: string | boolean;
+        signature?: string | boolean;
         title?: string;
         intro?: string | string[];
         action?: Action | Action[];

@@ -261,7 +261,9 @@ if (locals.action) {
                 <!-- Body content -->
                 <tr>
                   <td class="content-cell">
-                    <h1><%- title %></h1>
+                    <% if (title) { %>
+                      <h1><%- title %></h1>
+                    <% } %>
                     <% if (locals.intro) { %>
                       <% intro.forEach(function (introItem) { -%>
                         <p><%- introItem %></p>

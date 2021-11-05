@@ -1,4 +1,6 @@
-<%- title %>
+<% if (signature) { %>
+    <%- title %>
+<% } %>
 
 <br />
 <br />
