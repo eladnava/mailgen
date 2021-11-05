@@ -157,13 +157,13 @@ var email = {
 };
 ```
 
-To not include the signature or greeting at all, set the signature or greeting field to false:
+To not include the signature or greeting at all, set the signature or greeting fields to `false`:
 
 ```js
 var email = {
     body: {
       signature: false,
-      greeting: false, // will override and disable name & title options
+      greeting: false // This will override and disable name & title options
     }
 };
 ```
