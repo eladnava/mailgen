@@ -145,8 +145,8 @@ Mailgen.prototype.parseParams = function (params) {
       body.signature = body.signature || 'Yours truly';
     }
 
-    // Use `greeting` and `name` for title if not set
-    if (!body.title) {
+    // Use `greeting` or `name` (if set) for title if not set
+    if ((body.greeting ||  body.name) && !body.title) {
         // Use name if provided, otherwise, default to greeting only
         body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
     }
