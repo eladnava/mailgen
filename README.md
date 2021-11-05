@@ -163,7 +163,7 @@ To not include the signature or greeting at all, set the signature or greeting f
 var email = {
     body: {
       signature: false,
-      greeting: false,
+      greeting: false, // will override and disable name & title options
     }
 };
 ```
