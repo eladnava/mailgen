@@ -1,4 +1,4 @@
-<% if (signature) { %>
+<% if (locals.title) { %>
     <%- title %>
 <% } %>
 
