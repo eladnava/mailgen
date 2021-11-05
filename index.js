@@ -134,8 +134,11 @@ Mailgen.prototype.parseParams = function (params) {
     // Pass text direction to template
     body.textDirection = this.textDirection;
 
-    // Support for custom greeting/signature (fallback to sensible defaults)
-    body.greeting = body.greeting || 'Hi';
+    // Only set greeting if greeting is not false (allow greeting to be optional)
+    if (body.greeting !== false) {
+        // Support for custom greeting/signature (fallback to sensible defaults)
+        body.greeting = body.greeting || 'Hi';
+    }
 
     // Only set signature if signature is not false
     if (body.signature !== false) {
