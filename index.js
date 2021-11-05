@@ -137,7 +137,6 @@ Mailgen.prototype.parseParams = function (params) {
     // Only set greeting if greeting is not false (allow any greeting (name & title) to be optional)
     // Setting greeting to false will override title and name options
     if (body.greeting !== false) {
-
         // Support for custom greeting/signature (fallback to sensible defaults)
         body.greeting = body.greeting || 'Hi';
 
@@ -146,19 +145,18 @@ Mailgen.prototype.parseParams = function (params) {
             // Use name if provided, otherwise, default to greeting only
             body.title = (body.name ? body.greeting + ' ' + body.name : body.greeting) + ',';
         }
-
     }
 
     // Only set signature if signature is not false
     if (body.signature !== false) {
-      body.signature = body.signature || 'Yours truly';
+        body.signature = body.signature || 'Yours truly';
     }
 
     // Convert intro, outro, and action to arrays if a string or object is used instead
-    body.intro  = convertToArray(body.intro);
-    body.outro  = convertToArray(body.outro);
+    body.intro = convertToArray(body.intro);
+    body.outro = convertToArray(body.outro);
     body.action = convertToArray(body.action);
-    body.table  = convertToArray(body.table);
+    body.table = convertToArray(body.table);
 
     // Prepare data to be passed to ejs engine
     var ejsParams = {
