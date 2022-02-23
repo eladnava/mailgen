@@ -55,7 +55,7 @@ declare namespace Mailgen {
 
     interface Table {
         data: any[];
-        columns?: ColumnOptions[];
+        columns?: ColumnOptions;
     }
 
     interface ColumnOptions {
