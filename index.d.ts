@@ -21,6 +21,11 @@ declare namespace Mailgen {
     interface Option {
         theme: string | CustomTheme;
         product: Product;
+        /**
+         * To change the default text direction
+         * @default ltr
+         */
+        textDirection?: 'ltr' | 'rtl' | string;
     }
 
     interface CustomTheme {
