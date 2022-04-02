@@ -359,7 +359,9 @@ if (locals.action) {
                                                     <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
                                                         <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
                                                             <tr>
-                                                                <td align="center"><a href="<%- actionItem.button.link %>" target="_blank" style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: <%- actionItem.button.color %>; border-top: 15px solid <%- actionItem.button.color %>; border-bottom: 15px solid <%- actionItem.button.color %>; border-left: 25px solid <%- actionItem.button.color %>; border-right: 25px solid <%- actionItem.button.color %>; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;" class="mobile-button"><%- actionItem.button.text %> &rarr;</a></td>
+                                                                <% actionItem.button.forEach(function (actionButton) { -%>
+                                                                    <td align="center"><a href="<%- actionButton.link %>" target="_blank" style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none; background-color: <%- actionButton.color %>; border-top: 15px solid <%- actionButton.color %>; border-bottom: 15px solid <%- actionButton.color %>; border-left: 25px solid <%- actionButton.color %>; border-right: 25px solid <%- actionButton.color %>; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; display: inline-block;" class="mobile-button"><%- actionButton.text %> &rarr;</a></td>
+                                                                <% }) -%>
                                                             </tr>
                                                         </table>
                                                     </td>

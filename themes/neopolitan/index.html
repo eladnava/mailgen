@@ -292,19 +292,22 @@ if (locals.action) {
                                 </tr>
                                 <tr>
                                     <td style="padding: 0 15px;">
-                                    <div><!--[if mso]>
-                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
-                                        <w:anchorlock/>
-                                        <center>
-                                        <![endif]-->
-                                            <a target="_blank" href="<%- actionItem.button.link %>"
-                                    style="background-color:<%- actionItem.button.color %>;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">
-                                    <%- actionItem.button.text %>
-                                    </a>
+                                    <% actionItem.button.forEach(function (actionButton) { -%>
+                                      <div>
                                         <!--[if mso]>
-                                        </center>
-                                        </v:roundrect>
-                                    <![endif]--></div>
+                                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
+                                          <w:anchorlock/>
+                                          <center>
+                                        <![endif]-->
+                                        <a target="_blank" href="<%- actionButton.link %>" style="background-color:<%- actionButton.color %>;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">
+                                          <%- actionButton.text %>
+                                        </a>
+                                        <!--[if mso]>
+                                          </center>
+                                          </v:roundrect>
+                                        <![endif]-->
+                                      </div>
+                                    <% }) -%>
                                 <% }) -%>
                             <% } %>
                                 <br>
