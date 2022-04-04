@@ -1,11 +1,15 @@
 <%
 if (locals.action) {
+    // Make it possible to override action button color (specify fallback color if no color specified)
     locals.action.forEach(function(actionItem) {
-        // Make it possible to override action button color (specify fallback color if no color specified)
-        if (!actionItem.button.color) {
-            actionItem.button.color = 'blue';
-        }
-        deprecatedColorToHex(actionItem.button);
+      actionItem.button.forEach(function(button) {
+          // Make it possible to override action button color (specify fallback color if no color specified)
+          if (!button.color) {
+              button.color = 'blue';
+          }
+          
+          deprecatedColorToHex(button);
+        });
     });
 
   // Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color

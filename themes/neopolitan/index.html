@@ -2,10 +2,28 @@
 if (locals.action) {
     // Make it possible to override action button color (specify fallback color if no color specified)
     locals.action.forEach(function(actionItem) {
-        if (!actionItem.button.color) {
-            actionItem.button.color = '#414141';
-        }
+      actionItem.button.forEach(function(button) {
+          // Make it possible to override action button color (specify fallback color if no color specified)
+          if (!button.color) {
+              button.color = '#414141';
+          }
+          
+          deprecatedColorToHex(button);
+        });
     });
+
+  // Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color
+  function deprecatedColorToHex(button) {
+      if (button.color === 'red') {
+            button.color = '#DC4D2F';
+      }
+      else if (button.color === 'green') {
+            button.color = '#22BC66';
+      }
+      else if (button.color === 'blue') {
+            button.color = '#3869D4';
+      }
+  }
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -293,13 +311,12 @@ if (locals.action) {
                                 <tr>
                                     <td style="padding: 0 15px;">
                                     <% actionItem.button.forEach(function (actionButton) { -%>
-                                      <div>
                                         <!--[if mso]>
                                           <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
                                           <w:anchorlock/>
                                           <center>
                                         <![endif]-->
-                                        <a target="_blank" href="<%- actionButton.link %>" style="background-color:<%- actionButton.color %>;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">
+                                        <a target="_blank" href="<%- actionButton.link %>" style="background-color:<%- actionButton.color %>;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;padding:0 25px;-webkit-text-size-adjust:none;">
                                           <%- actionButton.text %>
                                         </a>
                                         <!--[if mso]>
