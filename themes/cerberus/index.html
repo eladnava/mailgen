@@ -336,11 +336,13 @@ if (locals.action) {
                                                 <![if !mso]>
                                                     <table cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto;">
                                                         <tr>
-                                                            <td style="background-color: <%- actionItem.button.color %>;" class="button-td">
-                                                                <a href="<%- actionItem.button.link %>" target="_blank" style="background-color: <%- actionItem.button.color %>; border-color: <%- actionItem.button.color %>;" class="button-a">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff"><%- actionItem.button.text %></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                </a>
-                                                            </td>
+                                                            <% actionItem.button.forEach(function (actionButton) { -%>
+                                                                <td style="background-color: <%- actionItem.button.color %>;" class="button-td">
+                                                                  <a href="<%- actionButton.link %>" target="_blank" style="background-color: <%- actionButton.color %>; border-color: <%- actionButton.color %>;" class="button-a">
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff"><%- actionButton.text %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                  </a>
+                                                                </td>
+                                                            <% }) -%>
                                                         </tr>
                                                     </table>
                                                 <![endif]>

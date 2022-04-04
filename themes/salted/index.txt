@@ -27,8 +27,10 @@
     <% action.forEach(function (actionItem) { -%>
         <%- actionItem.instructions %>
         <br />
-        <%- actionItem.button.link %>
-        <br />
+        <% actionItem.button.forEach(function (actionButton) { -%>
+            <%- actionButton.link %>
+            <br />
+        <% }) -%>
 
         <br />
     <% }) -%>

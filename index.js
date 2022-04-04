@@ -156,6 +156,11 @@ Mailgen.prototype.parseParams = function (params) {
     body.intro = convertToArray(body.intro);
     body.outro = convertToArray(body.outro);
     body.action = convertToArray(body.action);
+    
+    // Enable multiple buttons per action
+    for (var a of body.action) {
+        a.button = convertToArray(a.button);
+    }
     body.table = convertToArray(body.table);
 
     // Prepare data to be passed to ejs engine
