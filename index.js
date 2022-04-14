@@ -30,13 +30,8 @@ function Mailgen(options) {
     this.cacheThemes();
 }
 
-function convertToArray(data) {
-    // Convert object to array
-    if (data && data.constructor !== Array) {
-        return [data];
-    }
-
-    return data;
+function convertToArray (arr) {
+  return Array.isArray(arr) ? arr : [arr].filter(Boolean)
 }
 
 Mailgen.prototype.cacheThemes = function () {
