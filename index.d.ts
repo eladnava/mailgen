@@ -80,7 +80,7 @@ declare namespace Mailgen {
     }
 
     interface Button {
-        color: string;
+        color?: string;
         text: string;
         link: string;
     }
