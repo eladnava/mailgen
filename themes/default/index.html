@@ -7,7 +7,7 @@ if (locals.action) {
           if (!button.color) {
               button.color = 'blue';
           }
-          
+
           deprecatedColorToHex(button);
         });
     });
@@ -247,7 +247,7 @@ if (locals.action) {
             <td class="email-masthead">
               <a class="email-masthead_name" href="<%- product.link %>" target="_blank">
                 <% if (locals.product.logo) { %>
-                  <% if (product.logoHeight) { %> 
+                  <% if (product.logoHeight) { %>
                     <img src="<%- product.logo %>" style="height: <%- product.logoHeight %>;" alt="" />
                   <% } else { %>
                     <img src="<%- product.logo %>" class="email-logo" alt="" />
@@ -332,12 +332,14 @@ if (locals.action) {
                         <p><%- actionItem.instructions %></p>
                         <!--[if mso]>
                           <center>
-                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%- actionItem.button.link %>" style="height: 45px; v-text-anchor: middle; width: 200px;" arcsize="10%" stroke="f" fillcolor="<%- actionItem.button.color %>">
-                              <w:anchorlock/>
-                              <center style="color: #ffffff; font-family: sans-serif; font-size: 15px;">
-                                <%- actionItem.button.text %>
-                              </center>
-                            </v:roundrect>
+                              <% actionItem.button.forEach(function (actionButton) { -%>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%- actionButton.link %>" style="height: 45px; v-text-anchor: middle; width: 200px;" arcsize="10%" stroke="f" fillcolor="<%- actionButton.color %>">
+                                  <w:anchorlock/>
+                                  <center style="color: #ffffff; font-family: sans-serif; font-size: 15px;">
+                                    <%- actionButton.text %>
+                                  </center>
+                                </v:roundrect>
+                              <% }) -%>
                           </center>
                         <![endif]-->
                         <![if !mso]>
