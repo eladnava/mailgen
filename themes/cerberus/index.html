@@ -7,7 +7,7 @@ if (locals.action) {
           if (!button.color) {
               button.color = '#222222';
           }
-          
+
           deprecatedColorToHex(button);
         });
     });
@@ -233,7 +233,7 @@ if (locals.action) {
 					<td class="branding" style="padding: 30px 0; text-align: center">
                         <a href="<%- product.link %>" target="_blank">
                             <% if (locals.product.logo) { %>
-                                <% if (locals.product.logoHeight) { %> 
+                                <% if (locals.product.logoHeight) { %>
                                     <img src="<%- product.logo %>" style="height: <%- product.logoHeight %>;" alt="" />
                                   <% } else { %>
                                     <img src="<%- product.logo %>" class="email-logo" alt="" />
@@ -341,12 +341,14 @@ if (locals.action) {
                                                 <!-- Button : Begin -->
                                                 <!--[if mso]>
                                                     <center>
-                                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%- actionItem.button.link %>" style="height: 45px; v-text-anchor: middle; width: 200px;" arcsize="10%" stroke="f" fillcolor="<%- actionItem.button.color %>">
-                                                            <w:anchorlock/>
-                                                            <center style="color: #ffffff; font-family: sans-serif; font-size: 13px; font-weight: bold;">
-                                                                <%- actionItem.button.text %>
-                                                            </center>
-                                                        </v:roundrect>
+                                                            <% actionItem.button.forEach(function (actionButton) { -%>
+                                                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%- actionButton.link %>" style="height: 45px; v-text-anchor: middle; width: 200px;" arcsize="10%" stroke="f" fillcolor="<%- actionButton.color %>">
+                                                                    <w:anchorlock/>
+                                                                    <center style="color: #ffffff; font-family: sans-serif; font-size: 13px; font-weight: bold;">
+                                                                        <%- actionButton.text %>
+                                                                    </center>
+                                                                </v:roundrect>
+                                                            <% }) -%>
                                                     </center>
                                                 <![endif]-->
                                                 <![if !mso]>
