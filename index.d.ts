@@ -81,8 +81,13 @@ declare namespace Mailgen {
 
     interface Button {
         color?: string;
+        fallback?: boolean | Fallback;
         text: string;
         link: string;
+    }
+
+    interface Fallback {
+      text?: string;
     }
 }
 

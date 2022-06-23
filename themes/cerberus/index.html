@@ -401,9 +401,28 @@ if (locals.action) {
                     </td>
                 </tr>
                 <!-- Two Even Columns : END -->
-
             </table>
             <!-- Email Body : END -->
+
+            <% if (locals.action) { %>
+              <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;" bgcolor="#ffffff">
+                <tr>
+                  <td>
+                    <!-- Action -->
+                      <% action.forEach(function (actionItem) { -%>
+                        <% actionItem.button.forEach(function (actionButton) { -%>
+                          <% if (actionButton.fallback != null) { %>
+                            <p style="font-size: 0.80em; padding: 20px;">
+                              <%- actionButton.fallback.text %> <br />
+                              <a href="<%- actionButton.link %>"><%- actionButton.link %></a>
+                            </p>
+                          <% } %>
+                        <% }) -%>
+                      <% }) -%>
+                  </td>
+                </tr>
+              </table>
+            <% } %>
 
             <!-- Email Footer : BEGIN -->
             <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;">

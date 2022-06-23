@@ -249,7 +249,37 @@ var email = {
                 button: {
                     text: 'Read our FAQ',
                     link: 'https://mailgen.js/faq'
-                }        
+                }
+            }
+        ]
+    }
+};
+```
+
+Each action can also have a fallback in case email clients do not render the
+button properly. This can be achieved as follows:
+```js
+var email = {
+    body: {
+        action: [
+            {
+                instructions: 'To get started with Mailgen, please click here:',
+                button: {
+                    color: '#22BC66',
+                    text: 'Confirm your account',
+                    link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010',
+                    fallback: true
+                }
+            },
+            {
+                instructions: 'To read our frequently asked questions, please click here:',
+                button: {
+                    text: 'Read our FAQ',
+                    link: 'https://mailgen.js/faq',
+                    fallback: {
+                        text: 'This is my custom text for fallback'
+                    }
+                }
             }
         ]
     }

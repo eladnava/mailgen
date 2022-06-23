@@ -34,6 +34,18 @@ function convertToArray (arr) {
   return Array.isArray(arr) ? arr : [arr].filter(Boolean)
 }
 
+function addDefaultFallbackText(btn) {
+  if (btn.fallback == null) {
+    return;
+  }
+  if (typeof btn.fallback == "boolean") {
+    btn.fallback = {};
+  }
+  if (btn.fallback.text == null) {
+    btn.fallback.text = `If you're having trouble clicking the "${btn.text}" button, copy and paste the following URL into your web browser:`;
+  }
+}
+
 Mailgen.prototype.cacheThemes = function () {
     // Build path to theme file (make it possible to pass in a custom theme path, fallback to mailgen-bundled theme)
     var themePath = (typeof this.theme === 'object' && this.theme.path) ? this.theme.path : __dirname + '/themes/' + this.themeName + '/index.html';
@@ -151,12 +163,15 @@ Mailgen.prototype.parseParams = function (params) {
     body.intro = convertToArray(body.intro);
     body.outro = convertToArray(body.outro);
     body.action = convertToArray(body.action);
-    
+
     // Enable multiple buttons per action
     for (var action of body.action) {
         action.button = convertToArray(action.button);
+        for (const button of action.button) {
+          addDefaultFallbackText(button);
+        }
     }
-    
+
     body.table = convertToArray(body.table);
 
     // Prepare data to be passed to ejs engine
