@@ -64,8 +64,8 @@ declare namespace Mailgen {
     }
 
     interface ColumnOptions {
-        customWidth: any;
-        customAlignment: any;
+        customWidth?: Record<string, string>;
+        customAlignment?: Record<string, string>;
     }
 
     interface GoToAction {
