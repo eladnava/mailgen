@@ -411,12 +411,13 @@ if (locals.action) {
         </td>
     </tr>
 
-    <% if (locals.action) { %>
+    <% if (locals.action && locals.action[0].button[0].fallback) { %>
       <tr>
-        <td bgcolor="#ffffff" align="center" style="padding: 15px 15px 40px 15px;" class="section-padding">
+        <td bgcolor="#ffffff" align="center" style="padding: 0 15px 40px 15px;" class="section-padding">
+            <hr />
           <table border="0" cellpadding="0" cellspacing="0" width="500" class="responsive-table">
             <tr>
-              <td>
+                <td align="center" style="padding: 0 0 0 0; font-size: 16px; line-height: 25px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">
                 <% action.forEach(function (actionItem) { -%>
                   <% actionItem.button.forEach(function (actionButton) { -%>
                     <% if (actionButton.fallback != null) { %>

@@ -256,8 +256,7 @@ var email = {
 };
 ```
 
-Each action can also have a fallback in case email clients do not render the
-button properly. This can be achieved as follows:
+You can enable a fallback link and instructions for action buttons in case e-mail clients don't render it properly. This can be achieved by setting `button.fallback` to `true`, or  by specifying custom fallback text as follows:
 ```js
 var email = {
     body: {

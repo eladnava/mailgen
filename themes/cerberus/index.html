@@ -404,15 +404,15 @@ if (locals.action) {
             </table>
             <!-- Email Body : END -->
 
-            <% if (locals.action) { %>
+            <% if (locals.action && locals.action[0].button[0].fallback) { %>
               <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 680px;" bgcolor="#ffffff">
                 <tr>
-                  <td>
+                    <td style="background: #f8f8f8; text-align: center; padding: 20px 40px 40px 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">
                     <!-- Action -->
                       <% action.forEach(function (actionItem) { -%>
                         <% actionItem.button.forEach(function (actionButton) { -%>
                           <% if (actionButton.fallback != null) { %>
-                            <p style="font-size: 0.80em; padding: 20px;">
+                            <p style="font-size: 0.80em;">
                               <%- actionButton.fallback.text %> <br />
                               <a href="<%- actionButton.link %>"><%- actionButton.link %></a>
                             </p>

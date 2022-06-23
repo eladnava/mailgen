@@ -30,20 +30,22 @@ function Mailgen(options) {
     this.cacheThemes();
 }
 
-function convertToArray (arr) {
-  return Array.isArray(arr) ? arr : [arr].filter(Boolean)
+function convertToArray(arr) {
+    return Array.isArray(arr) ? arr : [arr].filter(Boolean)
 }
 
-function addDefaultFallbackText(btn) {
-  if (btn.fallback == null) {
-    return;
-  }
-  if (typeof btn.fallback == "boolean") {
-    btn.fallback = {};
-  }
-  if (btn.fallback.text == null) {
-    btn.fallback.text = `If you're having trouble clicking the "${btn.text}" button, copy and paste the following URL into your web browser:`;
-  }
+function setupButtonFallbackText(btn) {
+    // No fallback or false passed in?
+    if (!btn.fallback) {
+        return;
+    }
+
+    // Default fallback text requested?
+    if (btn.fallback === true) {
+        btn.fallback = {
+            text: `If you're having trouble clicking the "${btn.text}" button, please copy and paste the following link into your web browser's address bar:`
+        };
+    }
 }
 
 Mailgen.prototype.cacheThemes = function () {
@@ -167,8 +169,10 @@ Mailgen.prototype.parseParams = function (params) {
     // Enable multiple buttons per action
     for (var action of body.action) {
         action.button = convertToArray(action.button);
-        for (const button of action.button) {
-          addDefaultFallbackText(button);
+
+        // Set up default button fallback text
+        for (var button of action.button) {
+            setupButtonFallbackText(button);
         }
     }
 

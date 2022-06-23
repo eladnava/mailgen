@@ -351,13 +351,13 @@ if (locals.action) {
                       </center>
                     </td>
                   </tr>
-                  <% if (locals.action) { %>
+                  <% if (locals.action && locals.action[0].button[0].fallback) { %>
                     <tr>
-                      <td style="color:#801F00">
+                      <td style="padding: 0 0 10px 0; color:#801F00">
                         <% action.forEach(function (actionItem) { -%>
                           <% actionItem.button.forEach(function (actionButton) { -%>
                             <% if (actionButton.fallback != null) { %>
-                              <p style="font-size: 0.80em; padding: 20px; text-align: left;">
+                              <p style="font-size: 0.80em; padding: 0 50px 0 50px; text-align: left;">
                                 <%- actionButton.fallback.text %> <br />
                                 <a href="<%- actionButton.link %>" style="color:initial"><%- actionButton.link %></a>
                               </p>
