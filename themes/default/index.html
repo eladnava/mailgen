@@ -327,7 +327,7 @@ if (locals.action) {
                     <% } %>
 
                     <!-- Action -->
-                    <% if (locals.action) { %>
+                    <% if (locals.action.length !== 0) { %>
                       <% action.forEach(function (actionItem) { -%>
                         <p><%- actionItem.instructions %></p>
                         <!--[if mso]>
@@ -393,7 +393,7 @@ if (locals.action) {
               </table>
             </td>
           </tr>
-          <% if (locals.action && locals.action[0].button[0].fallback) { %>
+          <% if (locals.action.length !== 0 && locals.action[0].button[0].fallback) { %>
             <tr>
               <td class="email-body" width="100%">
                 <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
