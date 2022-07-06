@@ -291,7 +291,7 @@ if (locals.action) {
                             <td>
                             <br>
                             <!-- Action -->
-                            <% if (locals.action) { %>
+                            <% if (locals.action.length !== 0) { %>
                                 <% action.forEach(function (actionItem) { -%>
 
                                     <center>
@@ -351,7 +351,7 @@ if (locals.action) {
                       </center>
                     </td>
                   </tr>
-                  <% if (locals.action && locals.action[0].button[0].fallback) { %>
+                  <% if (locals.action.length !== 0 && locals.action[0].button[0].fallback) { %>
                     <tr>
                       <td style="padding: 0 0 10px 0; color:#801F00">
                         <% action.forEach(function (actionItem) { -%>

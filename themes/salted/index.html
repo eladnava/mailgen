@@ -354,7 +354,7 @@ if (locals.action) {
                     <td>
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <!-- Action -->
-                            <% if (locals.action) { %>
+                            <% if (locals.action.length !== 0) { %>
                             <% action.forEach(function (actionItem) { -%>
                                     <tr>
                                         <td>
@@ -411,7 +411,7 @@ if (locals.action) {
         </td>
     </tr>
 
-    <% if (locals.action && locals.action[0].button[0].fallback) { %>
+    <% if (locals.action.length !== 0 && locals.action[0].button[0].fallback) { %>
       <tr>
         <td bgcolor="#ffffff" align="center" style="padding: 0 15px 40px 15px;" class="section-padding">
             <hr />
