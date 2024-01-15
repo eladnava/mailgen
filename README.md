@@ -189,7 +189,7 @@ var mailGenerator = new Mailgen({
         name: 'Mailgen',
         link: 'https://mailgen.js/',
         // Custom copyright notice
-        copyright: 'Copyright © 2016 Mailgen. All rights reserved.',
+        copyright: `Copyright © ${new Date().getFullYear()} Mailgen. All rights reserved.`,
     }
 });
 ```
