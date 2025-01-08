@@ -52,7 +52,6 @@ Mailgen.prototype.cacheThemes = function () {
     // Build path to theme file (make it possible to pass in a custom theme path, fallback to mailgen-bundled theme)
     var themePath = (typeof this.theme === 'object' && this.theme.path) ? this.theme.path : __dirname + '/themes/' + this.themeName + '/index.html';
 
-
     // Bad theme path?
     if (!fs.existsSync(themePath)) {
         throw new Error('You have specified an invalid theme.');
@@ -64,16 +63,19 @@ Mailgen.prototype.cacheThemes = function () {
     // Build path to plaintext theme file (make it possible to pass in a custom plaintext theme path, fallback to mailgen-bundled theme)
     var plaintextPath = (typeof this.theme === 'object' && this.theme.plaintextPath) ? this.theme.plaintextPath : __dirname + '/themes/' + this.themeName + '/index.txt';
 
-    // Bad plaintext theme path?
-    if (!fs.existsSync(plaintextPath)) {
+    // Bad plaintext theme path specified?
+    if (!fs.existsSync(plaintextPath) && (typeof this.theme === 'object' && this.theme.plaintextPath)) {
         throw new Error('You have specified an invalid plaintext theme.');
     }
 
     // Keep this for referencing in ejs.render()
     this.themePath = themePath;
 
-    // Load plaintext theme (sync) and cache it for later
-    this.cachedPlaintextTheme = fs.readFileSync(plaintextPath, 'utf8');
+    // Plaintext path exists?
+    if (fs.existsSync(plaintextPath)) {
+        // Load plaintext theme (sync) and cache it for later
+        this.cachedPlaintextTheme = fs.readFileSync(plaintextPath, 'utf8');
+    }
 };
 
 // HTML e-mail generator
@@ -93,6 +95,11 @@ Mailgen.prototype.generate = function (params) {
 
 // Plaintext text e-mail generator
 Mailgen.prototype.generatePlaintext = function (params) {
+    // Plaintext theme not cached?
+    if (!this.cachedPlaintextTheme) {
+        throw new Error('An error was encountered while loading the plaintext theme.');
+    }
+    
     // Parse email params and get back an object with data to inject
     var ejsParams = this.parseParams(params);
 
