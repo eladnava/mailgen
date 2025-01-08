@@ -1,6 +1,6 @@
 {
   "name": "mailgen",
-  "version": "2.0.28",
+  "version": "2.0.29",
   "description": "Generates clean, responsive HTML e-mails for sending transactional mail.",
   "main": "index.js",
   "types": "index.d.ts",
