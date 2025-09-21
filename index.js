@@ -123,7 +123,7 @@ Mailgen.prototype.generatePlaintext = function (params) {
     }
 
     // Strip all HTML tags from plaintext output
-    output = output.replace(/<.+?>/g, '');
+    output = output.replace(/<(.|\n)+?>/g, '');
 
     // Decode HTML entities such as &copy;
     output = he.decode(output);
