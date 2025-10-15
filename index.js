@@ -126,7 +126,7 @@ Mailgen.prototype.generatePlaintext = function (params) {
     output = he.decode(output);
 
     // Strip all HTML tags from plaintext output
-    output = output.replace(/<(.|\n)+?>/g, '');
+    output = output.replace(/<.+?>/gs, '');
 
     // All done!
     return output;
