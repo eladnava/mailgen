@@ -428,6 +428,21 @@ var email = {
 
 > Simply sending the `X-Entity-Ref-ID` header with your e-mails will prevent grouping / truncation.
 
+2. **Next.js** Error: `You have specified an invalid theme.`
+
+> Within Next.js, please specify a verbose path to the `theme` files, as follows:
+
+```
+var mailGenerator = new Mailgen({
+    theme: {
+       path: process.cwd() + '/node_modules/mailgen/themes/default/index.html',
+       plaintextPath: process.cwd() + '/node_modules/mailgen/themes/default/index.txt'
+    }
+});
+```
+
+> Feel free to replace `default` in the above two strings with another theme of choice.
+
 ## Contributing
 
 Thanks so much for wanting to help! We really appreciate it.
