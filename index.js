@@ -1,4 +1,4 @@
-var he = require('turbo-he');
+var he = require('he');
 var fs = require('fs');
 var ejs = require('ejs');
 var juice = require('juice');
